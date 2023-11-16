@@ -2,28 +2,34 @@ package com.example.lab8iweb.Beans;
 
 public class Usuario {
     //ATRIBUTOS
-    private Integer idUsuarios;
+    private int idUsuario;
     private String nombre;
     private Integer edad;
     private String correo;
     private String contrasenaHash;
     private String nombreUsuario;
-    private String estado;
-    private String ListaNegra;
-
+    private String estado ; //Cuando se crea un usuario por defecto este está en paz
+    private String ListaNegra ;
+    private Float AlimentoTotal;
+    private int TiempoJugado;
     //GETTERS AND SETTERS
-    public Integer getIdUsuarios() {
-        return idUsuarios;
+
+    public int getIdUsuario() {
+        return idUsuario;
     }
-    public void setIdUsuarios(Integer idUsuarios) {
-        this.idUsuarios = idUsuarios;
+
+    public void setIdUsuario(int idUsuario) {
+        this.idUsuario = idUsuario;
     }
+
     public String getNombre() {
         return nombre;
     }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
+
     public Integer getEdad() {
         return edad;
     }
@@ -70,5 +76,21 @@ public class Usuario {
 
     public void setListaNegra(String listaNegra) {
         ListaNegra = listaNegra;
+    }
+
+    public Float getAlimentoTotal() {
+        return AlimentoTotal;
+    }
+
+    public void setAlimentoTotal(Float alimentoTotal) {
+        AlimentoTotal = alimentoTotal;
+    }
+
+    public int getTiempoJugado() {
+        return TiempoJugado;
+    }
+
+    public void setTiempoJugado(int tiempoJugado) {
+        TiempoJugado = tiempoJugado;
     }
 }
