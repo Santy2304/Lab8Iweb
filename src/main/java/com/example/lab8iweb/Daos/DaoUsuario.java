@@ -1,4 +1,4 @@
 package com.example.lab8iweb.Daos;
 
-public class DaoUsuario {
+public class DaoUsuario extends DaoBase{
 }
