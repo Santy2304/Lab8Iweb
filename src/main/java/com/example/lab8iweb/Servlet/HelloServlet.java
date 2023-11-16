@@ -1,4 +1,4 @@
-package com.example.lab8iweb;
+package com.example.lab8iweb.Servlet;
 
 import java.io.*;
 
