@@ -233,6 +233,11 @@
             .container #flip:checked ~ .forms .login-form{
                 display: none;
             }
+            .error-txt{
+                color: #dc3545;
+                text-align: left;
+                margin-top: 5px;
+            }
 
 
         }
@@ -262,49 +267,74 @@
     <div class="forms">
         <div class="form-content">
             <div class="login-form">
-                <div class="title">Login</div>
+                <div class="title">LogIn</div>
                 <form action="#">
                     <div class="input-boxes">
+                        <%if(request.getAttribute("error") != null){%>
+                        <div class="text sign-up-text" style="color: red;" >Username or password are incorrect</div>
+                        <%}%>
                         <div class="input-box">
                             <i class="fas fa-envelope"></i>
-                            <input type="text" placeholder="Enter your email" required>
+                            <input type="text" placeholder="Enter your username" required>
                         </div>
                         <div class="input-box">
                             <i class="fas fa-lock"></i>
                             <input type="password" placeholder="Enter your password" required>
                         </div>
+
                         <div class="button input-box">
                             <input type="submit" value="Sumbit">
                         </div>
-                        <div class="text sign-up-text">Don't have an account? <label for="flip">Sigup now</label></div>
+
+                        <div class="text sign-up-text">Don't have an account? <label for="flip">Sign up now</label></div>
                     </div>
                 </form>
             </div>
             <div class="signup-form">
                 <div class="title">Signup</div>
                 <form action="#">
-                    <div class="input-boxes">
+                    <div class="input-boxes field email">
+
+                        <%if(request.getAttribute("errorSignUpName")==null){%>
+                        <div class="input-box" >
+                            <i class="fas fa-user"></i>
+                            <input type="text"  placeholder="Enter your name"  required>
+                        </div>
+                        <%}else{%>
+                        <div class="input-box" >
+                            <i class="fas fa-user" style="color: red;"></i>
+                            <input type="text"  placeholder="Enter your name"  required>
+                        </div>
+                        <div class="error error-txt" style="font-size: 12px; color: red;" >Enter a valid name</div>
+                        <%}%>
+
                         <div class="input-box">
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Enter your name" required>
+                            <input type="text" placeholder="Enter your age" required>
                         </div>
                         <div class="input-box">
                             <i class="fas fa-envelope"></i>
                             <input type="text" placeholder="Enter your email" required>
                         </div>
                         <div class="input-box">
+                            <i class="fas fa-envelope"></i>
+                            <input type="text" placeholder="Enter your username" required>
+                        </div>
+                        <div class="input-box">
                             <i class="fas fa-lock"></i>
                             <input type="password" placeholder="Enter your password" required>
                         </div>
+
                         <div class="button input-box">
                             <input type="submit" value="Submit">
                         </div>
-                        <div class="text sign-up-text">Already have an account? <label for="flip">Login now</label></div>
+                        <div class="text sign-up-text">Already have an account? <label for="flip">LogIn now</label></div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+<script src="script.js"></script>
 </body>
 </html>
