@@ -5,16 +5,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public abstract class  DaoBase {
-    /*public Connection getConnection() throws SQLException {
+    public Connection getConnection() throws SQLException {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
         }
 
-        return DriverManager.getConnection("jdbc:mysql://localhost:3306/Lab8Uwu", "root", "root");
+        String username = "root";
+        String password = "root";
+        String database = "mydb";
+        String url = "jdbc:mysql://localhost:3306/" + database;
+
+        return DriverManager.getConnection(url, username, password);
+
     }
-}*/
-
-
 }
