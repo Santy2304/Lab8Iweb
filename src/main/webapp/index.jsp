@@ -52,7 +52,7 @@
     Tu navegador no admite el elemento de video.
 </video>
 
-<button onclick="iniciar()">INICIAR</button>
+<button onclick="window.location.href='<%=request.getContextPath()%>/LoggingServlet'">INICIAR</button>
 
 <script>
     function iniciar() {
