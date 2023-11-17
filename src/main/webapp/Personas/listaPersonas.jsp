@@ -130,7 +130,6 @@
 
             <button type="button" class="btn btn-warning position-relative">
                 Profile
-
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
@@ -169,54 +168,119 @@
 
         <div class="pb-5 pt-4 px-3 titlecolor">
             <div class="col-lg-6">
-                <h1 >Lista de Personas</h1>
+                <h1 >Tus Pobladores</h1>
             </div>
             <div>
                 <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/JugadorServlet?a=crearPersona">Nueva Persona</a>
             </div>
         </div>
-        <div class="tabla">
+
+        <h2 class="mb-3">Granjeros</h2>
+        <div class="tabla mb-5">
             <table class="table table-dark table-transparent table-hover">
                 <thead>
-                <th>#ID</th>
-                <th>Nombre</th>
-                <th>Edad</th>
-                <th>Posicion</th>
-                <th>Club</th>
-                <th>Seleccion</th>
-                <th></th>
+                <th align="center">#ID</th>
+                <th align="center">Nombre</th>
+                <th align="center">Género</th>
+                <th align="center">Consumo por día</th>
+                <th align="center">Moral</th>
+                <th align="center">Fuerza</th>
+                <th align="center">Tiempo en Colonia</th>
+                <th align="center">Produción de Alimento</th>
+                <th align="center">Produción de Moral</th>
+                <th align="center">Editar</th>
+                <th align="center">Exiliar</th>
                 </thead>
+                <tbody class="table">
+                <tr>
+                    <td align="center">1</td>
+                    <td align="center">Josh</td>
+                    <td align="center">M</td>
+                    <td align="center">30</td>
+                    <td align="center">20</td>
+                    <td align="center">10</td>
+                    <td align="center">100</td>
+                    <td align="center">78</td>
+                    <td align="center">56</td>
+                    <td align="center">
+                        <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                           type="button" class="btn btn-primary">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a onclick="return confirm('¿Estas seguro de borrar?');"
+                           href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                           type="button" class="btn btn-danger">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+
+                </tr>
+
+                </tbody>
+
             </table>
         </div>
 
+
+        <h2>Constructores</h2>
+        <table  class="table table-dark table-transparent table-hover mt-3">
+            <thead>
+
+                <th>#ID</th>
+                <th>Nombre</th>
+                <th>Género</th>
+                <th>Consumo por día</th>
+                <th>Moral</th>
+                <th>Fuerza</th>
+                <th>Tiempo en Colonia</th>
+                <th>Produción de Alimento</th>
+                <th>Produción de Moral</th>
+
+                <th>Editar</th>
+                <th>Exiliar</th>
+
+            </thead>
+            <tbody class="table">
+            <tr >
+                <td align="center">1
+                </td>
+                <td align="center">Josh
+                </td>
+                <td align="center">M
+                </td>
+                <td align="center">30
+                </td>
+                <td align="center">20
+                </td>
+                <td align="center">10
+                </td>
+                <td align="center">100
+                </td>
+                <td align="center">78
+                </td>
+                <td align="center">89</td>
+                <td align="center">
+                    <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                       type="button" class="btn btn-primary">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </td>
+                <td align="center">
+                    <a onclick="return confirm('¿Estas seguro de borrar?');"
+                       href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                       type="button" class="btn btn-danger">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+
     </div>
-
-<br>
-    <br>
-    <br>
-    <br>
-    <br><br><br>
-    <br>
-    <br>
-    <br>
-    <br><br><br><br>
-    v
-    <br><br>v
-    <br><br><br>
-    <br>v
-    v
-    <br>
-    <br><br>
-
-
-
-
-
-
-
-
-
-
 
 </main>
 
