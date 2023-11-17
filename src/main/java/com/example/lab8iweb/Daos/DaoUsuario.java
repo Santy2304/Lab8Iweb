@@ -13,7 +13,7 @@ public class DaoUsuario extends DaoBase{
         //Como el nombre de Usuario es unico en la base de datos no ocurriran conflictos o solo se obtendra una fila
         String sql = "SELECT * FROM Usuario WHERE nombreUsuario = ? AND contrasena_hash = SHA2(?,256)";
 
-        try (Connection conn = this.getConnection();
+        try (Connection conn = super.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
             pstmt.setString(1, usuario);
             pstmt.setString(2, contrasena);
@@ -36,6 +36,86 @@ public class DaoUsuario extends DaoBase{
 
         return null;
     }
+
+    public Boolean validarUsernameUnico(String username){
+        Boolean validacion = true;
+        String sql = "SELECT * FROM Usuario WHERE nombreUsuario = ? and listaNegra = 0 ";
+
+        try (Connection conn = super.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setString(1, username);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+                //Guardamos todos sus datos para poder iniciar la sesion , esto ocurre cuando se loguea correctamente
+                //Esta vacío
+                if (rs.next()) {
+                    validacion= false;
+                }
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return validacion;
+    }
+
+
+    public Boolean estaListaNegra(String correo){
+        Boolean validacion=  false;
+
+        String sql = "SELECT * FROM Usuario WHERE correo = ? and listaNegra = 1 ";
+
+        try (Connection conn = super.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setString(1, correo);
+
+            try (ResultSet rs = pstmt.executeQuery();) {
+                //Guardamos todos sus datos para poder iniciar la sesion , esto ocurre cuando se loguea correctamente
+                //Esta vacío
+                if (rs.next()) {
+                    validacion= true;
+                }
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return validacion;
+    }
+
+
+    public void ponerListaNegra(String correo,Integer edad){
+        String sql = "INSERT INTO usuario ( nombre, edad, correo, contrasena_hash, nombreUsuario, estado, `listaNegra`, alimentoTotal, tiempoJugado) VALUES ( 'baneado', ? , ? , 'ola', null, 'baneado', true , '0', '0')";
+
+        try (Connection conn = super.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1,edad);
+            pstmt.setString(2, correo);
+
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void registrarNuevoUsuario(Usuario usuario){
+        String sql = "INSERT INTO usuario ( nombre, edad, correo, contrasena_hash, nombreUsuario, estado, `listaNegra`, alimentoTotal, tiempoJugado) VALUES ( ?, ? , ? ,sha2(?,256), ?, 'Paz', false , 0, 0)";
+
+        try (Connection conn = super.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setString(1, usuario.getNombre());
+            pstmt.setInt(2, usuario.getEdad());
+            pstmt.setString(3, usuario.getCorreo());
+            pstmt.setString(4, usuario.getContrasenaHash());
+            pstmt.setString(5, usuario.getNombreUsuario());
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
 
 }

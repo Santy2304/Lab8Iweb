@@ -1,5 +1,8 @@
 package com.example.lab8iweb.Beans;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 public class Usuario {
     //ATRIBUTOS
     private int idUsuario;
@@ -93,4 +96,22 @@ public class Usuario {
     public void setTiempoJugado(int tiempoJugado) {
         TiempoJugado = tiempoJugado;
     }
+
+    public boolean validatePassword(String password) {
+        // Al menos una mayúscula
+        Pattern uppercasePattern = Pattern.compile("[A-Z]");
+        Matcher uppercaseMatcher = uppercasePattern.matcher(password);
+
+        // Al menos un número
+        Pattern digitPattern = Pattern.compile("[0-9]");
+        Matcher digitMatcher = digitPattern.matcher(password);
+
+        // Al menos un carácter especial
+        Pattern specialCharPattern = Pattern.compile("[!@#$%^&*()_+\\-=\\[\\]{};':\"\\\\|,.<>\\/?]");
+        Matcher specialCharMatcher = specialCharPattern.matcher(password);
+
+        // Verificar todas las condiciones
+        return uppercaseMatcher.find() && digitMatcher.find() && specialCharMatcher.find();
+    }
+
 }
