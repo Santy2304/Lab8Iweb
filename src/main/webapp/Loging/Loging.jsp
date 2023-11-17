@@ -17,7 +17,7 @@
     <!-- Fontawesome CDN Link -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <% String signUpForm = (String) request.getAttribute("signUpForm"); %>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
         *{
@@ -43,6 +43,47 @@
             box-shadow: 0 5px 10px rgba(0,0,0,0.2);
             perspective: 2700px;
         }
+
+
+        .container .cover .front,
+        .container .cover .back{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        <%if(signUpForm == null){%>
+
+        .container #flip:checked ~ .cover{
+            transform: rotateY(180deg);
+        }
+        .cover .back{
+            transform: rotateY(-180deg);
+            backface-visibility: hidden;
+        }
+        .container .cover{
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 50%;
+            z-index: 98;
+            transition: all 1s ease;
+            transform-origin: right;
+            transform-style: preserve-3d;
+        }
+
+        <%}else{%>
+
+        .container #flip:checked ~ .cover{
+            transform: rotateY(-180deg);
+        }
+        .cover .back{
+            transform: rotateY(180deg);
+            backface-visibility: hidden;
+        }
         .container .cover{
             position: absolute;
             top: 0;
@@ -54,21 +95,17 @@
             transform-origin: left;
             transform-style: preserve-3d;
         }
-        .container #flip:checked ~ .cover{
-            transform: rotateY(-180deg);
-        }
-        .container .cover .front,
-        .container .cover .back{
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-        }
-        .cover .back{
+
+
+        <%}%>
+        .container .cover::after{
+            opacity: 0.3;
             transform: rotateY(180deg);
             backface-visibility: hidden;
         }
+
+
+
         .container .cover::before,
         .container .cover::after{
             content: '';
@@ -79,11 +116,7 @@
             opacity: 0.5;
             z-index: 12;
         }
-        .container .cover::after{
-            opacity: 0.3;
-            transform: rotateY(180deg);
-            backface-visibility: hidden;
-        }
+
         .container .cover img{
             position: absolute;
             height: 100%;

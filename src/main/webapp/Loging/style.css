@@ -31,7 +31,7 @@ body{
   width: 50%;
   z-index: 98;
   transition: all 1s ease;
-  transform-origin: left;
+  transform-origin: right;
   transform-style: preserve-3d;
 }
 .container #flip:checked ~ .cover{
@@ -46,7 +46,7 @@ body{
   width: 100%;
 }
 .cover .back{
-  transform: rotateY(180deg);
+  transform: rotateY(-180deg);
   backface-visibility: hidden;
 }
 .container .cover::before,
@@ -70,6 +70,7 @@ body{
   width: 100%;
   object-fit: cover;
   z-index: 10;
+  right:0;
 }
 .container .cover .text{
   position: absolute;
