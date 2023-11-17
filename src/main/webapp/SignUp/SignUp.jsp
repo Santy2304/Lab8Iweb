@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!doctype html>
 <html lang="en" data-bs-theme="auto">
 <head><script src="../assets/js/color-modes.js"></script>
 
@@ -15,7 +16,12 @@
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
     <title>Checkout example · Bootstrap v5.3</title>
+    <style>
+        .container {
+            max-width: 960px;
+        }
 
+    </style>
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/checkout/">
 
 
@@ -386,3 +392,4 @@
 
 <script src="checkout.js"></script></body>
 </html>
+
