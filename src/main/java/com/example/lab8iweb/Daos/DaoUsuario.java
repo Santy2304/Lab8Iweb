@@ -25,6 +25,7 @@ public class DaoUsuario extends DaoBase{
                     String nombre = rs.getString(2);
                     user.setIdUsuario(idUsuario);
                     user.setNombre(nombre);
+                    user.setListaNegra(rs.getBoolean(8));
                     return user;
                 }
             }

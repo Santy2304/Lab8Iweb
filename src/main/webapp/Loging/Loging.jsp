@@ -275,7 +275,7 @@
                     <div class="input-boxes">
                         <%if(error != null){%>
 
-                        <div class="text sign-up-text" style="color: red;" >Tu usuario o contraseña son incorrectas! </div>
+                        <div class="text sign-up-text" style="color: red; font-size: 12px;" ><%= error%> </div>
                         <%}%>
 
                         <div class="input-box">
@@ -288,10 +288,10 @@
                         </div>
 
                         <div class="button input-box">
-                            <input type="submit" value="Submit">
+                            <input type="submit" value="Iniciar">
                         </div>
 
-                        <div class="text sign-up-text">Don't have an account? <label for="flip">Sign up now</label></div>
+                        <div class="text sign-up-text">No tienes una cuenta? <label for="flip">Registrate ahora</label></div>
                     </div>
                     </form>
 
