@@ -248,6 +248,7 @@
 <body>
 <div class="container">
     <input type="checkbox" id="flip">
+
     <div class="cover">
         <div class="front">
             <img src="<%=request.getContextPath()%>/Images/ImagenCentral.jpeg" alt="">
@@ -264,6 +265,7 @@
             </div>
         </div>
     </div>
+
     <div class="forms">
         <div class="form-content">
             <div class="login-form">
@@ -271,8 +273,14 @@
                 <form action="#">
                     <div class="input-boxes">
                         <%if(request.getAttribute("error") != null){%>
+                        <div class="alert alert-secondary text sign-up-text" role="alert">
+                            This is a secondary alert—check it out!
+                        </div>
                         <div class="text sign-up-text" style="color: red;" >Username or password are incorrect</div>
                         <%}%>
+                        <div class="alert alert-secondary" role="alert">
+                            This is a secondary alert—check it out!
+                        </div>
                         <div class="input-box">
                             <i class="fas fa-envelope"></i>
                             <input type="text" placeholder="Enter your username" required>
