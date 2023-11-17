@@ -7,8 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" data-bs-theme="auto">
-<head><script src="../../../../../../OneDrive/Documentos/bootstrap-5.3.2-examples/bootstrap-5.3.2-examples/assets/js/color-modes.js"></script>
-
+<head><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -18,11 +17,10 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
 
-
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
-    <link href="../../../../../../OneDrive/Documentos/bootstrap-5.3.2-examples/bootstrap-5.3.2-examples/assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
 
     <style>
         .bd-placeholder-img {
@@ -108,6 +106,8 @@
     <link href="carousel.css" rel="stylesheet">
 </head>
 <body>
+
+<!--
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
@@ -123,7 +123,7 @@
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
     </symbol>
 </svg>
-
+-->
 <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
     <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
             id="bd-theme"
@@ -197,18 +197,18 @@
         </div>
         <div class="carousel-inner">
             <div class="carousel-item active">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                <img src="<%=request.getContextPath()%>/Images/civilizacion.jpg" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                     <div class="carousel-caption text-start">
-                        <h1>¿Estas listo para esta nueva aventura?</h1>
-                        <p class="opacity-75">Forja un imperio que desafíe al tiempo y conquiste la historia</p>
+                        <h1 class="display-3 text-white fw-bold">¿Estas listo para esta nueva aventura?</h1>
+                        <p>Forja un imperio que desafíe al tiempo y conquiste la historia</p>
                         <!--<p><a class="btn btn-lg btn-primary" href="#">Sign up today</a></p>-->
                     </div>
                 </div>
             </div>
 
             <div class="carousel-item">
-                <img src="file:///C:/Users/Santiago/OneDrive/Documentos/bootstrap-5.3.2-examples/bootstrap-5.3.2-examples/carousel/civilizacion.jpg" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <img src="<%=request.getContextPath()%>/Images/guerra1.jpg" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1 class="display-3 text-white fw-bold">No hay otra opción más que la guerra</h1>
@@ -224,11 +224,11 @@
 
 
             <div class="carousel-item">
-                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+                <img src="<%=request.getContextPath()%>/Images/trofeoNew.jpg" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                     <div class="carousel-caption text-end">
                         <h1 class="display-3 text-white fw-bold">Demuestrales a los demás que tan bueno eres</h1>
-                        <p class="lead text-white">Los mejores jugadores apareceran en el leaderboard.</p>
+                        <p>Los mejores jugadores apareceran en el leaderboard.</p>
                         <!--<p><a class="btn btn-lg btn-primary" href="#">Browse gallery</a></p>-->
                     </div>
                 </div>
@@ -252,24 +252,24 @@
     <div class="container marketing">
 
         <!-- Three columns of text below the carousel -->
-        <div class="row">
-            <div class="col-lg-4">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="C:\Users\Santiago\OneDrive\Documentos\bootstrap-5.3.2-examples\bootstrap-5.3.2-examples\carousel\granjero.jpg" alt="Imagen de granjero">
+        <div class="row justify-content-center mt-4 mb-4">
+            <div class="col-lg-4 d-flex flex-column align-items-center justify-content-center">
+                <img class="bd-placeholder-img rounded-circle mb-3" width="140" height="140" src="<%=request.getContextPath()%>/Images/granjero.jpg" alt="Imagen de granjero">
                 <h2 class="fw-normal">Granjero</h2>
-                <p>Parte fundamental de una civilización, ellos produciran el alimento para toda tu gente.</p>
-                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                <p class="text-center">Parte fundamental de una civilización, ellos produciran el alimento para toda tu gente.</p>
+              <!--  <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->
             </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <img class="bd-placeholder-img rounded-circle" width="140" height="140" src="C:\Users\Santiago\OneDrive\Documentos\bootstrap-5.3.2-examples\bootstrap-5.3.2-examples\carousel\constructor.jpg" alt="Imagen de constructor">
+            <div class="col-lg-4 d-flex flex-column align-items-center justify-content-center">
+                <img class="bd-placeholder-img rounded-circle mb-3" width="140" height="140" src="<%=request.getContextPath()%>/Images/obrero.jpg" alt="Imagen de constructor">
                 <h2 class="fw-normal">Constructor</h2>
-                <p>Estos individuos están equipados con conocimientos avanzados en arquitectura, ingeniería y logística.</p>
-                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                <p class="text-center">Estos individuos están equipados con conocimientos avanzados en arquitectura, ingeniería y logística.</p>
+               <!-- <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->
             </div><!-- /.col-lg-4 -->
-            <div class="col-lg-4">
-                <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-color)"/></svg>
+            <div class="col-lg-4 d-flex flex-column align-items-center justify-content-center mt-4">
+                <img class="bd-placeholder-img rounded-circle mb-3" width="140" height="140" src="<%=request.getContextPath()%>/Images/soldado.jpg" alt="Imagen de soldado">
                 <h2 class="fw-normal">Soldado</h2>
-                <p>Entrenados en combate y estrategia, estos guerreros son fundamentales para defender el territorio y conquistar nuevas tierras.</p>
-                <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>
+                <p class="text-center">Entrenados en combate y estrategia, estos guerreros son fundamentales para defender el territorio y conquistar nuevas tierras.</p>
+               <!-- <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->
             </div><!-- /.col-lg-4 -->
         </div><!-- /.row -->
 
@@ -280,7 +280,7 @@
 
         <div class="row featurette">
             <div class="col-md-7">
-                <h2 class="featurette-heading fw-normal lh-1">First featurette heading. <span class="text-body-secondary">It’ll blow your mind.</span></h2>
+                <h2 class="featurette-heading fw-normal lh-1">C <span class="text-body-secondary">It’ll blow your mind.</span></h2>
                 <p class="lead">Some great placeholder content for the first featurette here. Imagine some exciting prose here.</p>
             </div>
             <div class="col-md-5">
@@ -325,7 +325,6 @@
         <p>&copy; 2017–2023 Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
     </footer>
 </main>
-<script src="../../../../../../OneDrive/Documentos/bootstrap-5.3.2-examples/bootstrap-5.3.2-examples/assets/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

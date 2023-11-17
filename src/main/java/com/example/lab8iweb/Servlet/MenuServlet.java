@@ -11,6 +11,8 @@ public class MenuServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        request.getRequestDispatcher("MenuPrincipal/MenuPrincipal.jsp").forward(request,response);
+
     }
 
     @Override
