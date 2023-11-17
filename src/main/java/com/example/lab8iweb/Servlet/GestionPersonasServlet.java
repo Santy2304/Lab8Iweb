@@ -10,7 +10,7 @@ import java.io.IOException;
 public class GestionPersonasServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        request.getRequestDispatcher("Personas/listaPersonas.jsp").forward(request,response);
     }
 
     @Override

@@ -48,7 +48,7 @@
 
 <video autoplay loop muted>
     <!-- Reemplaza 'tu-video.mp4' con la URL de tu video -->
-    <source src="Mi video.mp4" type="video/mp4">
+    <source src="MiVideo.mp4" type="video/mp4">
     Tu navegador no admite el elemento de video.
 </video>
 
