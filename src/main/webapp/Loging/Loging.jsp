@@ -346,7 +346,8 @@
             </div>
             <div class="signup-form">
                 <div class="title">Registro</div>
-                <form action="#">
+
+                    <form method="POST" action="SignUpServlet?action=form" class="col-md-6 col-lg-6">
                     <div class="input-boxes field email">
                         <!-- SECCION NOMBRE REAL DEL USUARIO-->
                         <%if(request.getAttribute("errorNombre")==null){%>
@@ -387,12 +388,12 @@
                         <%if(request.getAttribute("errorCorreo")==null){%>
                         <div class="input-box" >
                             <i class="fas fa-envelope"></i>
-                            <input type="text"  name="nombre" placeholder="Ingresa tu correo"  required>
+                            <input type="text"  name="correo" placeholder="Ingresa tu correo"  required>
                         </div>
                         <%}else{%>
                         <div class="input-box" >
                             <i class="fas fa-envelope" style="color: red;"></i>
-                            <input type="text" name="nombre" placeholder="Ingresa un correo válido"  required>
+                            <input type="text" name="correo" placeholder="Ingresa un correo válido"  required>
                         </div>
                         <div class="error error-txt" style="font-size: 12px; color: red;" >Tu correo debe existir (debe contener al menos un @ )</div>
                         <%}%>
@@ -400,12 +401,12 @@
                         <%if(request.getAttribute("errorUsername")==null){%>
                         <div class="input-box" >
                             <i class="fas fa-user"></i>
-                            <input type="text"  name="nombre" placeholder="Ingresa su nombre de usuario"  required>
+                            <input type="text"  name="username" placeholder="Ingresa su nombre de usuario"  required>
                         </div>
                         <%}else{%>
                         <div class="input-box" >
                             <i class="fas fa-user" style="color: red;"></i>
-                            <input type="text" name="nombre" placeholder="Ingresa un nombre de usuario válido"  required>
+                            <input type="text" name="username" placeholder="Ingresa un nombre de usuario válido"  required>
                         </div>
                         <div class="error error-txt" style="font-size: 12px; color: red;" >Ya existe otro jugador con ese nombre</div>
                         <%}%>
@@ -413,12 +414,12 @@
                         <%if(request.getAttribute("errorContrasena")==null){%>
                         <div class="input-box" >
                             <i class="fas fa-lock"></i>
-                            <input type="password"  name="nombre" placeholder="Ingresa tu contraseña"  required>
+                            <input type="password"  name="contrasena" placeholder="Ingresa tu contraseña"  required>
                         </div>
                         <%}else{%>
                         <div class="input-box" >
                             <i class="fas fa-lock" style="color: red;"></i>
-                            <input type="password" name="nombre" placeholder="Ingresa una contraseña válida"  required>
+                            <input type="password" name="contrasena" placeholder="Ingresa una contraseña válida"  required>
                         </div>
                         <div class="error error-txt" style="font-size: 12px; color: red;" >tu contraseña debe tener por lo menos una mayuscula , un numero y un caractere especial </div>
                         <%}%>
@@ -428,7 +429,8 @@
                         </div>
                         <div class="text sign-up-text">Ya tienes una cuenta? <label for="flip"> Ingresa ahora</label></div>
                     </div>
-                </form>
+                    </form>
+
             </div>
         </div>
     </div>
