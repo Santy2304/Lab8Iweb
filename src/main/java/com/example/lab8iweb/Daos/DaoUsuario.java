@@ -87,7 +87,7 @@ public class DaoUsuario extends DaoBase{
 
 
     public void ponerListaNegra(String correo,Integer edad){
-        String sql = "INSERT INTO usuario ( nombre, edad, correo, contrasena_hash, nombreUsuario, estado, `listaNegra`, alimentoTotal, tiempoJugado) VALUES ( 'baneado', ? , ? , 'ola', null, 'baneado', true , '0', '0')";
+        String sql = "INSERT INTO usuario ( nombre, edad, correo, contrasena_hash, nombreUsuario, estado, `listaNegra`, alimentoTotal, tiempoJugado) VALUES ( 'baneado', ? , ? , sha2('ola',256), null, 'baneado', true , '0', '0')";
 
         try (Connection conn = super.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {

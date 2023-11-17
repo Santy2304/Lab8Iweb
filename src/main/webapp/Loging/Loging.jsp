@@ -369,12 +369,18 @@
                             <i class="fas fa-user"></i>
                             <input type="text" name="edad" placeholder="Ingresa tu edad"  required>
                         </div>
-                        <%}else{%>
+                        <%}else if (  ((String)request.getAttribute("errorEdad")).equals("error")  ){%>
                         <div class="input-box" >
                             <i class="fas fa-user" style="color: red;"></i>
                             <input type="text" name="edad" placeholder="Ingresa una edad válida"  required>
                         </div>
                         <div class="error error-txt" style="font-size: 12px; color: red;" >Debe ingresar un numero</div>
+                        <%}else if (  ((String)request.getAttribute("errorRegistro")).equals("ListaNegra")    ){%>
+                        <div class="input-box" >
+                            <i class="fas fa-user" style="color: red;"></i>
+                            <input type="text" name="edad" placeholder="Eres muy pequeño para jugar"  required>
+                        </div>
+                        <div class="error error-txt" style="font-size: 12px; color: red;" >Ahora te encuentras en la lista negra (estás baneado) </div>
                         <%}%>
 
                         <!--SECCION DEL CORREO -->
