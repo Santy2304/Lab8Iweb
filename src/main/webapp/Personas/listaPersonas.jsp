@@ -8,8 +8,7 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" data-bs-theme="auto">
-<head>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+<head><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
@@ -23,46 +22,75 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 
+
     <style>
-        body {
-            padding-top: 56px;
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
         }
 
-        .navbar {
-            background-color: #007BFF;
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
         }
 
-        .navbar-brand {
-            color: #FFFFFF;
-            font-weight: bold;
+        .b-example-divider {
+            width: 100%;
+            height: 3rem;
+            background-color: rgba(0, 0, 0, .1);
+            border: solid rgba(0, 0, 0, .15);
+            border-width: 1px 0;
+            box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
         }
 
-        .navbar-toggler-icon {
-            background-color: #FFFFFF;
+        .b-example-vr {
+            flex-shrink: 0;
+            width: 1.5rem;
+            height: 100vh;
         }
 
-        .navbar-nav .nav-link {
-            color: #FFFFFF;
+        .bi {
+            vertical-align: -.125em;
+            fill: currentColor;
         }
 
-        .navbar-nav .nav-link:hover {
-            color: #5BC0DE;
+        .nav-scroller {
+            position: relative;
+            z-index: 2;
+            height: 2.75rem;
+            overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+            display: flex;
+            flex-wrap: nowrap;
+            padding-bottom: 1rem;
+            margin-top: -1px;
+            overflow-x: auto;
+            text-align: center;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
         }
 
         .btn-bd-primary {
-            --bd-violet-bg: #007BFF;
-            --bd-violet-rgb: 0, 123, 255;
+            --bd-violet-bg: #712cf9;
+            --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
 
+            --bs-btn-font-weight: 600;
             --bs-btn-color: var(--bs-white);
             --bs-btn-bg: var(--bd-violet-bg);
             --bs-btn-border-color: var(--bd-violet-bg);
             --bs-btn-hover-color: var(--bs-white);
-            --bs-btn-hover-bg: #0056b3;
-            --bs-btn-hover-border-color: #0056b3;
+            --bs-btn-hover-bg: #6528e0;
+            --bs-btn-hover-border-color: #6528e0;
             --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
             --bs-btn-active-color: var(--bs-btn-hover-color);
-            --bs-btn-active-bg: #004275;
-            --bs-btn-active-border-color: #004275;
+            --bs-btn-active-bg: #5a23c8;
+            --bs-btn-active-border-color: #5a23c8;
         }
 
         .bd-mode-toggle {
@@ -72,14 +100,19 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
             display: block !important;
         }
-
         footer {
-            margin-top: 50px;
-            padding-top: 20px;
-            border-top: 1px solid #007BFF;
-            color: #007BFF;
-        }
+             background-color: #322D31;
+             color: white;
+             font-family: 'Titillium Web', sans-serif;
+             padding: 20px 0;
+             display: flex;
+             flex-wrap: wrap;
+             justify-content: space-between;
+             text-align: center; /* Centrar el contenido horizontalmente */
+         }
+
     </style>
+
 
     <!-- Custom styles for this template -->
     <link href="carousel.css" rel="stylesheet">
@@ -121,8 +154,9 @@
     </ul>
 </div>
 
+
 <header data-bs-theme="dark">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-3">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Carousel</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -148,7 +182,61 @@
     </nav>
 </header>
 <main>
+    <div class='container mt-5'>
 
-    <!-- FOOTER -->
-    <footer class="container">
-        <p class="float-end"><a href="#">Back to top</a></p
+        <div class="pb-5 pt-4 px-3 titlecolor">
+            <div class="col-lg-6">
+                <h1 >Lista de Personas</h1>
+                <!--<a class="btn btn-success" href="<%=request.getContextPath()%>/JugadorServlet?a=crearJugador">Registrar Nuevo Jugador</a> -->
+            </div>
+        </div>
+        <div class="tabla">
+            <table class="table table-dark table-transparent table-hover">
+                <thead>
+                <th>#ID</th>
+                <th>Nombre</th>
+                <th>Edad</th>
+                <th>Posicion</th>
+                <th>Club</th>
+                <th>Seleccion</th>
+                <th></th>
+                </thead>
+            </table>
+        </div>
+
+    </div>
+
+<br>
+    <br>
+    <br>
+    <br>
+    <br><br><br>
+    <br>
+    <br>
+    <br>
+    <br><br><br><br>
+    v
+    <br><br>v
+    <br><br><br>
+    <br>v
+    v
+    <br>
+    <br><br>
+
+
+
+
+
+
+
+
+
+
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</body>
+<jsp:include page="/Includes/footer.jsp"/>
+</html>
+
