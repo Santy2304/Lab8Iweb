@@ -194,7 +194,7 @@
             </div>
 
             <div class="carousel-item">
-                <img src="<%=request.getContextPath()%>/Images/guerra1.jpg" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <img src="<%=request.getContextPath()%>/Images/gurerraNueva.jpg" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                     <div class="carousel-caption">
                         <h1 class="display-3 text-white fw-bold">No hay otra opción más que la guerra</h1>
@@ -246,7 +246,7 @@
               <!--  <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4 d-flex flex-column align-items-center justify-content-center">
-                <img class="bd-placeholder-img rounded-circle mb-3" width="140" height="140" src="<%=request.getContextPath()%>/Images/obrero.jpg" alt="Imagen de constructor">
+                <img class="bd-placeholder-img rounded-circle mb-3" width="140" height="140" src="<%=request.getContextPath()%>/Images/constructorTalvez.jpg" alt="Imagen de constructor">
                 <h2 class="fw-normal">Constructor</h2>
                 <p class="text-center">Estos individuos están equipados con conocimientos avanzados en arquitectura, ingeniería y logística.</p>
                <!-- <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->
