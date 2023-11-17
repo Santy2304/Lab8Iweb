@@ -159,7 +159,7 @@
 
                     </li>
                     <li class="nav-item mx-2">
-                        <a class="nav-link active" href="#">Pobladores</a>
+                        <a class="nav-link active" href="<%=request.getContextPath()%>/GestionPersonasServlet">Pobladores</a>
                     </li>
                     <li class="nav-item mx-2">
                         <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->

@@ -111,6 +111,7 @@
              text-align: center; /* Centrar el contenido horizontalmente */
          }
 
+
     </style>
 
 
@@ -118,76 +119,60 @@
     <link href="carousel.css" rel="stylesheet">
 </head>
 <body>
-
-<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-            id="bd-theme"
-            type="button"
-            aria-expanded="false"
-            data-bs-toggle="dropdown"
-            aria-label="Toggle theme (auto)">
-        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-    </button>
-    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-                Light
-                <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-            </button>
-        </li>
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-                Dark
-                <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-            </button>
-        </li>
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
-                Auto
-                <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-            </button>
-        </li>
-    </ul>
-</div>
-
-
 <header data-bs-theme="dark">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark mb-3">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" >
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Carousel</a>
+            <!--
+            <a class="navbar-brand" href="#">Santy2304</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
+            </button> -->
+
+            <button type="button" class="btn btn-warning position-relative">
+                Profile
+
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <li class="nav-item mx-2">
+                        <!--<a class="nav-link active" aria-current="page" href="#">Menú</a>-->
+                        <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/MenuServlet">Menú</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link active" href="<%=request.getContextPath()%>/GestionPersonasServlet">Pobladores</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <li class="nav-item mx-2">
+                        <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
+                        <a class="nav-link active" href="#">Recursos</a>
                     </li>
+                    <li class="nav-item mx-2">
+                        <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
+                        <a class="nav-link active" href="#">Guerras</a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
+                        <a class="nav-link active" href="#">Leaderboard</a>
+                    </li>
+
                 </ul>
 
-                <button class="btn btn-outline-success" type="submit">Cerrar Sesión</button>
+                <button type="button" class="btn btn-danger">Cerrar Sesión</button>
 
             </div>
         </div>
     </nav>
 </header>
+
 <main>
     <div class='container mt-5'>
 
         <div class="pb-5 pt-4 px-3 titlecolor">
             <div class="col-lg-6">
                 <h1 >Lista de Personas</h1>
-                <!--<a class="btn btn-success" href="<%=request.getContextPath()%>/JugadorServlet?a=crearJugador">Registrar Nuevo Jugador</a> -->
+            </div>
+            <div>
+                <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/JugadorServlet?a=crearPersona">Nueva Persona</a>
             </div>
         </div>
         <div class="tabla">
