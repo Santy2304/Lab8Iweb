@@ -1,6 +1,6 @@
 package com.example.lab8iweb.Beans;
 
-public class Pobladores {
+public class Pobladores extends Profesiones {
     //ATRIBUTOS;
     private int idPobladores;
     private String nombre;
@@ -15,6 +15,11 @@ public class Pobladores {
     private String estado; //Puede estar vivo o muerto (exiliado)
     private String motivoMuerte; // Puede morir por hambre , depresión entre otras cosas
 
+    private int moral;
+    private int fuerza;
+    private String tipoProduccion;
+    private int alimentacionPorDia;
+    private int cantidadProduccion;
     //GETTERS AND SETTERS
 
     public int getIdPobladores() {
@@ -79,5 +84,55 @@ public class Pobladores {
 
     public void setMotivoMuerte(String motivoMuerte) {
         this.motivoMuerte = motivoMuerte;
+    }
+
+    @Override
+    public int getMoral() {
+        return moral;
+    }
+
+    @Override
+    public void setMoral(int moral) {
+        this.moral = moral;
+    }
+
+    @Override
+    public int getFuerza() {
+        return fuerza;
+    }
+
+    @Override
+    public void setFuerza(int fuerza) {
+        this.fuerza = fuerza;
+    }
+
+    @Override
+    public String getTipoProduccion() {
+        return tipoProduccion;
+    }
+
+    @Override
+    public void setTipoProduccion(String tipoProduccion) {
+        this.tipoProduccion = tipoProduccion;
+    }
+
+    @Override
+    public int getAlimentacionPorDia() {
+        return alimentacionPorDia;
+    }
+
+    @Override
+    public void setAlimentacionPorDia(int alimentacionPorDia) {
+        this.alimentacionPorDia = alimentacionPorDia;
+    }
+
+    @Override
+    public int getCantidadProduccion() {
+        return cantidadProduccion;
+    }
+
+    @Override
+    public void setCantidadProduccion(int cantidadProduccion) {
+        this.cantidadProduccion = cantidadProduccion;
     }
 }
