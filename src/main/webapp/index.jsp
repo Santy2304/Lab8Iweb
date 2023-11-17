@@ -5,6 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton|Bangers|Changa:wght@400;700&display=swap">
+
     <title>Página de Inicio</title>
     <style>
         body {
@@ -15,7 +17,7 @@
             align-items: center;
             justify-content: center;
             overflow: hidden;
-            font-family: 'Roboto Condensed', sans-serif;
+
         }
 
         video {
@@ -29,20 +31,22 @@
         button {
             padding: 20px 40px;
             font-size: 28px;
-            background-color: #2c3e50; /* Color oscuro */
+            background-color: rgba(44, 62, 80, 0.2); /* Color oscuro */
             color: #ecf0f1; /* Color claro */
-            border: none;
+            border: none; /* Borde principal */
             cursor: pointer;
+            box-shadow: 0 0 0 2px #1957ad, 0 0 10px 4px #1c539f;
             border-radius: 8px;
             transition: background-color 0.3s ease;
+            font-family: 'Anton', sans-serif;
+            font-weight: bold; /* Negrita */
+            -webkit-text-stroke: 1.5px black; /* Borde negro */
         }
-
         button:hover {
-            background-color: #34495e; /* Cambia el color al pasar el mouse */
+            background-color: rgba(25, 87, 173, 0.89); /* Cambia el color al pasar el mouse */
         }
     </style>
     <!-- Enlace a la fuente Roboto Condensed -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
 
