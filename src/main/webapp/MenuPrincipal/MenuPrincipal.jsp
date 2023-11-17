@@ -124,63 +124,49 @@
     </symbol>
 </svg>
 -->
-<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-            id="bd-theme"
-            type="button"
-            aria-expanded="false"
-            data-bs-toggle="dropdown"
-            aria-label="Toggle theme (auto)">
-        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-    </button>
-    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-                Light
-                <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-            </button>
-        </li>
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-                Dark
-                <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-            </button>
-        </li>
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
-                Auto
-                <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-            </button>
-        </li>
-    </ul>
-</div>
+
 
 
 <header data-bs-theme="dark">
-    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" >
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">Carousel</a>
+            <!--
+            <a class="navbar-brand" href="#">Santy2304</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
+            </button> -->
+
+            <button type="button" class="btn btn-warning position-relative">
+                Profile
+
             </button>
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <li class="nav-item mx-2">
+                        <!--<a class="nav-link active" aria-current="page" href="#">Menú</a>-->
+                        <a class="nav-link active" aria-current="page" href="#">Menú</a>
+
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link active" href="#">Pobladores</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled" aria-disabled="true">Disabled</a>
+                    <li class="nav-item mx-2">
+                        <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
+                        <a class="nav-link active" href="#">Recursos</a>
                     </li>
+                    <li class="nav-item mx-2">
+                        <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
+                        <a class="nav-link active" href="#">Guerras</a>
+                    </li>
+
+                    <li class="nav-item mx-2">
+                        <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
+                        <a class="nav-link active" href="#">Leaderboard</a>
+                    </li>
+
                 </ul>
 
-                <button class="btn btn-outline-success" type="submit">Cerrar Sesión</button>
+                <button type="button" class="btn btn-danger">Cerrar Sesión</button>
 
             </div>
         </div>
@@ -224,7 +210,7 @@
 
 
             <div class="carousel-item">
-                <img src="<%=request.getContextPath()%>/Images/trofeoNew.jpg" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <img src="<%=request.getContextPath()%>/Images/mundoTrofeo.jpg" class="bd-placeholder-img" width="100%" height="100%" aria-hidden="true" preserveAspectRatio="xMidYMid slice" focusable="false">
                 <div class="container">
                     <div class="carousel-caption text-end">
                         <h1 class="display-3 text-white fw-bold">Demuestrales a los demás que tan bueno eres</h1>
@@ -266,7 +252,7 @@
                <!-- <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->
             </div><!-- /.col-lg-4 -->
             <div class="col-lg-4 d-flex flex-column align-items-center justify-content-center mt-4">
-                <img class="bd-placeholder-img rounded-circle mb-3" width="140" height="140" src="<%=request.getContextPath()%>/Images/soldado.jpg" alt="Imagen de soldado">
+                <img class="bd-placeholder-img rounded-circle mb-3" width="140" height="140" src="<%=request.getContextPath()%>/Images/soldadoAzul.jpg" alt="Imagen de soldado">
                 <h2 class="fw-normal">Soldado</h2>
                 <p class="text-center">Entrenados en combate y estrategia, estos guerreros son fundamentales para defender el territorio y conquistar nuevas tierras.</p>
                <!-- <p><a class="btn btn-secondary" href="#">View details &raquo;</a></p>-->
@@ -284,7 +270,7 @@
                 <p class="lead mt-4">Los pobladores son la fuerza vital de cualquier civilización en un juego de estrategia. Las 3 profesiones fundamentales te brindan diferentes beneficios que deberas aprovechar al máximo.</p>
             </div>
             <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>
+                <img src="<%=request.getContextPath()%>/Images/creacionPersonas.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="Descripción de la imagen">
             </div>
         </div>
 
@@ -296,7 +282,7 @@
                 <p class="lead mt-4">Asi como los pobladores producen, también consumen. Tendrás que administrar el alimento sabiamente para no perder a ningún ciudadano. Asimismo, mantén la moral de tu pueblo alta; la depresión como sabes, puede ser fatal.</p>
             </div>
             <div class="col-md-5 order-md-1">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>
+                <img src="<%=request.getContextPath()%>/Images/administracionRecursos.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="Descripción de la imagen">
             </div>
         </div>
 
@@ -308,7 +294,8 @@
                 <p class="lead mt-4">¿Eres el mejor? Demuestralo en el campo de batalla. Podrás declarar la guerra a los demás jugadores </p>
             </div>
             <div class="col-md-5">
-                <svg class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 500x500" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="var(--bs-secondary-bg)"/><text x="50%" y="50%" fill="var(--bs-secondary-color)" dy=".3em">500x500</text></svg>
+                <img src="<%=request.getContextPath()%>/Images/batalla.jpg" class="bd-placeholder-img bd-placeholder-img-lg featurette-image img-fluid mx-auto" width="500" height="500" alt="Descripción de la imagen">
+
             </div>
         </div>
 
