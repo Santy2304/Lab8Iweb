@@ -65,7 +65,7 @@
             width: 100%;
         }
 
-        <%if(signUpForm == null){%>
+        <%if(signUpForm != null){%>
 
         .container #flip:checked ~ .cover{
             transform: rotateY(180deg);
@@ -345,44 +345,88 @@
 
             </div>
             <div class="signup-form">
-                <div class="title">Signup</div>
+                <div class="title">Registro</div>
                 <form action="#">
                     <div class="input-boxes field email">
-
-                        <%if(request.getAttribute("errorSignUpName")==null){%>
+                        <!-- SECCION NOMBRE REAL DEL USUARIO-->
+                        <%if(request.getAttribute("errorNombre")==null){%>
                         <div class="input-box" >
                             <i class="fas fa-user"></i>
-                            <input type="text"  placeholder="Enter your name"  required>
+                            <input type="text"  name="nombre" placeholder="Ingresa tu nombre"  required>
                         </div>
                         <%}else{%>
                         <div class="input-box" >
                             <i class="fas fa-user" style="color: red;"></i>
-                            <input type="text"  placeholder="Enter your name"  required>
+                            <input type="text" name="nombre" placeholder="Ingresa un nombre válido"  required>
                         </div>
-                        <div class="error error-txt" style="font-size: 12px; color: red;" >Enter a valid name</div>
+                        <div class="error error-txt" style="font-size: 12px; color: red;" >Tu nombre no debe empezar con números</div>
                         <%}%>
 
-                        <div class="input-box">
+                        <!--EDAD DEL USUARIO-->
+                        <%if( request.getAttribute("errorEdad") == null ){%>
+                        <div class="input-box" >
                             <i class="fas fa-user"></i>
-                            <input type="text" placeholder="Enter your age" required>
+                            <input type="text" name="edad" placeholder="Ingresa tu edad"  required>
                         </div>
-                        <div class="input-box">
+                        <%}else if( ((String) request.getAttribute("errorEdad")).equals("NumberFormat") ){%>
+                        <div class="input-box" >
+                            <i class="fas fa-user" style="color: red;"></i>
+                            <input type="text" name="edad" placeholder="Ingresa una edad válida"  required>
+                        </div>
+                        <div class="error error-txt" style="font-size: 12px; color: red;" >Debe ingresar un numero</div>
+                        <%}else if( ((String) request.getAttribute("errorEdad")).equals("CensuraEdad") ){%>
+                        <div class="input-box" >
+                            <i class="fas fa-user" style="color: red;"></i>
+                            <input type="text" name="edad" placeholder="usted es muy pequeño para participar en este juego"  required>
+                        </div>
+                        <div class="error error-txt" style="font-size: 12px; color: red;" >Debe ser mayor de 12 años</div>
+                        <%}%>
+
+                        <!--SECCION DEL CORREO -->
+
+                        <%if(request.getAttribute("errorCorreo")==null){%>
+                        <div class="input-box" >
                             <i class="fas fa-envelope"></i>
-                            <input type="text" placeholder="Enter your email" required>
+                            <input type="text"  name="nombre" placeholder="Ingresa tu correo"  required>
                         </div>
-                        <div class="input-box">
-                            <i class="fas fa-envelope"></i>
-                            <input type="text" placeholder="Enter your username" required>
+                        <%}else{%>
+                        <div class="input-box" >
+                            <i class="fas fa-envelope" style="color: red;"></i>
+                            <input type="text" name="nombre" placeholder="Ingresa un correo válido"  required>
                         </div>
-                        <div class="input-box">
+                        <div class="error error-txt" style="font-size: 12px; color: red;" >Tu correo debe existir (debe contener al menos un @ )</div>
+                        <%}%>
+                        <!--Username -->
+                        <%if(request.getAttribute("errorUsername")==null){%>
+                        <div class="input-box" >
+                            <i class="fas fa-user"></i>
+                            <input type="text"  name="nombre" placeholder="Ingresa su nombre de usuario"  required>
+                        </div>
+                        <%}else{%>
+                        <div class="input-box" >
+                            <i class="fas fa-user" style="color: red;"></i>
+                            <input type="text" name="nombre" placeholder="Ingresa un nombre de usuario válido"  required>
+                        </div>
+                        <div class="error error-txt" style="font-size: 12px; color: red;" >Ya existe otro jugador con ese nombre</div>
+                        <%}%>
+                        <!--Contraseña-->
+                        <%if(request.getAttribute("errorContrasena")==null){%>
+                        <div class="input-box" >
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Enter your password" required>
+                            <input type="password"  name="nombre" placeholder="Ingresa tu contraseña"  required>
                         </div>
+                        <%}else{%>
+                        <div class="input-box" >
+                            <i class="fas fa-lock" style="color: red;"></i>
+                            <input type="password" name="nombre" placeholder="Ingresa una contraseña válida"  required>
+                        </div>
+                        <div class="error error-txt" style="font-size: 12px; color: red;" >tu contraseña debe tener por lo menos una mayuscula , un numero y un caractere especial </div>
+                        <%}%>
 
                         <div class="button input-box">
-                            <input type="submit" value="Submit">
+                            <input type="submit" value="Enviar">
                         </div>
-                        <div class="text sign-up-text">Already have an account? <label for="flip">LogIn now</label></div>
+                        <div class="text sign-up-text">Ya tienes una cuenta? <label for="flip"> Ingresa ahora</label></div>
                     </div>
                 </form>
             </div>
