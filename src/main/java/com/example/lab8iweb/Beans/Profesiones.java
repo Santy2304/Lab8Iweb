@@ -1,4 +1,9 @@
 package com.example.lab8iweb.Beans;
 
-public class Profesiones {
+public class Profesiones extends Pobladores{
+
+
+
+
+
 }
