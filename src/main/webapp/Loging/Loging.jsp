@@ -32,16 +32,27 @@
             align-items: center;
             justify-content: center;
             background: #094293;
-            padding: 30px;
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
-        .container{
+        video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .container {
             position: relative;
             max-width: 850px;
             width: 100%;
             background: #fff;
             padding: 40px 30px;
-            box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
             perspective: 2700px;
+            z-index: 1;
         }
 
 
@@ -279,6 +290,10 @@
         </style>
 </head>
 <body>
+<video autoplay muted loop>
+    <source src="MiVideo.mp4" type="video/mp4">
+    Tu navegador no admite la etiqueta de video.
+</video>
 <div class="container">
     <input type="checkbox" id="flip">
 <% String error = (String) request.getAttribute("error"); %>
