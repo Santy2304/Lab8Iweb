@@ -99,6 +99,16 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
             display: block !important;
         }
+        footer {
+            background-color: #322D31;
+            color: white;
+            font-family: 'Titillium Web', sans-serif;
+            padding: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            text-align: center; /* Centrar el contenido horizontalmente */
+        }
 
     </style>
 
