@@ -4,16 +4,16 @@ public class Usuario {
     //ATRIBUTOS
     private int idUsuario;
     private String nombre;
-    private Integer edad;
+    private int edad;
     private String correo;
     private String contrasenaHash;
     private String nombreUsuario;
     private String estado ; //Cuando se crea un usuario por defecto este está en paz
-    private String ListaNegra ;
-    private Float AlimentoTotal;
+    private Boolean listaNegra ;
+    private int alimentoTotal;
     private int TiempoJugado;
-    //GETTERS AND SETTERS
 
+    //GETTERS AND SETTERS
     public int getIdUsuario() {
         return idUsuario;
     }
@@ -30,11 +30,11 @@ public class Usuario {
         this.nombre = nombre;
     }
 
-    public Integer getEdad() {
+    public int getEdad() {
         return edad;
     }
 
-    public void setEdad(Integer edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
 
@@ -70,20 +70,20 @@ public class Usuario {
         this.estado = estado;
     }
 
-    public String getListaNegra() {
-        return ListaNegra;
+    public Boolean getListaNegra() {
+        return listaNegra;
     }
 
-    public void setListaNegra(String listaNegra) {
-        ListaNegra = listaNegra;
+    public void setListaNegra(Boolean listaNegra) {
+        this.listaNegra = listaNegra;
     }
 
-    public Float getAlimentoTotal() {
-        return AlimentoTotal;
+    public int getAlimentoTotal() {
+        return alimentoTotal;
     }
 
-    public void setAlimentoTotal(Float alimentoTotal) {
-        AlimentoTotal = alimentoTotal;
+    public void setAlimentoTotal(int alimentoTotal) {
+        this.alimentoTotal = alimentoTotal;
     }
 
     public int getTiempoJugado() {

@@ -2,77 +2,80 @@ package com.example.lab8iweb.Beans;
 
 public class HistorialGuerras {
     //ATRIBUTOS
-    private int IdHistorialGuerras;
-    private String Posicion;
-    private int IdUsuario;
-    private int  IdEnemigo;
-    private int HoraInicio;
-    private int HoraFin;
-    private int IdGanador;
-    private int IdPerdedor;
+    private int idHistorialGuerras;
+    private String posicion;
+    //private int idUsuario; Ahora usamos beans como atributos de otro beans
+    private Usuario usuario;
+    private int  idEnemigo;
+    private int horaInicio;
+    private int horaFin;
+    private int idGanador;
+    private int idPerdedor;
 
     //GETTERS AND SETTERS
+
+
     public int getIdHistorialGuerras() {
-        return IdHistorialGuerras;
+        return idHistorialGuerras;
     }
 
     public void setIdHistorialGuerras(int idHistorialGuerras) {
-        IdHistorialGuerras = idHistorialGuerras;
+        this.idHistorialGuerras = idHistorialGuerras;
     }
 
     public String getPosicion() {
-        return Posicion;
+        return posicion;
     }
 
     public void setPosicion(String posicion) {
-        Posicion = posicion;
+        this.posicion = posicion;
     }
 
-    public int getIdUsuario() {
-        return IdUsuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
-        IdUsuario = idUsuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public int getIdEnemigo() {
-        return IdEnemigo;
+        return idEnemigo;
     }
 
     public void setIdEnemigo(int idEnemigo) {
-        IdEnemigo = idEnemigo;
+        this.idEnemigo = idEnemigo;
     }
 
     public int getHoraInicio() {
-        return HoraInicio;
+        return horaInicio;
     }
 
     public void setHoraInicio(int horaInicio) {
-        HoraInicio = horaInicio;
+        this.horaInicio = horaInicio;
     }
 
     public int getHoraFin() {
-        return HoraFin;
+        return horaFin;
     }
 
     public void setHoraFin(int horaFin) {
-        HoraFin = horaFin;
+        this.horaFin = horaFin;
     }
 
     public int getIdGanador() {
-        return IdGanador;
+        return idGanador;
     }
 
     public void setIdGanador(int idGanador) {
-        IdGanador = idGanador;
+        this.idGanador = idGanador;
     }
 
     public int getIdPerdedor() {
-        return IdPerdedor;
+        return idPerdedor;
     }
 
     public void setIdPerdedor(int idPerdedor) {
-        IdPerdedor = idPerdedor;
+        this.idPerdedor = idPerdedor;
     }
 }

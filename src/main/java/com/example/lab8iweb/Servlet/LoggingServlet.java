@@ -10,9 +10,7 @@ import java.io.IOException;
 public class LoggingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-        request.getRequestDispatcher("Loging/Loging.jsp").forward(request,response);;
+        request.getRequestDispatcher("Loging/Loging.jsp").forward(request,response);
     }
 
     @Override

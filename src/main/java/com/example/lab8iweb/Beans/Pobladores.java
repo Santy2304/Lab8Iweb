@@ -2,27 +2,27 @@ package com.example.lab8iweb.Beans;
 
 public class Pobladores {
     //ATRIBUTOS;
-    private int IdPobladores;
+    private int idPobladores;
     private String nombre;
     private String genero; //Un caracter
-    private int Tiempo; //Es el tiempo de vida de cada persona que transcurre de manera relativa  a las acciones que se tome
+    private int tiempo; //Es el tiempo de vida de cada persona que transcurre de manera relativa  a las acciones que se tome
 
     //Usamos Beans como atributos de otros Bean por lo que no usamos los Id directamente;
     //private int IdUsuario;
     private Usuario usuario; //Usuario al que le pertenece el poblador
     //private int IdProfesiones;
     private Profesiones profesion;
-    private String Estado; //Puede estar vivo o muerto (exiliado)
-    private String MotivoMuerte; // Puede morir por hambre , depresión entre otras cosas
+    private String estado; //Puede estar vivo o muerto (exiliado)
+    private String motivoMuerte; // Puede morir por hambre , depresión entre otras cosas
 
     //GETTERS AND SETTERS
 
     public int getIdPobladores() {
-        return IdPobladores;
+        return idPobladores;
     }
 
     public void setIdPobladores(int idPobladores) {
-        IdPobladores = idPobladores;
+        this.idPobladores = idPobladores;
     }
 
     public String getNombre() {
@@ -42,11 +42,11 @@ public class Pobladores {
     }
 
     public int getTiempo() {
-        return Tiempo;
+        return tiempo;
     }
 
     public void setTiempo(int tiempo) {
-        Tiempo = tiempo;
+        this.tiempo = tiempo;
     }
 
     public Usuario getUsuario() {
@@ -66,18 +66,18 @@ public class Pobladores {
     }
 
     public String getEstado() {
-        return Estado;
+        return estado;
     }
 
     public void setEstado(String estado) {
-        Estado = estado;
+        this.estado = estado;
     }
 
     public String getMotivoMuerte() {
-        return MotivoMuerte;
+        return motivoMuerte;
     }
 
     public void setMotivoMuerte(String motivoMuerte) {
-        MotivoMuerte = motivoMuerte;
+        this.motivoMuerte = motivoMuerte;
     }
 }
