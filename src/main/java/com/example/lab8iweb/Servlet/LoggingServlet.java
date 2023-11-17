@@ -49,13 +49,18 @@ public class LoggingServlet extends HttpServlet {
             Usuario user = new DaoUsuario().validarUsuarioPasswordHashed(usuario, contrasena);
 
             if (user != null) {
-                HttpSession session = request.getSession();
-                session.setAttribute("usuario", user);
-                session.setMaxInactiveInterval(5 * 60);
-
-                response.sendRedirect(request.getContextPath() + "/MenuServlet");
+                if(!user.getListaNegra()) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("usuario", user);
+                    session.setMaxInactiveInterval(5 * 60);
+                    response.sendRedirect(request.getContextPath() + "/MenuServlet");
+                }else{
+                    request.setAttribute("error", "Debe tener más de 12 años para poder jugar este juego");
+                    RequestDispatcher view = request.getRequestDispatcher("Loging/Loging.jsp");
+                    view.forward(request, response);
+                }
             } else {
-                request.setAttribute("error", "El usuario o password no existen");
+                request.setAttribute("error", "El usuario o contrasena no son correctos");
                 RequestDispatcher view = request.getRequestDispatcher("Loging/Loging.jsp");
                 view.forward(request, response);
             }
