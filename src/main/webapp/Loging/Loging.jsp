@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.lab8iweb.Beans.Usuario" %><%--
   Created by IntelliJ IDEA.
   User: Hineill
   Date: 15/11/2023
@@ -248,7 +248,7 @@
 <body>
 <div class="container">
     <input type="checkbox" id="flip">
-
+<% String error = (String) request.getAttribute("error"); %>
     <div class="cover">
         <div class="front">
             <img src="<%=request.getContextPath()%>/Images/ImagenCentral.jpeg" alt="">
@@ -269,34 +269,32 @@
     <div class="forms">
         <div class="form-content">
             <div class="login-form">
-                <div class="title">LogIn</div>
-                <form action="#">
+                <div class="title">Inicio de sesión </div>
+
+                    <form method="POST" action="LoggingServlet" class="col-md-6 col-lg-6">
                     <div class="input-boxes">
-                        <%if(request.getAttribute("error") != null){%>
-                        <div class="alert alert-secondary text sign-up-text" role="alert">
-                            This is a secondary alert—check it out!
-                        </div>
-                        <div class="text sign-up-text" style="color: red;" >Username or password are incorrect</div>
+                        <%if(error != null){%>
+
+                        <div class="text sign-up-text" style="color: red;" >Tu usuario o contraseña son incorrectas! </div>
                         <%}%>
-                        <div class="alert alert-secondary" role="alert">
-                            This is a secondary alert—check it out!
-                        </div>
+
                         <div class="input-box">
                             <i class="fas fa-envelope"></i>
-                            <input type="text" placeholder="Enter your username" required>
+                            <input type="text" name="usuario" placeholder="Ingresa tu nombre de usuario" required>
                         </div>
                         <div class="input-box">
                             <i class="fas fa-lock"></i>
-                            <input type="password" placeholder="Enter your password" required>
+                            <input type="password" name="contrasena" placeholder="Ingresa tu contraseña" required>
                         </div>
 
                         <div class="button input-box">
-                            <input type="submit" value="Sumbit">
+                            <input type="submit" value="Submit">
                         </div>
 
                         <div class="text sign-up-text">Don't have an account? <label for="flip">Sign up now</label></div>
                     </div>
-                </form>
+                    </form>
+
             </div>
             <div class="signup-form">
                 <div class="title">Signup</div>
