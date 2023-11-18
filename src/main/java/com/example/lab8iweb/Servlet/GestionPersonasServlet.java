@@ -50,7 +50,6 @@ public class GestionPersonasServlet extends HttpServlet {
         String action = request.getParameter("action") == null ? "lista" : request.getParameter("action");
 
         if((Usuario) request.getSession().getAttribute("usuario") != null) {
-            DaoPobladores pobladorDao = new DaoPobladores();
             int idUsuario = ((Usuario) request.getSession().getAttribute("usuario")).getIdUsuario();
             switch (action) {
                 case "guardarPoblador":
