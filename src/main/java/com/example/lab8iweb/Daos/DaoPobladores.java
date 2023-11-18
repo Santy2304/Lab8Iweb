@@ -49,14 +49,8 @@ public class DaoPobladores extends DaoBase {
     public void crearPoblador(Pobladores poblador, int idUsuario){
 
         String tipoPoblador = poblador.getProfesion();
-        String sql = "INSERT INTO pobladores ( idUsuarios,nombre, genero, tiempoVivo,estado, motivoMuerte, moral, fuerza, tipoDeProduccion, alimentacionXDia,cantidadDeProduccionXDia, profesion) \n" +
-                "VALUES (?, ?, ?, 0, 'Vivo', 'Ninguna', \n" +
-                "? , \n" +
-                "?, \n" +
-                "?, \n" +
-                "? \n" +
-                "?,\n" +
-                "?)";
+        String sql = "INSERT INTO pobladores ( idUsuarios,nombre, genero, tiempoVivo,estado, moral, fuerza, tipoDeProduccion, alimentacionXDia,cantidadDeProduccionXDia, profesion)" +
+                "VALUES (?, ?, ?, 0, 'Vivo',? ,? ,? ,? ,? ,?)";
         try(Connection connection=this.getConnection();
             PreparedStatement pstmt= connection.prepareStatement(sql)){
             Random rand = new Random();
@@ -130,8 +124,8 @@ public class DaoPobladores extends DaoBase {
                         constructore.setNombre(rs.getString(3));
                         constructore.setGenero(rs.getString(4));
                         constructore.setTiempoVivo(rs.getInt(5));
-                        constructore.setMotivoMuerte(rs.getString(6));
-                        constructore.setEstado(rs.getString(7));
+                        constructore.setMotivoMuerte(rs.getString(7));
+                        constructore.setEstado(rs.getString(6));
                         constructore.setMoral(rs.getInt(8));
                         constructore.setFuerza(rs.getInt(9));
                         constructore.setTipo_produccion(rs.getString(10));
@@ -150,8 +144,8 @@ public class DaoPobladores extends DaoBase {
                         granjero.setNombre(rs.getString(3));
                         granjero.setGenero(rs.getString(4));
                         granjero.setTiempoVivo(rs.getInt(5));
-                        granjero.setMotivoMuerte(rs.getString(6));
-                        granjero.setEstado(rs.getString(7));
+                        granjero.setMotivoMuerte(rs.getString(7));
+                        granjero.setEstado(rs.getString(6));
                         granjero.setMoral(rs.getInt(8));
                         granjero.setFuerza(rs.getInt(9));
                         granjero.setTipo_produccion(rs.getString(10));
@@ -170,8 +164,8 @@ public class DaoPobladores extends DaoBase {
                         soldado.setNombre(rs.getString(3));
                         soldado.setGenero(rs.getString(4));
                         soldado.setTiempoVivo(rs.getInt(5));
-                        soldado.setMotivoMuerte(rs.getString(6));
-                        soldado.setEstado(rs.getString(7));
+                        soldado.setMotivoMuerte(rs.getString(7));
+                        soldado.setEstado(rs.getString(6));
                         soldado.setMoral(rs.getInt(8));
                         soldado.setFuerza(rs.getInt(9));
                         soldado.setTipo_produccion(rs.getString(10));
@@ -190,8 +184,8 @@ public class DaoPobladores extends DaoBase {
                         pobladores.setNombre(rs.getString(3));
                         pobladores.setGenero(rs.getString(4));
                         pobladores.setTiempoVivo(rs.getInt(5));
-                        pobladores.setMotivoMuerte(rs.getString(6));
-                        pobladores.setEstado(rs.getString(7));
+                        pobladores.setMotivoMuerte(rs.getString(7));
+                        pobladores.setEstado(rs.getString(6));
                         pobladores.setMoral(rs.getInt(8));
                         pobladores.setFuerza(rs.getInt(9));
                         pobladores.setTipo_produccion(rs.getString(10));
@@ -212,7 +206,7 @@ public class DaoPobladores extends DaoBase {
 
     public void exiliarPorId(int  idPoblador){
 
-        String sql = "UPDATE pobladores SET estado = 'Exiliado' WHERE (`idpobladores` = ? )";
+        String sql = "UPDATE pobladores SET estado = 'Muerto' , motivoMuerte= 'Fue exiliado y murio de hambre' WHERE (`idpobladores` = ? )";
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
             pstmt.setInt(1, idPoblador);
@@ -232,7 +226,7 @@ public class DaoPobladores extends DaoBase {
 
 
 
-        sql = "UPDATE pobladores SET moral = moral - FLOOR(RAND() * ( ? + 1))   WHERE idUsuarios = ? and estado = 'Vivo' ";
+        sql = "UPDATE pobladores SET moral = moral - FLOOR((RAND() * ( ? + 1))/2)   WHERE idUsuarios = ? and estado = 'Vivo' ";
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
             pstmt.setInt(1, moralPobladorExiliado);
@@ -312,7 +306,7 @@ public class DaoPobladores extends DaoBase {
         Pobladores pobladores = null;
 
 
-        String sql = "select * from pobladores where job_id = ?";
+        String sql = "select * from pobladores where idPobladores = ?";
 
 
         try (Connection conn = this.getConnection();

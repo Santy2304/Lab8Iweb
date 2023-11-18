@@ -162,7 +162,7 @@
                 <tbody class="table">
                 <%
                     for (Pobladores c : listaPobladores) {
-                       if(c instanceof Granjero) {
+                       if(c instanceof Granjero && c.getEstado().equals("Vivo")) {
                 %>
                 <%
                     switch(c.getGenero()){
@@ -233,7 +233,7 @@
             <tbody class="table">
             <%
                 for (Pobladores c : listaPobladores) {
-                    if(c instanceof Constructore){
+                    if(c instanceof Constructore && c.getEstado().equals("Vivo")){
             %>
 
             <%
@@ -306,7 +306,7 @@
 
             <%
                 for (Pobladores c : listaPobladores) {
-                    if(c instanceof Soldado){
+                    if(c instanceof Soldado && c.getEstado().equals("Vivo")){
             %>
 
 
@@ -382,7 +382,7 @@
 
             <%
                 for (Pobladores c : listaPobladores) {
-                    if(!(c instanceof Constructore ) && !(c instanceof Granjero )  &&!(c instanceof Soldado )){
+                    if(!(c instanceof Constructore ) && !(c instanceof Granjero )  &&!(c instanceof Soldado ) && c.getEstado().equals("Vivo")){
             %>
 
 
