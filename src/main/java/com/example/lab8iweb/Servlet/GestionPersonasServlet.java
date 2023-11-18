@@ -47,6 +47,28 @@ public class GestionPersonasServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String action = request.getParameter("action") == null ? "lista" : request.getParameter("action");
+
+        if((Usuario) request.getSession().getAttribute("usuario") != null) {
+            DaoPobladores pobladorDao = new DaoPobladores();
+            int idUsuario = ((Usuario) request.getSession().getAttribute("usuario")).getIdUsuario();
+            switch (action) {
+                case "guardarPoblador":
+                    Pobladores p = new Pobladores();
+                    p.setNombre(request.getParameter("nombre"));
+                    p.setGenero(request.getParameter("genero"));
+                    p.setProfesion(request.getParameter("profesion"));
+
+                    DaoPobladores pobladorD = new DaoPobladores();
+                    pobladorD.crearPoblador(p, idUsuario);
+
+                    response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+
+            }
+        }else{
+            RequestDispatcher view = request.getRequestDispatcher("Loging/Loging.jsp");
+            view.forward(request, response);
+        }
 
     }
 }

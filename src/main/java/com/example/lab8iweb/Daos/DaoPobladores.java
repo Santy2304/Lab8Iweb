@@ -46,31 +46,67 @@ public class DaoPobladores extends DaoBase {
 
 
 
-    public void crearConstructore(Constructore constructore, int idUsuario){
+    public void crearPoblador(Pobladores poblador, int idUsuario){
+
+        String tipoPoblador = poblador.getProfesion();
         String sql = "INSERT INTO pobladores ( idUsuarios,nombre, genero, tiempoVivo,estado, motivoMuerte, moral, fuerza, tipoDeProduccion, alimentacionXDia,cantidadDeProduccionXDia, profesion) \n" +
                 "VALUES (?, ?, ?, 0, 'Vivo', 'Ninguna', \n" +
                 "? , \n" +
                 "?, \n" +
-                "'Moral', \n" +
+                "?, \n" +
                 "? \n" +
                 "?,\n" +
-                "'Constructore')";
+                "?)";
         try(Connection connection=this.getConnection();
             PreparedStatement pstmt= connection.prepareStatement(sql)){
             Random rand = new Random();
 
             pstmt.setInt(1,idUsuario);
-            pstmt.setString(2,constructore.getNombre());
-            pstmt.setString(3,constructore.getGenero());
-            pstmt.setInt(4,rand.nextInt(31) + 10 );
-            pstmt.setInt(5,rand.nextInt(19) + 2);
-            pstmt.setInt(6,rand.nextInt(21) + 50);
-            pstmt.setInt(7,rand.nextInt(11) + 10);
+            pstmt.setString(2,poblador.getNombre());
+            pstmt.setString(3,poblador.getGenero());
+
+            if (tipoPoblador.equals("Constructor")) {
+                pstmt.setInt(4, rand.nextInt(31) + 10);
+                pstmt.setInt(5, rand.nextInt(19) + 2);
+                pstmt.setString(6,"Moral");
+
+                pstmt.setInt(7, rand.nextInt(21) + 50);
+                pstmt.setInt(8, rand.nextInt(11) + 10);
+                pstmt.setString(9,tipoPoblador);
+            }
+            else if (tipoPoblador.equals("Granjero")){
+                pstmt.setInt(4, rand.nextInt(21) + 10);
+                pstmt.setInt(5, rand.nextInt(31) + 10);
+                pstmt.setString(6,"Alimento");
+
+                pstmt.setInt(7, rand.nextInt(21) + 50);
+                pstmt.setInt(8, rand.nextInt(11) + 10);
+                pstmt.setString(9,tipoPoblador);
+            } else if (tipoPoblador.equals("Soldado")) {
+                pstmt.setInt(4, rand.nextInt(21) + 10);
+                pstmt.setInt(5, rand.nextInt(31) + 10);
+                pstmt.setString(6,"Moral");
+
+                pstmt.setInt(7, rand.nextInt(21) + 50);
+                pstmt.setInt(8, rand.nextInt(11) + 10);
+                pstmt.setString(9,tipoPoblador);
+            } else if (tipoPoblador.equals("Ninguno")) {
+                pstmt.setInt(4, rand.nextInt(21) + 10);
+                pstmt.setInt(5, rand.nextInt(31) + 10);
+                pstmt.setString(6," ");
+
+                pstmt.setInt(7, rand.nextInt(21) + 50);
+                pstmt.setInt(8, rand.nextInt(11) + 10);
+                pstmt.setString(9,tipoPoblador);
+            }
             pstmt.executeUpdate();
         }
         catch (SQLException e){
             throw new RuntimeException(e);
         }
+
+
+
     }
 
 
