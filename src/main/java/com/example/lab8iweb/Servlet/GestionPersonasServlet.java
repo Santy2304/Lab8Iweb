@@ -36,7 +36,8 @@ public class GestionPersonasServlet extends HttpServlet {
                 case "editar":
 
                     String idEditar = request.getParameter("id");
-                    Pobladores poblador = pobladorDao.buscarPoblador(idEditar);
+                    int id = Integer.parseInt(idEditar);
+                    Pobladores poblador = pobladorDao.buscarPoblador(id);
                     request.setAttribute("poblador",poblador);
 
                     request.getRequestDispatcher("Personas/editarPersonas.jsp").forward(request, response);

@@ -7,7 +7,9 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<% Pobladores poblador = (Pobladores) request.getAttribute("poblador");%>
+<jsp:useBean id="poblador" type="com.example.lab8iweb.Beans.Pobladores" scope="request" />
+<% //Pobladores poblador = (Pobladores) request.getAttribute("poblador");%>
+
 
 <html>
 <head>
@@ -34,9 +36,8 @@
                            value="<%= poblador.getNombre() == null ? "" : poblador.getNombre()%>">
                 </div>
 
-
                 <a href="<%= request.getContextPath()%>/GestionPersonasServlet" class="btn btn-danger mt-4">Cancelar</a>
-                <input type="submit"  class="btn btn-primary mt-4"/>
+                <button type="submit" class="btn btn-primary mt-4">Confirmar</button>
             </form>
         </div>
         <div class="col-md-3"></div>

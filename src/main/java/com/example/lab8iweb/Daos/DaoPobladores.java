@@ -70,7 +70,7 @@ public class DaoPobladores extends DaoBase {
             }
             else if (tipoPoblador.equals("Granjero")){
                 pstmt.setInt(4, rand.nextInt(21) + 10);
-                pstmt.setInt(5, rand.nextInt(31) + 10);
+                pstmt.setInt(5, 0);
                 pstmt.setString(6,"Alimento");
 
                 pstmt.setInt(7, rand.nextInt(21) + 50);
@@ -86,7 +86,7 @@ public class DaoPobladores extends DaoBase {
                 pstmt.setString(9,tipoPoblador);
             } else if (tipoPoblador.equals("Ninguno")) {
                 pstmt.setInt(4, rand.nextInt(21) + 10);
-                pstmt.setInt(5, rand.nextInt(31) + 10);
+                pstmt.setInt(5, 0);
                 pstmt.setString(6," ");
 
                 pstmt.setInt(7, rand.nextInt(21) + 50);
@@ -96,6 +96,17 @@ public class DaoPobladores extends DaoBase {
             pstmt.executeUpdate();
         }
         catch (SQLException e){
+            throw new RuntimeException(e);
+        }
+
+
+        sql = "UPDATE pobladores SET tiempoVivo = tiempoVivo +8 WHERE idUsuarios = ? and estado = 'Vivo' ";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+
+            pstmt.setInt(1, idUsuario);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
@@ -281,7 +292,6 @@ public class DaoPobladores extends DaoBase {
 
     public void actualizarPoblador(Pobladores pobladores){
 
-
         String sql = "update pobladores set nombre = ? where idpobladores = ?";
 
         try(Connection connection = this.getConnection();
@@ -300,7 +310,7 @@ public class DaoPobladores extends DaoBase {
 
 
 
-    public Pobladores buscarPoblador(String id){
+    public Pobladores buscarPoblador(int id){
 
         Pobladores pobladores = null;
 
@@ -311,7 +321,7 @@ public class DaoPobladores extends DaoBase {
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
 
-            pstmt.setString(1,id);
+            pstmt.setInt(1,id);
 
             try(ResultSet rs = pstmt.executeQuery()){
                 while (rs.next()) {
@@ -325,6 +335,33 @@ public class DaoPobladores extends DaoBase {
         }
 
         return pobladores;
+    }
+
+
+    public int calcularFuerzaTotal(int id){
+
+        int fuerzaTotal = 0;
+
+        String sql = "SELECT SUM(fuerza) AS fuerza_total FROM pobladores WHERE (profesion = 'Soldado' or 'Granjero') and idUsuarios=? and estado='Vivo'";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,id);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
+
+                    fuerzaTotal = rs.getInt(1);
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return fuerzaTotal;
+
     }
 
 

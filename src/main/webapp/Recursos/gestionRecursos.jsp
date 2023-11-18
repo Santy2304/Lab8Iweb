@@ -183,16 +183,16 @@
 
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
             <h1 class="display-4 fw-normal text-body-emphasis mt-5">Recursos</h1>
-            <p class="fs-5 text-body-secondary">Aquí podras ver tanto los alimentos como la moral de tu civilización</p>
+            <p class="fs-5 text-body-secondary mt-3">Aquí podras ver tanto los alimentos como la moral de tu civilización</p>
         </div>
     </header>
 
     <main>
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
             <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header py-3">
-                        <h4 class="my-0 fw-normal">Alimentos</h4>
+                <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                    <div class="card-header py-3 text-bg-primary border-primary">
+                        <h4 class="my-0 fw-normal">Almacen de Alimentos</h4>
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">$0<small class="text-body-secondary fw-light">/mo</small></h1>
@@ -207,9 +207,9 @@
                 </div>
             </div>
             <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header py-3">
-                        <h4 class="my-0 fw-normal">Moral</h4>
+                <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                    <div class="card-header py-3 text-bg-primary border-primary">
+                        <h4 class="my-0 fw-normal">Total por Alimentar Hoy</h4>
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small></h1>
@@ -219,7 +219,7 @@
                             <li>Priority email support</li>
                             <li>Help center access</li>
                         </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
+                        <button type="button" class="w-100 btn btn-lg btn-primary">Alimentar Ahora</button>
                     </div>
                 </div>
             </div>

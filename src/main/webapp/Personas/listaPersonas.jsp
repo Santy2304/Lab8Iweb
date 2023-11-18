@@ -147,54 +147,56 @@
         <div class="tabla mb-5">
             <table class="table table-dark table-transparent table-hover">
                 <thead>
-                <th align="center">#ID</th>
-                <th align="center">Nombre</th>
-                <th align="center">Género</th>
-                <th align="center">Consumo/día</th>
-                <th align="center">Moral</th>
-                <th align="center">Fuerza</th>
-                <th align="center">Tiempo</th>
-                <th align="center">Tipo de Producción</th>
-                <th align="center">Cantidad de Producción</th>
-                <th align="center">Editar</th>
-                <th align="center">Exiliar</th>
+                <tr>
+                    <th class="text-center">#ID</th>
+                    <th class="text-center">Nombre</th>
+                    <th class="text-center">Género</th>
+                    <th class="text-center">Consumo/día</th>
+                    <th class="text-center">Moral</th>
+                    <th class="text-center">Fuerza</th>
+                    <th class="text-center">Tiempo(H)</th>
+                    <th class="text-center">Tipo de Producción</th>
+                    <th class="text-center">Cantidad de Producción</th>
+                    <th class="text-center">Editar</th>
+                    <th class="text-center">Exiliar</th>
+                </tr>
                 </thead>
                 <tbody class="table">
-                <%
-                    for (Pobladores c : listaPobladores) {
-                       if(c instanceof Granjero && c.getEstado().equals("Vivo")) {
-                %>
-                <%
-                    switch(c.getGenero()){
-                        case "M":
-                            genero = "Masculino";
-                            break;
-                        case "F":
-                            genero = "Femenino";
-                            break;
-                        case "O":
-                            genero = "Otro";
-                            break;
-                }
+                    <%
+                        for (Pobladores c : listaPobladores) {
+                           if(c instanceof Granjero && c.getEstado().equals("Vivo")) {
+                    %>
+                    <%
+                        switch(c.getGenero()){
+                            case "M":
+                                genero = "Masculino";
+                                break;
+                            case "F":
+                                genero = "Femenino";
+                                break;
+                            case "O":
+                                genero = "Otro";
+                                break;
+                    }
 
-                %>
+                    %>
                 <tr>
-                    <td align="center"><%= c.getIdPobladores()%></td>
-                    <td align="center"><%= c.getNombre()%></td>
-                    <td align="center"><%=  genero %></td>
-                    <td align="center"><%= c.getAlimentacionPorDia()%></td>
-                    <td align="center"><%= c.getMoral()%></td>
-                    <td align="center"><%= c.getTiempoVivo()%></td>
-                    <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
-                    <td align="center">Alimento</td>
-                    <td align="center"><%=c.getCantidadProduccionPorDia()%></td>
-                    <td align="center">
+                    <td class="text-center"><%= c.getIdPobladores()%></td>
+                    <td class="text-center"><%= c.getNombre()%></td>
+                    <td class="text-center"><%=  genero %></td>
+                    <td class="text-center"><%= c.getAlimentacionPorDia()%></td>
+                    <td class="text-center"><%= c.getMoral()%></td>
+                    <td class="text-center"><%= c.getFuerza()%></td>
+                    <td class="text-center"><%= c.getTiempoVivo()%></td> <!-- Agregado el cierre de la celda -->
+                    <td class="text-center">Alimento</td>
+                    <td class="text-center"><%=c.getCantidadProduccionPorDia()%></td>
+                    <td class="text-center">
                         <a href="<%=request.getContextPath()%>/GestionPersonasServlet?action=editar&id=<%=c.getIdPobladores()%>"
                            type="button" class="btn btn-primary">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
-                    <td align="center">
+                    <td class="text-center">
                         <a onclick="return confirm('¿Estas seguro de borrar?');"
                            href="<%=request.getContextPath()%>/GestionPersonasServlet?action=exiliar&id=<%=c.getIdPobladores()%>"
                            type="button" class="btn btn-danger">
@@ -217,17 +219,17 @@
         <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
             <thead>
 
-            <th>#ID</th>
-            <th>Nombre</th>
-            <th>Género</th>
-            <th>Consumo/día</th>
-            <th>Moral</th>
-            <th>Fuerza</th>
-            <th>Tiempo</th>
-            <th>Tipo de Producción</th>
-            <th>Cantidad de Producción</th>
-            <th>Editar</th>
-            <th>Exiliar</th>
+            <th class="text-center">#ID</th>
+            <th class="text-center">Nombre</th>
+            <th class="text-center">Género</th>
+            <th class="text-center">Consumo/día</th>
+            <th class="text-center">Moral</th>
+            <th class="text-center">Fuerza</th>
+            <th class="text-center">Tiempo(H)</th>
+            <th class="text-center">Tipo de Producción</th>
+            <th class="text-center">Cantidad de Producción</th>
+            <th class="text-center">Editar</th>
+            <th class="text-center">Exiliar</th>
 
             </thead>
             <tbody class="table">
@@ -253,22 +255,22 @@
 
 
             <tr>
-                <td align="center"><%= c.getIdPobladores()%></td>
-                <td align="center"><%= c.getNombre()%></td>
-                <td align="center"><%= genero%></td>
-                <td align="center"><%= c.getAlimentacionPorDia()%></td>
-                <td align="center"><%= c.getMoral()%></td>
-                <td align="center"><%= c.getTiempoVivo()%></td>
-                <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
-                <td align="center">Moral</td>
-                <td align="center"><%=c.getCantidadProduccionPorDia()%></td>
-                <td align="center">
+                <td class="text-center"><%= c.getIdPobladores()%></td>
+                <td class="text-center"><%= c.getNombre()%></td>
+                <td class="text-center"><%= genero%></td>
+                <td class="text-center"><%= c.getAlimentacionPorDia()%></td>
+                <td class="text-center"><%= c.getMoral()%></td>
+                <td class="text-center"><%= c.getFuerza()%></td>
+                <td class="text-center"><%= c.getTiempoVivo()%></td> <!-- Agregado el cierre de la celda -->
+                <td class="text-center">Moral</td>
+                <td class="text-center"><%=c.getCantidadProduccionPorDia()%></td>
+                <td class="text-center">
                     <a href="<%=request.getContextPath()%>/GestionPersonasServlet?action=editar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>
                     </a>
                 </td>
-                <td align="center">
+                <td class="text-center">
                     <a onclick="return confirm('¿Estas seguro de borrar?');"
                        href="<%=request.getContextPath()%>/GestionPersonasServlet?action=exiliar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-danger">
@@ -287,17 +289,17 @@
         <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
             <thead>
 
-            <th>#ID</th>
-            <th>Nombre</th>
-            <th>Género</th>
-            <th>Consumo/día</th>
-            <th>Moral</th>
-            <th>Fuerza</th>
-            <th>Tiempo</th>
-            <th>Tipo de Producción</th>
-            <th>Cantidad de Producción</th>
-            <th>Editar</th>
-            <th>Exiliar</th>
+            <th class="text-center">#ID</th>
+            <th class="text-center">Nombre</th>
+            <th class="text-center">Género</th>
+            <th class="text-center">Consumo/día</th>
+            <th class="text-center">Moral</th>
+            <th class="text-center">Fuerza</th>
+            <th class="text-center">Tiempo(H)</th>
+            <th class="text-center">Tipo de Producción</th>
+            <th class="text-center">Cantidad de Producción</th>
+            <th class="text-center">Editar</th>
+            <th class="text-center">Exiliar</th>
 
 
             </thead>
@@ -327,22 +329,22 @@
 
 
             <tr>
-                <td align="center"><%= c.getIdPobladores()%></td>
-                <td align="center"><%= c.getNombre()%></td>
-                <td align="center"><%= genero%></td>
-                <td align="center"><%= c.getAlimentacionPorDia()%></td>
-                <td align="center"><%= c.getMoral()%></td>
-                <td align="center"><%= c.getTiempoVivo()%></td>
-                <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
-                <td align="center">Moral</td>
-                <td align="center"><%= (c.getCantidadProduccionPorDia())%></td>
-                <td align="center">
+                <td class="text-center"><%= c.getIdPobladores()%></td>
+                <td class="text-center"><%= c.getNombre()%></td>
+                <td class="text-center"><%= genero%></td>
+                <td class="text-center"><%= c.getAlimentacionPorDia()%></td>
+                <td class="text-center"><%= c.getMoral()%></td>
+                <td class="text-center"><%= c.getFuerza()%></td>
+                <td class="text-center"><%= c.getTiempoVivo()%></td> <!-- Agregado el cierre de la celda -->
+                <td class="text-center">Moral</td>
+                <td class="text-center"><%= (c.getCantidadProduccionPorDia())%></td>
+                <td class="text-center">
                     <a href="<%=request.getContextPath()%>/GestionPersonasServlet?action=editar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>
                     </a>
                 </td>
-                <td align="center">
+                <td class="text-center">
                     <a onclick="return confirm('¿Estas seguro de borrar?');"
                        href="<%=request.getContextPath()%>/GestionPersonasServlet?action=exiliar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-danger">
@@ -364,17 +366,17 @@
         <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
             <thead>
 
-            <th>#ID</th>
-            <th>Nombre</th>
-            <th>Género</th>
-            <th>Consumo/día</th>
-            <th>Moral</th>
-            <th>Fuerza</th>
-            <th>Tiempo</th>
-            <th>Tipo de Producción</th>
-            <th>Cantidad de Producción</th>
-            <th>Editar</th>
-            <th>Exiliar</th>
+            <th class="text-center">#ID</th>
+            <th class="text-center">Nombre</th>
+            <th class="text-center">Género</th>
+            <th class="text-center">Consumo/día</th>
+            <th class="text-center">Moral</th>
+            <th class="text-center">Fuerza</th>
+            <th class="text-center">Tiempo(H)</th>
+            <th class="text-center">Tipo de Producción</th>
+            <th class="text-center">Cantidad de Producción</th>
+            <th class="text-center">Editar</th>
+            <th class="text-center">Exiliar</th>
 
             </thead>
             <tbody class="table">
@@ -403,22 +405,22 @@
 
 
             <tr>
-                <td align="center"><%= c.getIdPobladores()%></td>
-                <td align="center"><%= c.getNombre()%></td>
-                <td align="center"><%= genero%></td>
-                <td align="center"><%= c.getAlimentacionPorDia()%></td>
-                <td align="center"><%= c.getMoral()%></td>
-                <td align="center"><%= c.getTiempoVivo()%></td>
-                <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
-                <td align="center">----</td>
-                <td align="center">----</td>
-                <td align="center">
+                <td class="text-center"><%= c.getIdPobladores()%></td>
+                <td class="text-center"><%= c.getNombre()%></td>
+                <td class="text-center"><%= genero%></td>
+                <td class="text-center"><%= c.getAlimentacionPorDia()%></td>
+                <td class="text-center"><%= c.getMoral()%></td>
+                <td class="text-center"><%= c.getFuerza()%></td>
+                <td class="text-center"><%= c.getTiempoVivo()%></td> <!-- Agregado el cierre de la celda -->
+                <td class="text-center">----</td>
+                <td class="text-center">----</td>
+                <td class="text-center">
                     <a href="<%=request.getContextPath()%>/GestionPersonasServlet?action=editar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>
                     </a>
                 </td>
-                <td align="center">
+                <td class="text-center">
                     <a onclick="return confirm('¿Estas seguro de borrar?');"
                        href="<%=request.getContextPath()%>/GestionPersonasServlet?action=exiliar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-danger">
@@ -439,10 +441,10 @@
         <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
             <thead>
 
-            <th>#ID</th>
-            <th>Nombre</th>
-            <th>Género</th>
-            <th>Profesión</th>
+            <th class="text-center">#ID</th>
+            <th class="text-center">Nombre</th>
+            <th class="text-center">Género</th>
+            <th class="text-center">Profesión</th>
 
             </thead>
             <tbody class="table">
@@ -469,10 +471,10 @@
 
             %>
             <tr>
-                <td align="center"><%= c.getIdPobladores()%></td>
-                <td align="center"><%= c.getNombre()%></td>
-                <td align="center"><%= genero%></td>
-                <td align="center"><%= c.getProfesion()%></td>
+                <td class="text-center"><%= c.getIdPobladores()%></td>
+                <td class="text-center"><%= c.getNombre()%></td>
+                <td class="text-center"><%= genero%></td>
+                <td class="text-center"><%= c.getProfesion()%></td>
             </tr>
             <%
                     }
