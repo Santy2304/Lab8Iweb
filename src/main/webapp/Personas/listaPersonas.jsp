@@ -155,8 +155,8 @@
                 <th align="center">Moral</th>
                 <th align="center">Fuerza</th>
                 <th align="center">Tiempo en Colonia</th>
-                <th align="center">Produción de Alimento</th>
-                <th align="center">Produción de Moral</th>
+                <th align="center">Tipo de Producción</th>
+                <th align="center">Cantidad de Producción</th>
                 <th align="center">Editar</th>
                 <th align="center">Exiliar</th>
                 </thead>
@@ -174,7 +174,8 @@
                     <td align="center"><%= c.getMoral()%></td>
                     <td align="center"><%= c.getTiempoVivo()%></td>
                     <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
-                    <td align="center">89</td>
+                    <td align="center">Alimento</td>
+                    <td align="center"><%=c.getCantidadProduccionPorDia()%></td>
                     <td align="center">
                         <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
                            type="button" class="btn btn-primary">
@@ -211,9 +212,8 @@
             <th>Moral</th>
             <th>Fuerza</th>
             <th>Tiempo en Colonia</th>
-            <th>Produción de Alimento</th>
-            <th>Produción de Moral</th>
-
+            <th>Tipo de Producción</th>
+            <th>Cantidad de Producción</th>
             <th>Editar</th>
             <th>Exiliar</th>
 
@@ -221,6 +221,7 @@
             <tbody class="table">
             <%
                 for (Pobladores c : listaConstructores) {
+                    if(c instanceof Constructore){
             %>
             <tr>
                 <td align="center"><%= c.getIdPobladores()%></td>
@@ -230,7 +231,8 @@
                 <td align="center"><%= c.getMoral()%></td>
                 <td align="center"><%= c.getTiempoVivo()%></td>
                 <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
-                <td align="center">89</td>
+                <td align="center">Moral</td>
+                <td align="center"><%=c.getCantidadProduccionPorDia()%></td>
                 <td align="center">
                     <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
                        type="button" class="btn btn-primary">
@@ -246,7 +248,7 @@
                 </td>
             </tr>
             <%
-
+                    }
                 } // Cierre del ciclo for
             %>
             </tbody>
@@ -263,11 +265,11 @@
             <th>Moral</th>
             <th>Fuerza</th>
             <th>Tiempo en Colonia</th>
-            <th>Produción de Alimento</th>
-            <th>Produción de Moral</th>
-
+            <th>Tipo de Producción</th>
+            <th>Cantidad de Producción</th>
             <th>Editar</th>
             <th>Exiliar</th>
+
 
             </thead>
             <tbody class="table">
@@ -286,7 +288,8 @@
                 <td align="center"><%= c.getMoral()%></td>
                 <td align="center"><%= c.getTiempoVivo()%></td>
                 <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
-                <td align="center">89</td>
+                <td align="center">Moral</td>
+                <td align="center"><%= (c.getCantidadProduccionPorDia())%></td>
                 <td align="center">
                     <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
                        type="button" class="btn btn-primary">
@@ -322,9 +325,8 @@
             <th>Moral</th>
             <th>Fuerza</th>
             <th>Tiempo en Colonia</th>
-            <th>Produción de Alimento</th>
-            <th>Produción de Moral</th>
-
+            <th>Tipo de Producción</th>
+            <th>Cantidad de Producción</th>
             <th>Editar</th>
             <th>Exiliar</th>
 
@@ -345,7 +347,8 @@
                 <td align="center"><%= c.getMoral()%></td>
                 <td align="center"><%= c.getTiempoVivo()%></td>
                 <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
-                <td align="center">89</td>
+                <td align="center">----</td>
+                <td align="center">----</td>
                 <td align="center">
                     <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
                        type="button" class="btn btn-primary">
