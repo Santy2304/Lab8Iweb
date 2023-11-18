@@ -6,12 +6,11 @@ public class Pobladores extends Profesiones {
     private String nombre;
     private String genero; //Un caracter
     private int tiempo; //Es el tiempo de vida de cada persona que transcurre de manera relativa  a las acciones que se tome
-
+    private int idProfesiones;
     //Usamos Beans como atributos de otros Bean por lo que no usamos los Id directamente;
     //private int IdUsuario;
     private Usuario usuario; //Usuario al que le pertenece el poblador
     //private int IdProfesiones;
-    private Profesiones profesion;
     private String estado; //Puede estar vivo o muerto (exiliado)
     private String motivoMuerte; // Puede morir por hambre , depresión entre otras cosas
 
@@ -21,6 +20,7 @@ public class Pobladores extends Profesiones {
     private int alimentacionPorDia;
     private int cantidadProduccion;
     //GETTERS AND SETTERS
+
 
     public int getIdPobladores() {
         return idPobladores;
@@ -54,20 +54,20 @@ public class Pobladores extends Profesiones {
         this.tiempo = tiempo;
     }
 
+    public int getIdProfesiones() {
+        return idProfesiones;
+    }
+
+    public void setIdProfesiones(int idProfesiones) {
+        this.idProfesiones = idProfesiones;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
-    }
-
-    public Profesiones getProfesion() {
-        return profesion;
-    }
-
-    public void setProfesion(Profesiones profesion) {
-        this.profesion = profesion;
     }
 
     public String getEstado() {
@@ -86,52 +86,42 @@ public class Pobladores extends Profesiones {
         this.motivoMuerte = motivoMuerte;
     }
 
-    @Override
     public int getMoral() {
         return moral;
     }
 
-    @Override
     public void setMoral(int moral) {
         this.moral = moral;
     }
 
-    @Override
     public int getFuerza() {
         return fuerza;
     }
 
-    @Override
     public void setFuerza(int fuerza) {
         this.fuerza = fuerza;
     }
 
-    @Override
     public String getTipoProduccion() {
         return tipoProduccion;
     }
 
-    @Override
     public void setTipoProduccion(String tipoProduccion) {
         this.tipoProduccion = tipoProduccion;
     }
 
-    @Override
     public int getAlimentacionPorDia() {
         return alimentacionPorDia;
     }
 
-    @Override
     public void setAlimentacionPorDia(int alimentacionPorDia) {
         this.alimentacionPorDia = alimentacionPorDia;
     }
 
-    @Override
     public int getCantidadProduccion() {
         return cantidadProduccion;
     }
 
-    @Override
     public void setCantidadProduccion(int cantidadProduccion) {
         this.cantidadProduccion = cantidadProduccion;
     }

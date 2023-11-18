@@ -11,8 +11,8 @@ public class DaoPobladores extends DaoBase {
     public ArrayList<Pobladores> listarPobladores() {
         ArrayList<Pobladores> listaPobladores = new ArrayList<>();
 
-        String sql = "select p.idpobladores, p.nombre,p.genero, prof.nombreProfesion, prof.alimentacionXDia, prof.moral, p.tiempo, prof.fuerza, prof.cantidadDeProduccion from pobladores p\n" +
-                "inner join profesiones prof ON (prof.idProfesiones = p.idProfesiones)";
+        String sql = "select p.nombre, p.genero, prof.nombreProfesion, p.alimentacionXDia, p.moral,p.tiempo, p.fuerza, p.cantidadDeProduccion from pobladores p\n" +
+                "JOIN profesiones prof ON p.idProfesiones = prof.idProfesiones";
         try (Connection conn = this.getConnection();
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
@@ -53,7 +53,7 @@ public class DaoPobladores extends DaoBase {
 
         Profesiones profesion = new Profesiones();
         profesion.setNombreProfesion(rs.getString(4));
-        profesion.setAlimentacionPorDia(rs.getInt(5));
+        .setAlimentacionPorDia(rs.getInt(5));
         profesion.setMoral(rs.getInt(6));
         profesion.setFuerza(rs.getInt(8));
         profesion.setCantidadProduccion(rs.getInt(9));
