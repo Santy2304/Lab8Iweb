@@ -433,6 +433,59 @@
 
             </tbody>
         </table>
+
+
+        <h2>Muertos</h2>
+        <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
+            <thead>
+
+            <th>#ID</th>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Profesión</th>
+
+            </thead>
+            <tbody class="table">
+
+
+            <%
+                for (Pobladores c : listaPobladores) {
+                if ( c.getEstado().equals("Muerto")){
+            %>
+
+
+            <%
+                switch(c.getGenero()){
+                    case "M":
+                        genero = "Masculino";
+                        break;
+                    case "F":
+                        genero = "Femenino";
+                        break;
+                    case "O":
+                        genero = "Otro";
+                        break;
+                }
+
+            %>
+            <tr>
+                <td align="center"><%= c.getIdPobladores()%></td>
+                <td align="center"><%= c.getNombre()%></td>
+                <td align="center"><%= genero%></td>
+                <td align="center"><%= c.getProfesion()%></td>
+            </tr>
+            <%
+                    }
+                } // Cierre del ciclo for
+            %>
+
+            </tbody>
+        </table>
+
+
+
+
+
     </div>
 
 </main>

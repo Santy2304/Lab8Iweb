@@ -285,6 +285,56 @@ public class DaoPobladores extends DaoBase {
     }
 
 
+    public void actualizarPoblador(Pobladores pobladores){
+
+
+        String sql = "update pobladores set nombre = ? where id_pobladores = ?";
+
+        try(Connection connection = this.getConnection();
+            PreparedStatement pstmt = connection.prepareStatement(sql)){
+
+            pstmt.setString(1,pobladores.getNombre());
+            pstmt.setInt(2,pobladores.getIdPobladores());
+
+
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+
+
+    public Pobladores buscarPoblador(String id){
+
+        Pobladores pobladores = null;
+
+
+        String sql = "select * from pobladores where job_id = ?";
+
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setString(1,id);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
+                    pobladores = new Pobladores();
+                    pobladores.setIdPobladores(rs.getInt(1));
+                    pobladores.setNombre(rs.getString(3));
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return pobladores;
+    }
+
+
 
 
 

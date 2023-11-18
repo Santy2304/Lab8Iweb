@@ -34,6 +34,11 @@ public class GestionPersonasServlet extends HttpServlet {
                     //Recibimos parametros par
                     break;
                 case "editar":
+
+                    String idEditar = request.getParameter("id");
+                    Pobladores poblador = pobladorDao.buscarPoblador(idEditar);
+                    request.setAttribute("poblador",poblador);
+
                     request.getRequestDispatcher("Personas/editarPersonas.jsp").forward(request, response);
                     //Se edita solo el nombre
                     break;
@@ -49,6 +54,8 @@ public class GestionPersonasServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action") == null ? "lista" : request.getParameter("action");
 
+        DaoPobladores daoPobladores = new DaoPobladores();
+
         if((Usuario) request.getSession().getAttribute("usuario") != null) {
             int idUsuario = ((Usuario) request.getSession().getAttribute("usuario")).getIdUsuario();
             switch (action) {
@@ -62,6 +69,17 @@ public class GestionPersonasServlet extends HttpServlet {
                     pobladorD.crearPoblador(p, idUsuario);
 
                     response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+
+                    break;
+
+                case "Guardar":
+
+                    Pobladores poblador = new Pobladores();
+                    poblador.setNombre(request.getParameter("nombre"));
+
+                    daoPobladores.actualizarPoblador(poblador);
+
+                    response.sendRedirect(request.getContextPath()+"/GestionPersonasServlet");
 
             }
         }else{

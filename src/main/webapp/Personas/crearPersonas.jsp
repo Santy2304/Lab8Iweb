@@ -49,7 +49,7 @@
 
 
             <a href="<%= request.getContextPath()%>/GestionPersonasServlet" class="btn btn-danger">Cancelar</a>
-            <input type="submit" value="Guardar" class="btn btn-primary"/>
+            <input type="submit" value="guardarPoblador" class="btn btn-primary"/>
         </form>
     </div>
 </div>
