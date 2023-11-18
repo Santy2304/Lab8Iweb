@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.lab8iweb.Beans.Pobladores" %><%--
   Created by IntelliJ IDEA.
   User: HP
   Date: 17/11/2023
@@ -174,7 +175,7 @@
                 <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/JugadorServlet?a=crearPersona">Crear una nueva Persona</a>
             </div>
         </div>
-
+        <%ArrayList<Pobladores> listaGranjeros = (ArrayList<Pobladores>) request.getAttribute("listaGranjeros"); %>
         <!--Aquí empieza el listado de los personajes-->
             <h2 class="mb-3">Granjeros</h2>
         <div class="tabla mb-5">

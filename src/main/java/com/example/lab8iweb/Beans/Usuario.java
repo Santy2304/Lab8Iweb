@@ -14,7 +14,7 @@ public class Usuario {
     private String estado ; //Cuando se crea un usuario por defecto este está en paz
     private Boolean listaNegra ;
     private int alimentoTotal;
-    private int TiempoJugado;
+    private int tiempoJugado;
 
     //GETTERS AND SETTERS
     public int getIdUsuario() {
@@ -90,11 +90,11 @@ public class Usuario {
     }
 
     public int getTiempoJugado() {
-        return TiempoJugado;
+        return tiempoJugado;
     }
 
     public void setTiempoJugado(int tiempoJugado) {
-        TiempoJugado = tiempoJugado;
+        this.tiempoJugado = tiempoJugado;
     }
 
     public boolean validatePassword(String password) {
