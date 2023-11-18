@@ -23,7 +23,7 @@
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item mx-2">
                     <!--<a class="nav-link active" aria-current="page" href="#">Menú</a>-->
-                    <a class="nav-link active" aria-current="page" href="#">Menú</a>
+                    <a class="nav-link active" aria-current="page" href="<%=request.getContextPath()%>/MenuServlet">Menú</a>
 
                 </li>
                 <li class="nav-item mx-2">
@@ -31,21 +31,30 @@
                 </li>
                 <li class="nav-item mx-2">
                     <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
-                    <a class="nav-link active" href="#">Recursos</a>
+                    <a class="nav-link active" href="<%=request.getContextPath()%>/GestionRecursosServlet">Recursos</a>
                 </li>
                 <li class="nav-item mx-2">
                     <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
-                    <a class="nav-link active" href="#">Guerras</a>
+                    <a class="nav-link active" href="<%=request.getContextPath()%>/GuerraServlet">Guerras</a>
                 </li>
 
                 <li class="nav-item mx-2">
                     <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
-                    <a class="nav-link active" href="#">Leaderboard</a>
+                    <a class="nav-link active" href="<%=request.getContextPath()%>/LeaderboardServlet">Leaderboard</a>
                 </li>
 
             </ul>
 
-            <button type="button" class="btn btn-danger">Cerrar Sesión</button>
+            <button type="button" class="btn btn-danger" onclick="cerrarSesion()" >Cerrar Sesión</button>
+
+
+            <script>
+                function cerrarSesion() {
+                    // Redirige a tu enlace deseado
+                    window.location.href = "<%=request.getContextPath()%>/LoggingServlet?action=logout";
+                }
+            </script>
+
 
         </div>
     </div>

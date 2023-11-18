@@ -39,10 +39,10 @@
             <div class="mb-3">
                 <label for="profesion">Género</label>
                 <select class="form-control form-control-sm" name="profesion" id="profesion">
-                    <option value="M">Granjero</option>
-                    <option value="F">Constructor</option>
-                    <option value="O">Soldado</option>
-                    <option value="O">Ninguno</option>
+                    <option value="Granjero">Granjero</option>
+                    <option value="Constructor">Constructor</option>
+                    <option value="Soldado">Soldado</option>
+                    <option value="Ninguno">Ninguno</option>
                 </select>
             </div>
 
