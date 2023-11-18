@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.example.lab8iweb.Beans.Usuario" %><%--
   Created by IntelliJ IDEA.
   User: Santiago
   Date: 17/11/2023
@@ -7,6 +7,8 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
+
+
 <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-primary" >
     <div class="container-fluid">
         <!--
@@ -14,11 +16,13 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button> -->
-
+<!--
         <button type="button" class="btn btn-warning position-relative">
-            Profile
+
+            <%//=((Usuario)request.getSession().getAttribute("Usuario")).getIdUsuario()%>
 
         </button>
+        -->
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
                 <li class="nav-item mx-2">
