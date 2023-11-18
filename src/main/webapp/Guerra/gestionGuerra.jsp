@@ -147,69 +147,63 @@
 
 
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-            <h1 class="display-4 fw-normal text-body-emphasis mt-5">Recursos</h1>
-            <p class="fs-5 text-body-secondary">Aquí podras ver tanto los alimentos como la moral de tu civilización</p>
+            <!--<h1 class="display-4 fw-normal text-body-emphasis mt-5">Guerra</h1>-->
+            <!--<p class="fs-5 text-body-secondary">Aquí podrás declarar la guerra a otro jugador</p>-->
         </div>
     </header>
 
     <main>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header py-3">
-                        <h4 class="my-0 fw-normal">Alimentos</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$0<small class="text-body-secondary fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>10 users included</li>
-                            <li>2 GB of storage</li>
-                            <li>Email support</li>
-                            <li>Help center access</li>
-                        </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm">
-                    <div class="card-header py-3">
-                        <h4 class="my-0 fw-normal">Moral</h4>
-                    </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>20 users included</li>
-                            <li>10 GB of storage</li>
-                            <li>Priority email support</li>
-                            <li>Help center access</li>
-                        </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Get started</button>
-                    </div>
-                </div>
-            </div>
-            <div class="col">
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-5">
+
+            <div class="col mx-auto">
                 <div class="card mb-4 rounded-3 shadow-sm border-primary">
                     <div class="card-header py-3 text-bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Necesidades</h4>
+                        <h4 class="my-0 fw-normal">Tus Fuerzas es</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$29<small class="text-body-secondary fw-light">/mo</small></h1>
+                        <h1 class="card-title pricing-card-title">500<small class="text-body-secondary fw-light"></small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li>30 users included</li>
-                            <li>15 GB of storage</li>
-                            <li>Phone and email support</li>
-                            <li>Help center access</li>
+                            <li>Total de Alimento: </li>
+                            <li>Total de Moral: </li>
+                            <li>Total de Soldados: </li>
                         </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
+                       <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>-->
                     </div>
                 </div>
             </div>
         </div>
 
-        <h2 class="display-6 text-center mb-4">Historial de Guerras</h2>
 
-        <div class="table-responsive">
+
+        <h2 class="display-6 text-center mb-4 mt-4">Jugadores a declarar guerra</h2>
+
+        <div class="table-responsive mt-4">
+            <table class="table text-center mb-5">
+                <thead>
+                <th align="center">#</th>
+                <th align="center">Oponente</th>
+                <th align="center">Fuerza </th>
+                <th align="center"></th>
+                </thead>
+                <tbody>
+                <tr>
+                    <td align="center">1</td>
+                    <td align="center">Alex</td>
+                    <td align="center">200</td>
+                    <td align="center"><button class="btn btn-primary">Atacar</button></td>
+
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+
+
+
+
+        <h2 class="display-6 text-center mb-4 mt-4">Historial de Guerras</h2>
+
+        <div class="table-responsive mt-4">
             <table class="table text-center">
                 <thead>
                 <th align="center">#</th>
