@@ -282,14 +282,13 @@ public class DaoPobladores extends DaoBase {
     public void actualizarPoblador(Pobladores pobladores){
 
 
-        String sql = "update pobladores set nombre = ? where id_pobladores = ?";
+        String sql = "update pobladores set nombre = ? where idpobladores = ?";
 
         try(Connection connection = this.getConnection();
             PreparedStatement pstmt = connection.prepareStatement(sql)){
 
             pstmt.setString(1,pobladores.getNombre());
             pstmt.setInt(2,pobladores.getIdPobladores());
-
 
             pstmt.executeUpdate();
 

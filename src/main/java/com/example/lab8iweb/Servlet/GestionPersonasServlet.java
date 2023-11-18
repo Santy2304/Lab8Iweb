@@ -72,10 +72,12 @@ public class GestionPersonasServlet extends HttpServlet {
 
                     break;
 
-                case "Guardar":
+                case "actualizar":
 
                     Pobladores poblador = new Pobladores();
-                    poblador.setNombre(request.getParameter("nombre"));
+                    String nombre = request.getParameter("nombre");
+
+                    poblador.setNombre(nombre);
 
                     daoPobladores.actualizarPoblador(poblador);
 

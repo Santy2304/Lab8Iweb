@@ -26,7 +26,7 @@
         <div class="col-md-6 mx-auto mt-5">
             <h1 class='mb-3 mt-5'>Cambiale de nombre a tu poblador</h1>
             <hr>
-            <form method="POST" action="GestionPersonasServlet">
+            <form method="POST" action="<%=request.getContextPath()%>/GestionPersonasServlet?action=actualizar">
                 <input type="hidden" name="id_pobladores" value="<%= poblador.getIdPobladores()%>"/>
                 <div class="mb-3 mt-3">
                     <label class="form-label" for="nombre">Nombre</label>
@@ -36,7 +36,7 @@
 
 
                 <a href="<%= request.getContextPath()%>/GestionPersonasServlet" class="btn btn-danger mt-4">Cancelar</a>
-                <input type="submit" value="Guardar" class="btn btn-primary mt-4"/>
+                <input type="submit"  class="btn btn-primary mt-4"/>
             </form>
         </div>
         <div class="col-md-3"></div>
