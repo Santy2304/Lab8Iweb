@@ -171,11 +171,12 @@
                 <h1 >Tus Pobladores</h1>
             </div>
             <div>
-                <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/JugadorServlet?a=crearPersona">Nueva Persona</a>
+                <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/JugadorServlet?a=crearPersona">Crear una nueva Persona</a>
             </div>
         </div>
 
-        <h2 class="mb-3">Granjeros</h2>
+        <!--Aquí empieza el listado de los personajes-->
+            <h2 class="mb-3">Granjeros</h2>
         <div class="tabla mb-5">
             <table class="table table-dark table-transparent table-hover">
                 <thead>
@@ -192,6 +193,7 @@
                 <th align="center">Exiliar</th>
                 </thead>
                 <tbody class="table">
+
                 <tr>
                     <td align="center">1</td>
                     <td align="center">Josh</td>
@@ -217,6 +219,36 @@
                     </td>
 
                 </tr>
+
+                <tr>
+                    <td align="center">1</td>
+                    <td align="center">Josh</td>
+                    <td align="center">M</td>
+                    <td align="center">30</td>
+                    <td align="center">20</td>
+                    <td align="center">10</td>
+                    <td align="center">100</td>
+                    <td align="center">78</td>
+                    <td align="center">56</td>
+                    <td align="center">
+                        <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                           type="button" class="btn btn-primary">
+                            <i class="bi bi-pencil-square"></i>
+                        </a>
+                    </td>
+                    <td align="center">
+                        <a onclick="return confirm('¿Estas seguro de borrar?');"
+                           href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                           type="button" class="btn btn-danger">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+
+                </tr>
+
+
+
+
 
                 </tbody>
 
@@ -279,6 +311,65 @@
 
             </tbody>
         </table>
+
+        <h2>Soldado</h2>
+        <table  class="table table-dark table-transparent table-hover mt-3">
+            <thead>
+
+            <th>#ID</th>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Consumo por día</th>
+            <th>Moral</th>
+            <th>Fuerza</th>
+            <th>Tiempo en Colonia</th>
+            <th>Produción de Alimento</th>
+            <th>Produción de Moral</th>
+
+            <th>Editar</th>
+            <th>Exiliar</th>
+
+            </thead>
+            <tbody class="table">
+            <tr >
+                <td align="center">1
+                </td>
+                <td align="center">Josh
+                </td>
+                <td align="center">M
+                </td>
+                <td align="center">30
+                </td>
+                <td align="center">20
+                </td>
+                <td align="center">10
+                </td>
+                <td align="center">100
+                </td>
+                <td align="center">78
+                </td>
+                <td align="center">89</td>
+                <td align="center">
+                    <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                       type="button" class="btn btn-primary">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </td>
+                <td align="center">
+                    <a onclick="return confirm('¿Estas seguro de borrar?');"
+                       href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                       type="button" class="btn btn-danger">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
+
+
+
 
     </div>
 
