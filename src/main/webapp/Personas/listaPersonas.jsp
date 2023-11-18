@@ -8,6 +8,9 @@
 --%>
 <%@page import="com.example.lab8iweb.Beans.Pobladores" %>
 <%@page import="java.util.ArrayList" %>
+<%@ page import="com.example.lab8iweb.Beans.Granjero" %>
+<%@ page import="com.example.lab8iweb.Beans.Soldado" %>
+<%@ page import="com.example.lab8iweb.Beans.Constructore" %>
 <jsp:useBean id="listaConstructores" type="ArrayList<com.example.lab8iweb.Beans.Pobladores>" scope="request"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" data-bs-theme="auto">
@@ -127,7 +130,7 @@
     <jsp:include page="../Includes/navbar.jsp"></jsp:include>
 
 </header>
-
+<%ArrayList<Pobladores> listaPobladores   = (ArrayList<Pobladores>) request.getAttribute("listaPobladores");  %>
 <main>
     <div class='container mt-5'>
 
@@ -158,17 +161,20 @@
                 <th align="center">Exiliar</th>
                 </thead>
                 <tbody class="table">
+                <%
+                    for (Pobladores c : listaPobladores) {
+                       if(c instanceof Granjero) {
+                %>
 
                 <tr>
-                    <td align="center">1</td>
-                    <td align="center">Josh</td>
-                    <td align="center">M</td>
-                    <td align="center">30</td>
-                    <td align="center">20</td>
-                    <td align="center">10</td>
-                    <td align="center">100</td>
-                    <td align="center">78</td>
-                    <td align="center">56</td>
+                    <td align="center"><%= c.getIdPobladores()%></td>
+                    <td align="center"><%= c.getNombre()%></td>
+                    <td align="center"><%= c.getGenero()%></td>
+                    <td align="center"><%= c.getAlimentacionPorDia()%></td>
+                    <td align="center"><%= c.getMoral()%></td>
+                    <td align="center"><%= c.getTiempoVivo()%></td>
+                    <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
+                    <td align="center">89</td>
                     <td align="center">
                         <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
                            type="button" class="btn btn-primary">
@@ -182,35 +188,11 @@
                             <i class="bi bi-trash"></i>
                         </a>
                     </td>
-
                 </tr>
-
-                <tr>
-                    <td align="center">1</td>
-                    <td align="center">Josh</td>
-                    <td align="center">M</td>
-                    <td align="center">30</td>
-                    <td align="center">20</td>
-                    <td align="center">10</td>
-                    <td align="center">100</td>
-                    <td align="center">78</td>
-                    <td align="center">56</td>
-                    <td align="center">
-                        <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
-                           type="button" class="btn btn-primary">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                    </td>
-                    <td align="center">
-                        <a onclick="return confirm('¿Estas seguro de borrar?');"
-                           href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
-                           type="button" class="btn btn-danger">
-                            <i class="bi bi-trash"></i>
-                        </a>
-                    </td>
-
-                </tr>
-
+                <%
+                    }
+                    } // Cierre del ciclo for
+                %>
 
                 </tbody>
 
@@ -264,6 +246,7 @@
                 </td>
             </tr>
             <%
+
                 } // Cierre del ciclo for
             %>
             </tbody>
@@ -288,23 +271,21 @@
 
             </thead>
             <tbody class="table">
-            <tr >
-                <td align="center">1
-                </td>
-                <td align="center">Josh
-                </td>
-                <td align="center">M
-                </td>
-                <td align="center">30
-                </td>
-                <td align="center">20
-                </td>
-                <td align="center">10
-                </td>
-                <td align="center">100
-                </td>
-                <td align="center">78
-                </td>
+
+
+            <%
+                for (Pobladores c : listaPobladores) {
+                    if(c instanceof Soldado){
+            %>
+
+            <tr>
+                <td align="center"><%= c.getIdPobladores()%></td>
+                <td align="center"><%= c.getNombre()%></td>
+                <td align="center"><%= c.getGenero()%></td>
+                <td align="center"><%= c.getAlimentacionPorDia()%></td>
+                <td align="center"><%= c.getMoral()%></td>
+                <td align="center"><%= c.getTiempoVivo()%></td>
+                <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
                 <td align="center">89</td>
                 <td align="center">
                     <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
@@ -319,8 +300,11 @@
                         <i class="bi bi-trash"></i>
                     </a>
                 </td>
-
             </tr>
+            <%
+                    }
+                } // Cierre del ciclo for
+            %>
 
             </tbody>
         </table>
@@ -346,23 +330,21 @@
 
             </thead>
             <tbody class="table">
-            <tr >
-                <td align="center">1
-                </td>
-                <td align="center">Josh
-                </td>
-                <td align="center">M
-                </td>
-                <td align="center">30
-                </td>
-                <td align="center">20
-                </td>
-                <td align="center">10
-                </td>
-                <td align="center">100
-                </td>
-                <td align="center">78
-                </td>
+
+
+            <%
+                for (Pobladores c : listaPobladores) {
+                    if(!(c instanceof Constructore ) && !(c instanceof Granjero )  &&!(c instanceof Soldado )){
+            %>
+
+            <tr>
+                <td align="center"><%= c.getIdPobladores()%></td>
+                <td align="center"><%= c.getNombre()%></td>
+                <td align="center"><%= c.getGenero()%></td>
+                <td align="center"><%= c.getAlimentacionPorDia()%></td>
+                <td align="center"><%= c.getMoral()%></td>
+                <td align="center"><%= c.getTiempoVivo()%></td>
+                <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
                 <td align="center">89</td>
                 <td align="center">
                     <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
@@ -377,8 +359,11 @@
                         <i class="bi bi-trash"></i>
                     </a>
                 </td>
-
             </tr>
+            <%
+                    }
+                } // Cierre del ciclo for
+            %>
 
             </tbody>
         </table>
