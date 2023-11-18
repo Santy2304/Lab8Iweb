@@ -27,16 +27,14 @@ public class GestionPersonasServlet extends HttpServlet {
                 case "exiliar":
                     int idPoblador = Integer.parseInt(request.getParameter("id"));
                     new DaoPobladores().exiliarPorId(idPoblador);
-                    request.setAttribute("listaConstructores", pobladorDao.listarConstructores());
-                    request.setAttribute("listaPobladores", new DaoPobladores().listarPobladoresPorUsuario(((Usuario) request.getSession().getAttribute("usuario")).getIdUsuario()));
-                    request.getRequestDispatcher("Personas/listaPersonas.jsp").forward(request, response);
+                    response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet");
                     break;
                 case "crearJugador":
-                    request.getRequestDispatcher(request.getContextPath()+"/Personas/crearPersonas.jsp").forward(request, response);
+                    request.getRequestDispatcher("Personas/crearPersonas.jsp").forward(request, response);
                     //Recibimos parametros par
                     break;
                 case "editar":
-                    request.getRequestDispatcher(request.getContextPath()+ "Personas/editarPersonas.jsp").forward(request, response);
+                    request.getRequestDispatcher("Personas/editarPersonas.jsp").forward(request, response);
                     //Se edita solo el nombre
                     break;
             }
