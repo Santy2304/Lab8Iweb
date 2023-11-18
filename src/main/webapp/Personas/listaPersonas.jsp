@@ -127,6 +127,7 @@
 <body>
 <header data-bs-theme="dark">
 
+    <%String genero = null;%>
     <jsp:include page="../Includes/navbar.jsp"></jsp:include>
 
 </header>
@@ -165,11 +166,24 @@
                     for (Pobladores c : listaPobladores) {
                        if(c instanceof Granjero) {
                 %>
+                <%
+                    switch(c.getGenero()){
+                        case "M":
+                            genero = "Masculino";
+                            break;
+                        case "F":
+                            genero = "Femenino";
+                            break;
+                        case "O":
+                            genero = "Otro";
+                            break;
+                }
 
+                %>
                 <tr>
                     <td align="center"><%= c.getIdPobladores()%></td>
                     <td align="center"><%= c.getNombre()%></td>
-                    <td align="center"><%= c.getGenero()%></td>
+                    <td align="center"><%=  genero %></td>
                     <td align="center"><%= c.getAlimentacionPorDia()%></td>
                     <td align="center"><%= c.getMoral()%></td>
                     <td align="center"><%= c.getTiempoVivo()%></td>
@@ -177,14 +191,14 @@
                     <td align="center">Alimento</td>
                     <td align="center"><%=c.getCantidadProduccionPorDia()%></td>
                     <td align="center">
-                        <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                        <a href="<%=request.getContextPath()%>/GestionPersonasServlet?action=editar&id=<%=c.getIdPobladores()%>"
                            type="button" class="btn btn-primary">
                             <i class="bi bi-pencil-square"></i>
                         </a>
                     </td>
                     <td align="center">
                         <a onclick="return confirm('¿Estas seguro de borrar?');"
-                           href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                           href="<%=request.getContextPath()%>/GestionPersonasServlet?action=exiliar&id=<%=c.getIdPobladores()%>"
                            type="button" class="btn btn-danger">
                             <i class="bi bi-trash"></i>
                         </a>
@@ -220,13 +234,30 @@
             </thead>
             <tbody class="table">
             <%
-                for (Pobladores c : listaConstructores) {
+                for (Pobladores c : listaPobladores) {
                     if(c instanceof Constructore){
             %>
+
+            <%
+                switch(c.getGenero()){
+                    case "M":
+                        genero = "Masculino";
+                        break;
+                    case "F":
+                        genero = "Femenino";
+                        break;
+                    case "O":
+                        genero = "Otro";
+                        break;
+                }
+
+            %>
+
+
             <tr>
                 <td align="center"><%= c.getIdPobladores()%></td>
                 <td align="center"><%= c.getNombre()%></td>
-                <td align="center"><%= c.getGenero()%></td>
+                <td align="center"><%= genero%></td>
                 <td align="center"><%= c.getAlimentacionPorDia()%></td>
                 <td align="center"><%= c.getMoral()%></td>
                 <td align="center"><%= c.getTiempoVivo()%></td>
@@ -234,14 +265,14 @@
                 <td align="center">Moral</td>
                 <td align="center"><%=c.getCantidadProduccionPorDia()%></td>
                 <td align="center">
-                    <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                    <a href="<%=request.getContextPath()%>/GestionPersonasServlet?action=editar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>
                     </a>
                 </td>
                 <td align="center">
                     <a onclick="return confirm('¿Estas seguro de borrar?');"
-                       href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                       href="<%=request.getContextPath()%>/GestionPersonasServlet?action=exiliar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-danger">
                         <i class="bi bi-trash"></i>
                     </a>
@@ -280,10 +311,27 @@
                     if(c instanceof Soldado){
             %>
 
+
+            <%
+                switch(c.getGenero()){
+                    case "M":
+                        genero = "Masculino";
+                        break;
+                    case "F":
+                        genero = "Femenino";
+                        break;
+                    case "O":
+                        genero = "Otro";
+                        break;
+                }
+
+            %>
+
+
             <tr>
                 <td align="center"><%= c.getIdPobladores()%></td>
                 <td align="center"><%= c.getNombre()%></td>
-                <td align="center"><%= c.getGenero()%></td>
+                <td align="center"><%= genero%></td>
                 <td align="center"><%= c.getAlimentacionPorDia()%></td>
                 <td align="center"><%= c.getMoral()%></td>
                 <td align="center"><%= c.getTiempoVivo()%></td>
@@ -291,14 +339,14 @@
                 <td align="center">Moral</td>
                 <td align="center"><%= (c.getCantidadProduccionPorDia())%></td>
                 <td align="center">
-                    <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                    <a href="<%=request.getContextPath()%>/GestionPersonasServlet?action=editar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>
                     </a>
                 </td>
                 <td align="center">
                     <a onclick="return confirm('¿Estas seguro de borrar?');"
-                       href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                       href="<%=request.getContextPath()%>/GestionPersonasServlet?action=exiliar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-danger">
                         <i class="bi bi-trash"></i>
                     </a>
@@ -339,10 +387,27 @@
                     if(!(c instanceof Constructore ) && !(c instanceof Granjero )  &&!(c instanceof Soldado )){
             %>
 
+
+            <%
+                switch(c.getGenero()){
+                    case "M":
+                        genero = "Masculino";
+                        break;
+                    case "F":
+                        genero = "Femenino";
+                        break;
+                    case "O":
+                        genero = "Otro";
+                        break;
+                }
+
+            %>
+
+
             <tr>
                 <td align="center"><%= c.getIdPobladores()%></td>
                 <td align="center"><%= c.getNombre()%></td>
-                <td align="center"><%= c.getGenero()%></td>
+                <td align="center"><%= genero%></td>
                 <td align="center"><%= c.getAlimentacionPorDia()%></td>
                 <td align="center"><%= c.getMoral()%></td>
                 <td align="center"><%= c.getTiempoVivo()%></td>
@@ -350,14 +415,14 @@
                 <td align="center">----</td>
                 <td align="center">----</td>
                 <td align="center">
-                    <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                    <a href="<%=request.getContextPath()%>/GestionPersonasServlet?action=editar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-primary">
                         <i class="bi bi-pencil-square"></i>
                     </a>
                 </td>
                 <td align="center">
                     <a onclick="return confirm('¿Estas seguro de borrar?');"
-                       href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                       href="<%=request.getContextPath()%>/GestionPersonasServlet?action=exiliar&id=<%=c.getIdPobladores()%>"
                        type="button" class="btn btn-danger">
                         <i class="bi bi-trash"></i>
                     </a>

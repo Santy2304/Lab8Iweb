@@ -47,7 +47,6 @@ public class DaoPobladores extends DaoBase {
 
 
     public void crearConstructore(Constructore constructore, int idUsuario){
-
         String sql = "INSERT INTO pobladores ( idUsuarios,nombre, genero, tiempoVivo,estado, motivoMuerte, moral, fuerza, tipoDeProduccion, alimentacionXDia,cantidadDeProduccionXDia, profesion) \n" +
                 "VALUES (?, ?, ?, 0, 'Vivo', 'Ninguna', \n" +
                 "? , \n" +
