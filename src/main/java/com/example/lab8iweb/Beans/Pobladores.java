@@ -1,24 +1,23 @@
 package com.example.lab8iweb.Beans;
 
-public class Pobladores extends Profesiones {
+public class Pobladores{
     //ATRIBUTOS;
     private int idPobladores;
+    private Usuario usuario;
     private String nombre;
     private String genero; //Un caracter
-    private int tiempo; //Es el tiempo de vida de cada persona que transcurre de manera relativa  a las acciones que se tome
-    private Profesiones profesion;
+    private int tiempoVivo; //Es el tiempo de vida de cada persona que transcurre de manera relativa  a las acciones que se tome
+
+    private String profesion;
     //Usamos Beans como atributos de otros Bean por lo que no usamos los Id directamente;
     //private int IdUsuario;
-    private Usuario usuario; //Usuario al que le pertenece el poblador
     //private int IdProfesiones;
     private String estado; //Puede estar vivo o muerto (exiliado)
     private String motivoMuerte; // Puede morir por hambre , depresión entre otras cosas
 
     private int moral;
-    private int fuerza;
-    private String tipoProduccion;
     private int alimentacionPorDia;
-    private int cantidadProduccion;
+    private int cantidadProduccionPorDia;
     //GETTERS AND SETTERS
 
 
@@ -28,6 +27,14 @@ public class Pobladores extends Profesiones {
 
     public void setIdPobladores(int idPobladores) {
         this.idPobladores = idPobladores;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getNombre() {
@@ -46,28 +53,20 @@ public class Pobladores extends Profesiones {
         this.genero = genero;
     }
 
-    public int getTiempo() {
-        return tiempo;
+    public int getTiempoVivo() {
+        return tiempoVivo;
     }
 
-    public void setTiempo(int tiempo) {
-        this.tiempo = tiempo;
+    public void setTiempoVivo(int tiempoVivo) {
+        this.tiempoVivo = tiempoVivo;
     }
 
-    public Profesiones getProfesion() {
+    public String getProfesion() {
         return profesion;
     }
 
-    public void setProfesion(Profesiones profesion) {
+    public void setProfesion(String profesion) {
         this.profesion = profesion;
-    }
-
-    public Usuario getUsuario() {
-        return usuario;
-    }
-
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
     }
 
     public String getEstado() {
@@ -94,22 +93,6 @@ public class Pobladores extends Profesiones {
         this.moral = moral;
     }
 
-    public int getFuerza() {
-        return fuerza;
-    }
-
-    public void setFuerza(int fuerza) {
-        this.fuerza = fuerza;
-    }
-
-    public String getTipoProduccion() {
-        return tipoProduccion;
-    }
-
-    public void setTipoProduccion(String tipoProduccion) {
-        this.tipoProduccion = tipoProduccion;
-    }
-
     public int getAlimentacionPorDia() {
         return alimentacionPorDia;
     }
@@ -118,11 +101,11 @@ public class Pobladores extends Profesiones {
         this.alimentacionPorDia = alimentacionPorDia;
     }
 
-    public int getCantidadProduccion() {
-        return cantidadProduccion;
+    public int getCantidadProduccionPorDia() {
+        return cantidadProduccionPorDia;
     }
 
-    public void setCantidadProduccion(int cantidadProduccion) {
-        this.cantidadProduccion = cantidadProduccion;
+    public void setCantidadProduccionPorDia(int cantidadProduccionPorDia) {
+        this.cantidadProduccionPorDia = cantidadProduccionPorDia;
     }
 }

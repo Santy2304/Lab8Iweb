@@ -1,14 +1,14 @@
 package com.example.lab8iweb.Daos;
 
+import com.example.lab8iweb.Beans.Constructore;
 import com.example.lab8iweb.Beans.Pobladores;
-import com.example.lab8iweb.Beans.Profesiones;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DaoPobladores extends DaoBase {
-/*
-    public ArrayList<Pobladores> listarPobladores() {
+
+    public ArrayList<Constructore> listarConstructores() {
         ArrayList<Pobladores> listaPobladores = new ArrayList<>();
 
         String sql = "select p.nombre, p.genero, prof.nombreProfesion, p.alimentacionXDia, p.moral,p.tiempo, p.fuerza, p.cantidadDeProduccion from pobladores p\n" +
@@ -30,12 +30,24 @@ public class DaoPobladores extends DaoBase {
 
         return listaPobladores;
     }
-    public void crearPoblador(Pobladores poblador){
-        String sql = "INSERT INTO jugador (nombre,edad,posicion,club,sn_idSeleccion) VALUES (?,?,?,?,?)";
+    public void crearConstructore(Constructore constructore, int idUsuario){
+
+        String sql = "INSERT INTO pobladores ( idUsuarios,nombre, genero, tiempoVivo,estado, motivoMuerte, moral, fuerza, tipoDeProduccion, alimentacionXDia,cantidadDeProduccionXDia, profesion) \n" +
+                "VALUES (?, ?, ?, 0, 'Vivo', 'Ninguna', \n" +
+                "? , \n" +
+                "?, \n" +
+                "'Moral', \n" +
+                "? \n" +
+                "?,\n" +
+                "'Constructore')";
         try(Connection connection=this.getConnection();
             PreparedStatement pstmt= connection.prepareStatement(sql)){
 
-            //pstmt.setInt(1,jugador.getIdJugador());
+            pstmt.setInt(1,idUsuario);
+            pstmt.setString(2,constructore.getNombre());
+            pstmt.setString(3,constructore.getGenero());
+            pstmt.setString(4, );
+
 
             pstmt.executeUpdate();
         }
@@ -43,8 +55,8 @@ public class DaoPobladores extends DaoBase {
             throw new RuntimeException(e);
         }
     }
-*/
-    /*
+
+
     private void fetchPobladorData(Pobladores poblador, ResultSet rs) throws SQLException {
 
 
@@ -64,5 +76,5 @@ public class DaoPobladores extends DaoBase {
         poblador.setTiempo(rs.getInt(7));
 
     }
-*/
+
 }
