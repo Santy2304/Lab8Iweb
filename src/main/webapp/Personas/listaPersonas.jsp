@@ -1,12 +1,14 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="com.example.lab8iweb.Beans.Pobladores" %><%--
+
+<%--
   Created by IntelliJ IDEA.
   User: HP
   Date: 17/11/2023
   Time: 00:45
   To change this template use File | Settings | File Templates.
 --%>
-
+<%@page import="com.example.lab8iweb.Beans.Pobladores" %>
+<%@page import="java.util.ArrayList" %>
+<jsp:useBean id="listaConstructores" type="ArrayList<com.example.lab8iweb.Beans.Pobladores>" scope="request"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" data-bs-theme="auto">
 <head><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -102,15 +104,15 @@
             display: block !important;
         }
         footer {
-             background-color: #322D31;
-             color: white;
-             font-family: 'Titillium Web', sans-serif;
-             padding: 20px 0;
-             display: flex;
-             flex-wrap: wrap;
-             justify-content: space-between;
-             text-align: center; /* Centrar el contenido horizontalmente */
-         }
+            background-color: #322D31;
+            color: white;
+            font-family: 'Titillium Web', sans-serif;
+            padding: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            text-align: center; /* Centrar el contenido horizontalmente */
+        }
 
 
     </style>
@@ -175,9 +177,9 @@
                 <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/JugadorServlet?a=crearPersona">Crear una nueva Persona</a>
             </div>
         </div>
-        <%ArrayList<Pobladores> listaGranjeros = (ArrayList<Pobladores>) request.getAttribute("listaGranjeros"); %>
+
         <!--Aquí empieza el listado de los personajes-->
-            <h2 class="mb-3">Granjeros</h2>
+        <h2 class="mb-3">Granjeros</h2>
         <div class="tabla mb-5">
             <table class="table table-dark table-transparent table-hover">
                 <thead>
@@ -258,38 +260,32 @@
         <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
             <thead>
 
-                <th>#ID</th>
-                <th>Nombre</th>
-                <th>Género</th>
-                <th>Consumo por día</th>
-                <th>Moral</th>
-                <th>Fuerza</th>
-                <th>Tiempo en Colonia</th>
-                <th>Produción de Alimento</th>
-                <th>Produción de Moral</th>
+            <th>#ID</th>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Consumo por día</th>
+            <th>Moral</th>
+            <th>Fuerza</th>
+            <th>Tiempo en Colonia</th>
+            <th>Produción de Alimento</th>
+            <th>Produción de Moral</th>
 
-                <th>Editar</th>
-                <th>Exiliar</th>
+            <th>Editar</th>
+            <th>Exiliar</th>
 
             </thead>
             <tbody class="table">
-            <tr >
-                <td align="center">1
-                </td>
-                <td align="center">Josh
-                </td>
-                <td align="center">M
-                </td>
-                <td align="center">30
-                </td>
-                <td align="center">20
-                </td>
-                <td align="center">10
-                </td>
-                <td align="center">100
-                </td>
-                <td align="center">78
-                </td>
+            <%
+                for (Pobladores c : listaConstructores) {
+            %>
+            <tr>
+                <td align="center"><%= c.getIdPobladores()%></td>
+                <td align="center"><%= c.getNombre()%></td>
+                <td align="center"><%= c.getGenero()%></td>
+                <td align="center"><%= c.getAlimentacionPorDia()%></td>
+                <td align="center"><%= c.getMoral()%></td>
+                <td align="center"><%= c.getTiempoVivo()%></td>
+                <td align="center"><%= c.getFuerza()%></td> <!-- Agregado el cierre de la celda -->
                 <td align="center">89</td>
                 <td align="center">
                     <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
@@ -304,9 +300,10 @@
                         <i class="bi bi-trash"></i>
                     </a>
                 </td>
-
             </tr>
-
+            <%
+                } // Cierre del ciclo for
+            %>
             </tbody>
         </table>
 
@@ -423,9 +420,6 @@
 
             </tbody>
         </table>
-
-
-
     </div>
 
 </main>
@@ -440,7 +434,4 @@
         window.location.href = "<%=request.getContextPath()%>/LoggingServlet?action=logout";
     }
 </script>
-
-
 </html>
-
