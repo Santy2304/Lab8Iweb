@@ -247,9 +247,6 @@
                 </tr>
 
 
-
-
-
                 </tbody>
 
             </table>
@@ -257,7 +254,7 @@
 
 
         <h2>Constructores</h2>
-        <table  class="table table-dark table-transparent table-hover mt-3">
+        <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
             <thead>
 
                 <th>#ID</th>
@@ -312,8 +309,8 @@
             </tbody>
         </table>
 
-        <h2>Soldado</h2>
-        <table  class="table table-dark table-transparent table-hover mt-3">
+        <h2>Soldados</h2>
+        <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
             <thead>
 
             <th>#ID</th>
@@ -368,6 +365,63 @@
             </tbody>
         </table>
 
+
+
+        <h2>Ciudadanos Comúnes</h2>
+        <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
+            <thead>
+
+            <th>#ID</th>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Consumo por día</th>
+            <th>Moral</th>
+            <th>Fuerza</th>
+            <th>Tiempo en Colonia</th>
+            <th>Produción de Alimento</th>
+            <th>Produción de Moral</th>
+
+            <th>Editar</th>
+            <th>Exiliar</th>
+
+            </thead>
+            <tbody class="table">
+            <tr >
+                <td align="center">1
+                </td>
+                <td align="center">Josh
+                </td>
+                <td align="center">M
+                </td>
+                <td align="center">30
+                </td>
+                <td align="center">20
+                </td>
+                <td align="center">10
+                </td>
+                <td align="center">100
+                </td>
+                <td align="center">78
+                </td>
+                <td align="center">89</td>
+                <td align="center">
+                    <a href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                       type="button" class="btn btn-primary">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </td>
+                <td align="center">
+                    <a onclick="return confirm('¿Estas seguro de borrar?');"
+                       href="<%=request.getContextPath()%>/EmployeeServlet?action=editar&id"
+                       type="button" class="btn btn-danger">
+                        <i class="bi bi-trash"></i>
+                    </a>
+                </td>
+
+            </tr>
+
+            </tbody>
+        </table>
 
 
 

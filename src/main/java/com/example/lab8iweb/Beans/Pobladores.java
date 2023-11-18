@@ -1,6 +1,6 @@
 package com.example.lab8iweb.Beans;
 
-public class Pobladores extends Profesiones {
+public class Pobladores {
     //ATRIBUTOS;
     private int idPobladores;
     private String nombre;
@@ -9,16 +9,17 @@ public class Pobladores extends Profesiones {
     private Profesiones profesion;
     //Usamos Beans como atributos de otros Bean por lo que no usamos los Id directamente;
     //private int IdUsuario;
+
     private Usuario usuario; //Usuario al que le pertenece el poblador
     //private int IdProfesiones;
     private String estado; //Puede estar vivo o muerto (exiliado)
     private String motivoMuerte; // Puede morir por hambre , depresión entre otras cosas
 
     private int moral;
-    private int fuerza;
+
     private String tipoProduccion;
     private int alimentacionPorDia;
-    private int cantidadProduccion;
+
     //GETTERS AND SETTERS
 
 
@@ -94,13 +95,6 @@ public class Pobladores extends Profesiones {
         this.moral = moral;
     }
 
-    public int getFuerza() {
-        return fuerza;
-    }
-
-    public void setFuerza(int fuerza) {
-        this.fuerza = fuerza;
-    }
 
     public String getTipoProduccion() {
         return tipoProduccion;
@@ -118,11 +112,4 @@ public class Pobladores extends Profesiones {
         this.alimentacionPorDia = alimentacionPorDia;
     }
 
-    public int getCantidadProduccion() {
-        return cantidadProduccion;
-    }
-
-    public void setCantidadProduccion(int cantidadProduccion) {
-        this.cantidadProduccion = cantidadProduccion;
-    }
 }
