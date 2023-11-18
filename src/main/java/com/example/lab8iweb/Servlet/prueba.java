@@ -11,7 +11,7 @@ public class prueba extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        request.getRequestDispatcher("Personas/crearPersonas.jsp").forward(request,response);
+        request.getRequestDispatcher("Recursos/gestionRecursos.jsp").forward(request,response);
 
     }
 
