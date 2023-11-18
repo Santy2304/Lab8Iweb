@@ -24,6 +24,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
 
 
     <style>
@@ -136,8 +137,8 @@
             <div class="col-lg-6">
                 <h1 >Tus Pobladores</h1>
             </div>
-            <div>
-                <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/GestionPersonasServlet?action=crearJugador&idUsuario=<%=((Usuario) session.getAttribute("usuario")).getIdUsuario()%>">Crear una nueva Persona</a>
+            <div class="mt-4">
+                <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/GestionPersonasServlet?action=crearJugador&idUsuario=<%=((Usuario) session.getAttribute("usuario")).getIdUsuario()%>">Crear a un Poblador</a>
             </div>
         </div>
 
@@ -149,10 +150,10 @@
                 <th align="center">#ID</th>
                 <th align="center">Nombre</th>
                 <th align="center">Género</th>
-                <th align="center">Consumo por día</th>
+                <th align="center">Consumo/día</th>
                 <th align="center">Moral</th>
                 <th align="center">Fuerza</th>
-                <th align="center">Tiempo en Colonia</th>
+                <th align="center">Tiempo</th>
                 <th align="center">Tipo de Producción</th>
                 <th align="center">Cantidad de Producción</th>
                 <th align="center">Editar</th>
@@ -219,10 +220,10 @@
             <th>#ID</th>
             <th>Nombre</th>
             <th>Género</th>
-            <th>Consumo por día</th>
+            <th>Consumo/día</th>
             <th>Moral</th>
             <th>Fuerza</th>
-            <th>Tiempo en Colonia</th>
+            <th>Tiempo</th>
             <th>Tipo de Producción</th>
             <th>Cantidad de Producción</th>
             <th>Editar</th>
@@ -289,10 +290,10 @@
             <th>#ID</th>
             <th>Nombre</th>
             <th>Género</th>
-            <th>Consumo por día</th>
+            <th>Consumo/día</th>
             <th>Moral</th>
             <th>Fuerza</th>
-            <th>Tiempo en Colonia</th>
+            <th>Tiempo</th>
             <th>Tipo de Producción</th>
             <th>Cantidad de Producción</th>
             <th>Editar</th>
@@ -366,10 +367,10 @@
             <th>#ID</th>
             <th>Nombre</th>
             <th>Género</th>
-            <th>Consumo por día</th>
+            <th>Consumo/día</th>
             <th>Moral</th>
             <th>Fuerza</th>
-            <th>Tiempo en Colonia</th>
+            <th>Tiempo</th>
             <th>Tipo de Producción</th>
             <th>Cantidad de Producción</th>
             <th>Editar</th>
