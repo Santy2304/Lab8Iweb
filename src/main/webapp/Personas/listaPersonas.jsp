@@ -6,11 +6,8 @@
   Time: 00:45
   To change this template use File | Settings | File Templates.
 --%>
-<%@page import="com.example.lab8iweb.Beans.Pobladores" %>
 <%@page import="java.util.ArrayList" %>
-<%@ page import="com.example.lab8iweb.Beans.Granjero" %>
-<%@ page import="com.example.lab8iweb.Beans.Soldado" %>
-<%@ page import="com.example.lab8iweb.Beans.Constructore" %>
+<%@ page import="com.example.lab8iweb.Beans.*" %>
 <jsp:useBean id="listaConstructores" type="ArrayList<com.example.lab8iweb.Beans.Pobladores>" scope="request"/>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" data-bs-theme="auto">
@@ -140,7 +137,7 @@
                 <h1 >Tus Pobladores</h1>
             </div>
             <div>
-                <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/JugadorServlet?a=crearPersona">Crear una nueva Persona</a>
+                <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/GestionPersonasServlet?action=crearJugador&idUsuario=<%=((Usuario) session.getAttribute("usuario")).getIdUsuario()%>">Crear una nueva Persona</a>
             </div>
         </div>
 

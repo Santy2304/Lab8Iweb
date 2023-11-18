@@ -174,6 +174,11 @@ public class DaoPobladores extends DaoBase {
     }
 
 
+    public void exiliarPorId(int  idPoblador){
+
+    }
+
+
 
 
 

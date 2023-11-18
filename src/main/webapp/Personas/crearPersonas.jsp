@@ -19,7 +19,7 @@
 <body>
 <div class='container'>
     <div class="row justify-content-center">
-        <form method="POST" action="EmployeeServlet?action=guardar" class="col-md-6 col-lg-6">
+        <form method="POST" action="GestionPersonasServlet?action=crear" class="col-md-6 col-lg-6">
             <h1 class='mb-3 mt-4'>Nuevo Poblador</h1>
             <hr>
             <div class="mb-3">
