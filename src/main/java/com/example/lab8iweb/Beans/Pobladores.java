@@ -6,7 +6,7 @@ public class Pobladores extends Profesiones {
     private String nombre;
     private String genero; //Un caracter
     private int tiempo; //Es el tiempo de vida de cada persona que transcurre de manera relativa  a las acciones que se tome
-    private int idProfesiones;
+    private Profesiones profesion;
     //Usamos Beans como atributos de otros Bean por lo que no usamos los Id directamente;
     //private int IdUsuario;
     private Usuario usuario; //Usuario al que le pertenece el poblador
@@ -54,12 +54,12 @@ public class Pobladores extends Profesiones {
         this.tiempo = tiempo;
     }
 
-    public int getIdProfesiones() {
-        return idProfesiones;
+    public Profesiones getProfesion() {
+        return profesion;
     }
 
-    public void setIdProfesiones(int idProfesiones) {
-        this.idProfesiones = idProfesiones;
+    public void setProfesion(Profesiones profesion) {
+        this.profesion = profesion;
     }
 
     public Usuario getUsuario() {

@@ -17,7 +17,8 @@ public class DaoPobladores extends DaoBase {
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(sql)) {
 
-            while (rs.next()) {
+            while (rs.next()
+            ) {
                 Pobladores poblador = new Pobladores();
                 fetchPobladorData(poblador, rs);
 
