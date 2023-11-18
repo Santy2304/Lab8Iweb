@@ -1,8 +1,8 @@
 <%--
   Created by IntelliJ IDEA.
-  User: HP
+  User: Hineill
   Date: 17/11/2023
-  Time: 00:45
+  Time: 19:58
   To change this template use File | Settings | File Templates.
 --%>
 
@@ -101,15 +101,15 @@
             display: block !important;
         }
         footer {
-             background-color: #322D31;
-             color: white;
-             font-family: 'Titillium Web', sans-serif;
-             padding: 20px 0;
-             display: flex;
-             flex-wrap: wrap;
-             justify-content: space-between;
-             text-align: center; /* Centrar el contenido horizontalmente */
-         }
+            background-color: #322D31;
+            color: white;
+            font-family: 'Titillium Web', sans-serif;
+            padding: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            text-align: center; /* Centrar el contenido horizontalmente */
+        }
 
 
     </style>
@@ -228,18 +228,18 @@
         <table  class="table table-dark table-transparent table-hover mt-3">
             <thead>
 
-                <th>#ID</th>
-                <th>Nombre</th>
-                <th>Género</th>
-                <th>Consumo por día</th>
-                <th>Moral</th>
-                <th>Fuerza</th>
-                <th>Tiempo en Colonia</th>
-                <th>Produción de Alimento</th>
-                <th>Produción de Moral</th>
+            <th>#ID</th>
+            <th>Nombre</th>
+            <th>Género</th>
+            <th>Consumo por día</th>
+            <th>Moral</th>
+            <th>Fuerza</th>
+            <th>Tiempo en Colonia</th>
+            <th>Produción de Alimento</th>
+            <th>Produción de Moral</th>
 
-                <th>Editar</th>
-                <th>Exiliar</th>
+            <th>Editar</th>
+            <th>Exiliar</th>
 
             </thead>
             <tbody class="table">
@@ -295,6 +295,4 @@
     }
 </script>
 
-
 </html>
-

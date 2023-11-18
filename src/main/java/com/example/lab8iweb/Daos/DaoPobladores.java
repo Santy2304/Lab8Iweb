@@ -7,7 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DaoPobladores extends DaoBase {
-
+/*
     public ArrayList<Pobladores> listarPobladores() {
         ArrayList<Pobladores> listaPobladores = new ArrayList<>();
 
@@ -42,8 +42,8 @@ public class DaoPobladores extends DaoBase {
             throw new RuntimeException(e);
         }
     }
-
-
+*/
+    /*
     private void fetchPobladorData(Pobladores poblador, ResultSet rs) throws SQLException {
 
 
@@ -63,5 +63,5 @@ public class DaoPobladores extends DaoBase {
         poblador.setTiempo(rs.getInt(7));
 
     }
-
+*/
 }
