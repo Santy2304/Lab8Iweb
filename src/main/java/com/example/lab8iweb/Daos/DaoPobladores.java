@@ -212,11 +212,80 @@ public class DaoPobladores extends DaoBase {
 
     public void exiliarPorId(int  idPoblador){
 
-        String sql = "UPDATE pobladores SET estado = 'Exiliado' WHERE (`idpobladores` = '1')";
+        String sql = "UPDATE pobladores SET estado = 'Exiliado' WHERE (`idpobladores` = ? )";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1, idPoblador);
+            pstmt.executeUpdate();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        //Obtener idUsuario
+        int idUsuario = new DaoPobladores().obtenerIdUsuarioPorIdPoblador(idPoblador);
+        int moralPobladorExiliado = new DaoPobladores().obtenerMoralPorId(idPoblador);
 
 
+        //Cuando exiliamos , se les baja la moral al resto de pobladores
+        //FLOOR(RAND() * (20 - 10 + 1)) + 10
+        // FLOOR(RAND() * ( (select moral from pobladores where idpobladores = ?) + 1))
+
+
+
+        sql = "UPDATE pobladores SET moral = moral - FLOOR(RAND() * ( ? + 1))   WHERE idUsuarios = ? and estado = 'Vivo' ";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1, moralPobladorExiliado);
+            pstmt.setInt(2, idUsuario);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        sql = "UPDATE pobladores SET moral = 0 , estado= 'Muerto' , motivoMuerte = 'Murio por baja moral' WHERE moral <=0 and estado = 'Vivo' ";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
 
     }
+
+    public int obtenerIdUsuarioPorIdPoblador(int idPoblador){
+        int id = 0 ;
+        String  sql = "SELECT idUsuarios from pobladores where  idPobladores = ? ";
+        try(Connection conn=this.getConnection(); PreparedStatement pstmt= conn.prepareStatement(sql)){
+            pstmt.setInt(1,idPoblador);
+            try(ResultSet rs=pstmt.executeQuery()){
+                if (rs.next()){
+                    id= rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return id;
+    }
+    
+    public int obtenerMoralPorId(int idPoblador){
+       int moral = 0;
+        String  sql = "SELECT moral from pobladores where  idPobladores = ? ";
+        try(Connection conn=this.getConnection(); PreparedStatement pstmt= conn.prepareStatement(sql)){
+            pstmt.setInt(1,idPoblador);
+            try(ResultSet rs=pstmt.executeQuery()){
+                if (rs.next()){
+                    moral = rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return moral;  
+    }
+
+
+
 
 
 
