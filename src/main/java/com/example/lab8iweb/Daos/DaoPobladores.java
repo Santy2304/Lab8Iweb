@@ -176,6 +176,10 @@ public class DaoPobladores extends DaoBase {
 
     public void exiliarPorId(int  idPoblador){
 
+        String sql = "UPDATE pobladores SET estado = 'Exiliado' WHERE (`idpobladores` = '1')";
+
+
+
     }
 
 
