@@ -1,6 +1,8 @@
 package com.example.lab8iweb.Servlet;
 
 import com.example.lab8iweb.Beans.Usuario;
+import com.example.lab8iweb.DTOs.EstadisticasLeaderSheep;
+import com.example.lab8iweb.Daos.DaoUsuario;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -14,10 +16,19 @@ public class LeaderboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action") == null ? "lista" : request.getParameter("action");
-        if((Usuario) request.getSession().getAttribute("usuario") != null) { //Si se inicia session
-            request.getRequestDispatcher("Leaderboard/leaderBoard.jsp").forward(request, response);
+        if((Usuario) request.getSession().getAttribute("usuario") != null) { //Si se inicia sesión
 
-        }else{
+            DaoUsuario usuarioDao = new DaoUsuario();
+
+            // Obtén la lista de usuarios con la cantidad total de pobladores
+            ArrayList<EstadisticasLeaderSheep> listaUsuarios = usuarioDao.pobladoresTotalPorUsuario();
+
+            // Establece la lista de usuarios como un atributo de solicitud
+            request.setAttribute("listaCantidadPobladoresPorUsuario", listaUsuarios);
+
+            // Envía la solicitud al JSP
+            request.getRequestDispatcher("Leaderboard/leaderBoard.jsp").forward(request, response);
+        } else {
             RequestDispatcher view = request.getRequestDispatcher("Loging/Loging.jsp");
             view.forward(request, response);
         }

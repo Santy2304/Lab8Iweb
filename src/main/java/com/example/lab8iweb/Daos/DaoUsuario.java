@@ -1,6 +1,7 @@
 package com.example.lab8iweb.Daos;
 
 import com.example.lab8iweb.Beans.Usuario;
+import com.example.lab8iweb.DTOs.EstadisticasLeaderSheep;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -101,7 +102,7 @@ public class DaoUsuario extends DaoBase{
     }
 
     public void registrarNuevoUsuario(Usuario usuario){
-        String sql = "INSERT INTO usuario ( nombre, edad, correo, contrasena_hash, nombreUsuario, estado, `listaNegra`, alimentoTotal, tiempoJugado, yaAlimento ) VALUES ( ?, ? , ? ,sha2(?,256), ?, 'Paz', false , 0, 0 , true )";
+        String sql = "INSERT INTO usuario ( nombre, edad, correo, contrasena_hash, nombreUsuario, estado, `listaNegra`, alimentoTotal, tiempoJugado) VALUES ( ?, ? , ? ,sha2(?,256), ?, 'Paz', false , 0, 0)";
 
         try (Connection conn = super.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
@@ -180,7 +181,7 @@ public class DaoUsuario extends DaoBase{
             throw new RuntimeException(e);
         }
 
-        sql = "UPDATE usuario SET tiempoJugado = tiempoJugado + ?  , yaAlimento = false  WHERE idUsuarios = ? ";
+        sql = "UPDATE usuario SET tiempoJugado = tiempoJugado + ? WHERE idUsuarios = ? ";
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
             pstmt.setInt(1, tiempoFaltante);
@@ -190,56 +191,18 @@ public class DaoUsuario extends DaoBase{
             throw new RuntimeException(e);
         }
 
-
     }
 
 
     public void terminarDia(int idUser){
-        //Falta distribucion de alimentos ;
 
-
-
-
-        ///
-        String sql2 = "UPDATE usuario SET yaAlimento = true WHERE idUsuarios = ? ";
-        try (Connection conn = this.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql2);) {
-            pstmt.setInt(1, idUser);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-    }
-
-    public boolean alimentoALaPoblacion(int idUser){
-        boolean validacion = false;
-
-        String sql = "SELECT yaAlimento FROM Usuario WHERE idUsuarios=?";
-
-        try (Connection conn = this.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setInt(1,idUser);
-
-            try(ResultSet rs = pstmt.executeQuery()){
-                while (rs.next()) {
-                    validacion = rs.getBoolean(1);
-
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return validacion;
     }
 
     //metodos para el liderboard
 
-    public void diasJugadosTotal(int idUser) {
+    public void diasJugadosTotal(int idUser){
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
-
+        int totalPobladores = 0;
         String sql = "SELECT ROUND(tiempoJugado/24) AS DiasJugados, idUsuarios\n" +
                 "FROM usuario";
 
@@ -255,8 +218,36 @@ public class DaoUsuario extends DaoBase{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+
     }
 
+    public ArrayList<EstadisticasLeaderSheep> pobladoresTotalPorUsuario(){
+        ArrayList<EstadisticasLeaderSheep> listaUsuarios = new ArrayList<>();
+        String sql = "SELECT p.idUsuarios, u.nombreUsuario, COUNT(*) as cantidad_pobladores\n" +
+                "FROM pobladores p\n" +
+                "INNER JOIN usuario u ON u.idUsuarios = p.idUsuarios\n" +
+                "WHERE p.estado = 'Vivo'\n" +
+                "GROUP BY p.idUsuarios, u.nombreUsuario\n" +
+                "HAVING cantidad_pobladores > 0  \n" +
+                "ORDER BY cantidad_pobladores DESC\n" +
+                "LIMIT 10;";
 
+        try (Connection conn = this.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
 
+            while (rs.next()) {
+                EstadisticasLeaderSheep totalPobladores = new EstadisticasLeaderSheep();
+                totalPobladores.setIdUsuario(rs.getInt(1));
+                totalPobladores.setNameUsuario(rs.getString(2));
+                totalPobladores.setCantidadTotalPobladores(rs.getInt(3));
+
+                listaUsuarios.add(totalPobladores);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+    }
+
+        return listaUsuarios;
+    }
 }

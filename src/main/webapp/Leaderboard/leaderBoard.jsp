@@ -5,6 +5,10 @@
   Time: 19:57
   To change this template use File | Settings | File Templates.
 --%>
+<%@page import="java.util.ArrayList" %>
+<%@ page import="com.example.lab8iweb.Beans.*" %>
+<%@ page import="com.example.lab8iweb.DTOs.EstadisticasLeaderSheep" %>
+<jsp:useBean id="listaCantidadPobladoresPorUsuario" type="ArrayList<com.example.lab8iweb.DTOs.EstadisticasLeaderSheep>" scope="request"/>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" data-bs-theme="auto">
@@ -140,28 +144,31 @@
                 <th class="text-center">#ID</th>
                 <th class="text-center">Usuario</th>
                 <th class="text-center">Días Jugados</th>
-                <th class="text-center">Población</th>
-                <th class="text-center">Moral</th>
-                <th class="text-center">Triunfos</th>
-                <th class="text-center">% de Victorias</th>
-                <th class="text-center">Fuerza</th>
-                <th class="text-center">Máx. número de días de un ciudadano</th>
-                <th class="text-center">Producción de alimeno</th>
+
                 </thead>
                 <tbody class="table">
+                <%
+                    if (listaCantidadPobladoresPorUsuario != null && !listaCantidadPobladoresPorUsuario.isEmpty()) {
+
+                        for (EstadisticasLeaderSheep u : listaCantidadPobladoresPorUsuario) {
+                %>
                 <tr>
-                    <td class="text-center">1</td>
-                    <td class="text-center">Josh</td>
-                    <td class="text-center">M</td>
-                    <td class="text-center">30</td>
-                    <td class="text-center">20</td>
-                    <td class="text-center">10</td>
-                    <td class="text-center">100</td>
-                    <td class="text-center" >78</td>
-                    <td class="text-center">56</td>
-                    <td class="text-center">56</td>
+                    <td class="text-center"><%= u.getIdUsuario()%></td>
+                    <td class="text-center"><%= u.getNameUsuario()%></td>
+                    <td class="text-center"><%= u.getCantidadTotalPobladores()%></td>
+
                 </tr>
 
+                <%
+                    }
+                } else {
+                %>
+                <tr>
+                    <td colspan="3" class="text-center">No hay datos disponibles</td>
+                </tr>
+                <%
+                    }
+                %>
                 </tbody>
 
             </table>

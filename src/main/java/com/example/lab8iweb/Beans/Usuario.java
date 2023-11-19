@@ -18,6 +18,7 @@ public class Usuario {
     private Boolean yaAlimento;
 
     //GETTERS AND SETTERS
+
     public int getIdUsuario() {
         return idUsuario;
     }
