@@ -148,11 +148,10 @@
             </div>
         </div>
 </div>
-<main class="table">
+    <main class="table">
         <!--Aquí empieza el listado de los personajes-->
-        <section class="table">
             <section class="table__header">
-                <h1>Granjeros</h1>
+                <h2 style="margin-top: 20px; margin-bottom:20px">Granjeros</h2>
             </section>
 
             <section class="table__body">
@@ -229,7 +228,7 @@
 
     <main class="table">
         <section class="table__header">
-        <h2>Constructores</h2>
+        <h2 style="margin-top: 20px; margin-bottom:20px">Constructores</h2>
         </section>
         <section class="table__body">
         <table>
@@ -307,7 +306,7 @@
 
     <main class="table">
         <section class="table__header">
-        <h2>Soldados</h2>
+        <h2 style="margin-top: 20px; margin-bottom:20px">Soldados</h2>
         </section>
         <section class="table__body">
         <table>
@@ -389,7 +388,7 @@
 
 <main class="table">
     <section class="table__header">
-        <h2>Ciudadanos Comúnes</h2>
+        <h2 style="margin-top: 20px; margin-bottom:20px">Ciudadanos Comúnes</h2>
     </section>
     <section class="table__body">
         <table>
@@ -470,7 +469,7 @@
 
 <main class="table">
     <section class="table__header">
-        <h2>Muertos</h2>
+        <h2 style="margin-top: 20px; margin-bottom:20px">Muertos</h2>
     </section>
     <section class="table__body">
         <table>
