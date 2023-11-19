@@ -246,8 +246,8 @@
                 <tr>
 
                     <td CLASS="text-center"><%=p.getIdPobladores()%></td>
+                    <td CLASS="text-center"><%=p.getNombre()%></td>
                     <td CLASS="text-center"><%=genero%></td>
-                    <td CLASS="text-center"><%=p.getGenero()%></td>
                     <td CLASS="text-center"><%=p.getProfesion()%></td>
                     <td CLASS="text-center"><%=p.getAlimentacionPorDia()%></td>
                     <td CLASS="text-center"><%=p.getMoral()%></td>

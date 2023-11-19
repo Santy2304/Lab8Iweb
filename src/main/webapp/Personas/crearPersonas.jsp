@@ -71,12 +71,19 @@
     </div>
 
 <main>
+
+    <% String error = (String) request.getAttribute("error"); %>
+
     <form method="POST" action="GestionPersonasServlet?action=guardarPoblador" class="form-container">
 
         <section class="table__body">
             <div class="mb-3">
-                <label for="nombre">   Nombre        </label>
+                <label for="nombre">   Nombre    </label>
                 <input type="text" class="form-control form-control-sm" name="nombre" id="nombre">
+
+                <%if (error!=null){%>
+                <label style="color: red;">El nombre debe ser menor a 10 caractéres</label>
+                <%}%>
             </div>
             <div class="mb-3">
                 <label for="genero">   Género        </label>

@@ -27,10 +27,14 @@ public class GestionRecursosServlet extends HttpServlet {
                     int totalAlimentos =  new DaoUsuario().obtenerTotalAlimentos(user.getIdUsuario());
                     int totalPorAlimentar = new DaoPobladores().calcularCuantoAlimentar(user.getIdUsuario());
                     int totalPobladores = new DaoPobladores().calcularTotalPobladoresDeUnaCivilizacion(user.getIdUsuario());
+
+                    int produccionxDia = new DaoPobladores().calcularProduccionDiaria(user.getIdUsuario());
+
                     request.setAttribute("totalPobladores", totalPobladores);
                     request.setAttribute("totalAlimentos",totalAlimentos);
                     request.setAttribute("totalPorAlimentar",totalPorAlimentar);
                     request.setAttribute("listaDepresivos",listaDepresivos);
+                    request.setAttribute("produccionxDia",produccionxDia);
                     request.getRequestDispatcher("Recursos/gestionRecursos.jsp").forward(request, response);
                     break;
                 case "pasar24":

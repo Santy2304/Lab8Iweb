@@ -1,4 +1,5 @@
-<%@ page import="com.example.lab8iweb.Beans.Pobladores" %><%--
+<%@ page import="com.example.lab8iweb.Beans.Pobladores" %>
+<%@ page import="javax.swing.*" %><%--
   Created by IntelliJ IDEA.
   User: Hineill
   Date: 17/11/2023
@@ -22,7 +23,7 @@
 </head>
 <body>
 <div class='container'>
-
+    <% String error = (String) request.getAttribute("error"); %>
     <div class="row mb-4">
         <div class="col-md-3"></div>
         <div class="col-md-6 mx-auto mt-5">
@@ -34,10 +35,16 @@
                     <label class="form-label" for="nombre">Nombre</label>
                     <input type="text" class="form-control form-control-sm" id="nombre" name="nombre"
                            value="<%= poblador.getNombre() == null ? "" : poblador.getNombre()%>">
+
+                    <%if (error!=null){%>
+                        <label style="color: red;" class="mt-3">El nombre debe tener menos de 10 caractéres </label>
+                    <%}%>
+
                 </div>
 
-                <a href="<%= request.getContextPath()%>/GestionPersonasServlet" class="btn btn-danger mt-4">Cancelar</a>
-                <button type="submit" class="btn btn-primary mt-4">Confirmar</button>
+
+                <a href="<%= request.getContextPath()%>/GestionPersonasServlet" class="btn btn-danger mt-3">Cancelar</a>
+                <button type="submit" class="btn btn-primary mt-3">Confirmar</button>
             </form>
         </div>
         <div class="col-md-3"></div>

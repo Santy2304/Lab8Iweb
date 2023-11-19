@@ -43,6 +43,11 @@ public class GestionPersonasServlet extends HttpServlet {
                     request.getRequestDispatcher("Personas/editarPersonas.jsp").forward(request, response);
                     //Se edita solo el nombre
                     break;
+
+                default:
+                    response.sendRedirect("GestionPersonasServlet");
+
+
             }
         }else{
             RequestDispatcher view = request.getRequestDispatcher("Loging/Loging.jsp");
@@ -66,10 +71,19 @@ public class GestionPersonasServlet extends HttpServlet {
                     p.setGenero(request.getParameter("genero"));
                     p.setProfesion(request.getParameter("profesion"));
 
-                    DaoPobladores pobladorD = new DaoPobladores();
-                    pobladorD.crearPoblador(p, idUsuario);
 
-                    response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+                    if ((p.getNombre()).length()<10){
+                        DaoPobladores pobladorD = new DaoPobladores();
+                        pobladorD.crearPoblador(p, idUsuario);
+
+                        response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+                    }else{
+
+                        request.setAttribute("error","El nombre debe ser menor a 10 caractéres");
+                        request.getRequestDispatcher("Personas/crearPersonas.jsp").forward(request,response);
+                    }
+
+
 
                     break;
 
@@ -77,14 +91,24 @@ public class GestionPersonasServlet extends HttpServlet {
 
                     Pobladores poblador = new Pobladores();
                     String nombre = request.getParameter("nombre");
-
                     String id = request.getParameter("id_pobladores");
+
                     poblador.setIdPobladores(Integer.parseInt(id));
                     poblador.setNombre(nombre);
+                    DaoPobladores daoPobladores1 = new DaoPobladores();
 
-                    daoPobladores.actualizarPoblador(poblador);
+                    if (nombre.length()<10){
+                        daoPobladores.actualizarPoblador(poblador);
+                        response.sendRedirect(request.getContextPath()+"/GestionPersonasServlet");
+                    }else{
 
-                    response.sendRedirect(request.getContextPath()+"/GestionPersonasServlet");
+                        Pobladores poblador1 = daoPobladores1.buscarPoblador(Integer.parseInt(id));
+                        request.setAttribute("poblador",poblador1);
+                        request.setAttribute("error","El nombre debe ser menor a 10 caractéres");
+                        request.getRequestDispatcher("Personas/editarPersonas.jsp").forward(request,response);
+
+                    }
+
 
             }
         }else{

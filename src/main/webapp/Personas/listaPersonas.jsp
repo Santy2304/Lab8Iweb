@@ -141,7 +141,7 @@
 <div class='container mt-5'>
 
         <div class="pb-5 pt-4 px-3 titlecolor">
-            <div style="background-color: rgba(1,4,105,0.71); color: red; text-shadow: 2px 2px 4px white; display: inline-block;">
+            <div style=" color: black;  display: inline-block;">
                 <h1 style="transform: skew(-10deg); font-weight: bold;">Tus Pobladores</h1>
             </div>
             <div class="mt-4">
@@ -440,7 +440,7 @@
                 <td class="text-center"><%= genero%></td>
                 <td class="text-center"><%= c.getAlimentacionPorDia()%></td>
                 <td class="text-center"><%= c.getMoral()%></td>
-                <td class="text-center"><%= c.getFuerza()%></td>
+                <td class="text-center">----</td>
                 <td class="text-center"><%= c.getTiempoVivo()%></td> <!-- Agregado el cierre de la celda -->
                 <td class="text-center">----</td>
                 <td class="text-center">----</td>
@@ -480,6 +480,7 @@
             <th class="text-center">Nombre</th>
             <th class="text-center">Género</th>
             <th class="text-center">Profesión</th>
+            <th class="text-center">Motivo de Muerte</th>
             </tr>
             </thead>
             <tbody class="table">
@@ -510,6 +511,7 @@
                 <td class="text-center"><%= c.getNombre()%></td>
                 <td class="text-center"><%= genero%></td>
                 <td class="text-center"><%= c.getProfesion()%></td>
+                <td class="text-center"><%= c.getMotivoMuerte()%></td>
             </tr>
             <%
                     }

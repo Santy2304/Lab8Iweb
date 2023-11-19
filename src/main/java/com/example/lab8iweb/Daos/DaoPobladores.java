@@ -451,6 +451,35 @@ public class DaoPobladores extends DaoBase {
     }
 
 
+
+    public int calcularProduccionDiaria(int id){
+
+        int produccionDiaria = 0;
+
+        String sql = "SELECT SUM(cantidadDeProduccionXDia) AS produccionXDia FROM pobladores WHERE idUsuarios=? and estado='Vivo' and tipoDeProduccion='Alimento'";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,id);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
+
+                    produccionDiaria = rs.getInt(1);
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return produccionDiaria;
+    }
+
+
+
+
     public ArrayList<Pobladores> listarMoralesBajas() {
         ArrayList<Pobladores> listaDepresivos = new ArrayList<>();
 
