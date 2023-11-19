@@ -193,5 +193,10 @@ public class DaoUsuario extends DaoBase{
     }
 
 
+    public void terminarDia(int idUser){
+
+    }
+
+
 
 }

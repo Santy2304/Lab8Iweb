@@ -44,7 +44,8 @@ public class GestionRecursosServlet extends HttpServlet {
                     response.sendRedirect(request.getContextPath() + "/GestionRecursosServlet");
                     break;
                 case "terminarDia":
-
+                    new DaoUsuario().terminarDia(user.getIdUsuario()); //Alimentar Aldeanos
+                    response.sendRedirect(request.getContextPath() + "/GestionRecursosServlet");
                     break;
             }
 

@@ -8,6 +8,7 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%int tiempoJugado = ((int) request.getAttribute("tiempoJugado"));%>
 
 <html lang="en" data-bs-theme="auto">
 <head><script src="../assets/js/color-modes.js"></script>
@@ -196,16 +197,16 @@
                                 <h4 class="my-0 fw-normal">Horas del día</h4>
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title pricing-card-title"><%= ((int) request.getAttribute("tiempoJugado")) / 24 %><small class="text-body-secondary fw-light"> días </small></h1>
-                                <h1 class="card-title pricing-card-title"><%= ((int) request.getAttribute("tiempoJugado")) % 24 %><small class="text-body-secondary fw-light"> horas</small></h1>
+                                <h1 class="card-title pricing-card-title"><%= tiempoJugado / 24 %><small class="text-body-secondary fw-light"> días </small></h1>
+                                <h1 class="card-title pricing-card-title"><%= tiempoJugado % 24 %><small class="text-body-secondary fw-light"> horas</small></h1>
                                 <ul class="list-unstyled mt-4 mb-4">
                                     <li>Este botón permitira que transcurran 24 horas</li>
                                 </ul>
-                                <button type="button" class="w-100 btn btn-lg btn-primary" onclick="redirigirAServlet()" >Pasar las horas</button>
+                                <button type="button" class="w-100 btn btn-lg btn-primary" onclick="redirigirAServletPasarHoras()" >Pasar las horas</button>
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li>Este botón terminará el día y te tocara alimentar a tu gente</li>
                                 </ul>
-                                <button type="button" class="w-100 btn btn-lg btn-primary">Terminar el día</button>
+                                <button type="button" class="w-100 btn btn-lg btn-primary" onclick="redirigirAServletTerminarDia()" >Terminar el día</button>
                             </div>
                         </div>
                     </div>
@@ -267,9 +268,16 @@
 
 </body>
 <script>
-    function redirigirAServlet() {
+    seTerminoDia
+    <%if(tiempoJugado % 24 !=0  ){%>
+    function redirigirAServletPasarHoras() {
 
         window.location.href = "<%= request.getContextPath()%>/GestionRecursosServlet?action=pasar24";
     }
+    <%}else{%>
+    function redirigirAServletTerminarDia(){
+        window.location.href = "<%= request.getContextPath()%>/GestionRecursosServlet?action=terminarDia";
+    }
+    <%}%>
 </script>
 </html>
