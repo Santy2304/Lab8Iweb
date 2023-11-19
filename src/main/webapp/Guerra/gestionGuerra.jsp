@@ -153,14 +153,14 @@
     </header>
 
     <main>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-3">
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-2">
 
 
 
             <div class="col mx-auto">
                 <div class="card mb-4 rounded-3 shadow-sm border-primary">
                     <div class="card-header py-3 text-bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Tus Fuerzas es</h4>
+                        <h4 class="my-0 fw-normal">Tus Fuerzas de ataque es</h4>
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title">500<small class="text-body-secondary fw-light"></small></h1>
@@ -180,19 +180,20 @@
         <h2 class="display-6 text-center mb-4 mt-4">Jugadores a declarar guerra</h2>
 
         <div class="table-responsive mt-4">
-            <table class="table text-center mb-5">
+            <table class="table table-dark table-transparent table-hover mb-5">
                 <thead>
-                <th align="center">#</th>
-                <th align="center">Oponente</th>
-                <th align="center">Fuerza </th>
-                <th align="center"></th>
+                <th class="text-center">#</th>
+                <th class="text-center">Oponente</th>
+                <th class="text-center">Fuerza </th>
+                <th class="text-center"></th>
                 </thead>
-                <tbody>
+                <tbody class="table">
                 <tr>
-                    <td align="center">1</td>
-                    <td align="center">Alex</td>
-                    <td align="center">200</td>
-                    <td align="center"><button class="btn btn-primary">Atacar</button></td>
+                    <td class="text-center">1</td>
+                    <td class="text-center">Alex</td>
+                    <td class="text-center">200</td>
+                    <td class="text-center"><button type="button" class="btn btn-danger btn-sm" style="font-size: 12px; padding: 4px 8px;background-color: red; color: white;">Atacar</button></td>
+
 
                 </tr>
                 </tbody>
@@ -206,14 +207,14 @@
         <h2 class="display-6 text-center mb-4 mt-4">Historial de Guerras</h2>
 
         <div class="table-responsive mt-4">
-            <table class="table text-center">
+            <table class="table table-dark table-transparent table-hover">
                 <thead>
                 <th align="center">#</th>
                 <th align="center">Oponente</th>
                 <th align="center">Resultado</th>
                 <th align="center">Fecha</th>
                 </thead>
-                <tbody>
+                <tbody class="table">
                 <tr>
                     <td align="center">1</td>
                     <td align="center">Alex</td>

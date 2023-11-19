@@ -78,6 +78,8 @@ public class GestionPersonasServlet extends HttpServlet {
                     Pobladores poblador = new Pobladores();
                     String nombre = request.getParameter("nombre");
 
+                    String id = request.getParameter("id_pobladores");
+                    poblador.setIdPobladores(Integer.parseInt(id));
                     poblador.setNombre(nombre);
 
                     daoPobladores.actualizarPoblador(poblador);

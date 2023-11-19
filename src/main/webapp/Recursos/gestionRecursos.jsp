@@ -210,7 +210,7 @@
         <h2 class="display-6 text-center mt-5 mb-3">Cuidado, hay pobladores en peligro</h2>
         <p class="text-center mb-4">Estos son los 5 pobladores con la moral más baja. Si llega a 0, moriran.</p>
         <div class="table-responsive">
-            <table class="table text-center">
+            <table class="table table-dark table-transparent table-hover">
                 <thead>
 
                 <th class="text-center">#ID</th>
@@ -222,7 +222,7 @@
                 <th class="text-center">Tiempo(H)</th>
 
                 </thead>
-                <tbody>
+                <tbody class="table">
 
                 <%for (Pobladores p : listaDepresivos){%>
 
