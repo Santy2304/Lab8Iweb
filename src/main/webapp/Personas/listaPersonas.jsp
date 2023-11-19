@@ -140,14 +140,14 @@
 
 <div class='container mt-5'>
 
-        <div class="pb-5 pt-4 px-3 titlecolor">
-            <div style=" color: black;  display: inline-block;">
-                <h1 style="transform: skew(-10deg); font-weight: bold; color: darkblue; background-color: lightgray; padding: 10px;">Tus Pobladores</h1>
-            </div>
-            <div class="mt-4">
-                <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: rgba(26,21,21,0.85); color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/GestionPersonasServlet?action=crearJugador&idUsuario=<%=((Usuario) session.getAttribute("usuario")).getIdUsuario()%>">Crear a un Poblador</a>
-            </div>
+    <div class="pb-5 pt-4 px-3 titlecolor" style="text-align: center;">
+        <div style="color: black; display: inline-block;">
+            <h1 style="transform: skew(-10deg); font-weight: bold; color: #2c3e50; background-color: #ecf0f1; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">Tus Pobladores</h1>
         </div>
+        <div class="mt-4">
+            <a style="display: inline-block; width: 200px; text-align: center; background-color: rgba(26,21,21,0.85); color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px; vertical-align: middle;" href="<%=request.getContextPath()%>/GestionPersonasServlet?action=crearJugador&idUsuario=<%=((Usuario) session.getAttribute("usuario")).getIdUsuario()%>">Crear a un Poblador</a>
+        </div>
+    </div>
 </div>
     <main class="table">
         <!--Aquí empieza el listado de los personajes-->
