@@ -57,7 +57,7 @@ main.table {
 
 .table__header .input-group:hover {
     width: 45%;
-    background-color: #fff8;
+    background-color: rgb(128, 195, 252);
     box-shadow: 0 .1rem .4rem #0002;
 }
 
@@ -124,7 +124,7 @@ thead th {
     position: sticky;
     top: 0;
     left: 0;
-    background-color: rgba(66, 144, 246, 0.23);
+    background-color: rgba(194, 216, 252, 0.98);
     cursor: pointer;
     text-transform: capitalize;
 }

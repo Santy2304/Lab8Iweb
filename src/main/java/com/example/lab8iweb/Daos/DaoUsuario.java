@@ -197,6 +197,32 @@ public class DaoUsuario extends DaoBase{
 
     }
 
+    //metodos para el liderboard
+
+    public void diasJugadosTotal(int idUser){
+        ArrayList<Usuario> listaUsuarios = new ArrayList<>();
+
+        String sql = "SELECT ROUND(tiempoJugado/24) AS DiasJugados, idUsuarios\n" +
+                "FROM usuario";
+
+        try (Connection conn = this.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next()) {
+                Usuario usuario = new Usuario();
+                usuario.setIdUsuario(rs.getInt(1));
+
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+    }
+
+
+
+
 
 
 }
