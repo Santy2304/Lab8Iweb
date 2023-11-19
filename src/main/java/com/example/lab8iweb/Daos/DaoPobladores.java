@@ -338,11 +338,38 @@ public class DaoPobladores extends DaoBase {
     }
 
 
-    public int calcularFuerzaTotal(int id){
+    public int calcularFuerzaDefensaTotal(int id){
 
         int fuerzaTotal = 0;
 
-        String sql = "SELECT SUM(fuerza) AS fuerza_total FROM pobladores WHERE (profesion = 'Soldado' or 'Granjero') and idUsuarios=? and estado='Vivo'";
+        String sql = "SELECT SUM(fuerza) AS fuerza_total FROM pobladores WHERE (profesion = 'Soldado' or 'Constructor') and idUsuarios=? and estado='Vivo'";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,id);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
+
+                    fuerzaTotal = rs.getInt(1);
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return fuerzaTotal;
+
+    }
+
+
+    public int calcularFuerzaAtaqueTotal(int id){
+
+        int fuerzaTotal = 0;
+
+        String sql = "SELECT SUM(fuerza) AS fuerza_total FROM pobladores WHERE (profesion = 'Soldado') and idUsuarios=? and estado='Vivo'";
 
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -366,9 +393,68 @@ public class DaoPobladores extends DaoBase {
 
 
 
+    public int calcularCuantoAlimentar(int id){
+
+        int AlimentarTotal = 0;
+
+        String sql = "SELECT SUM(alimentacionxDia) AS Alimentar_total FROM pobladores WHERE idUsuarios=? and estado='Vivo'";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,id);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
+
+                    AlimentarTotal = rs.getInt(1);
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return AlimentarTotal;
 
 
+    }
 
+
+    public ArrayList<Pobladores> listarMoralesBajas() {
+        ArrayList<Pobladores> listaDepresivos = new ArrayList<>();
+
+        String sql = "SELECT * FROM pobladores where estado='Vivo' ORDER BY Moral  ASC LIMIT 5;";
+
+        try (Connection conn = this.getConnection();
+             Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+
+            while (rs.next() ) {
+                Pobladores depresivo = new Pobladores();
+                depresivo.setIdPobladores(rs.getInt(1));
+                Usuario user = new Usuario();
+                user.setIdUsuario(rs.getInt(2));
+                depresivo.setUsuario(user);
+                depresivo.setNombre(rs.getString(3));
+                depresivo.setGenero(rs.getString(4));
+                depresivo.setTiempoVivo(rs.getInt(5));
+                depresivo.setMotivoMuerte(rs.getString(6));
+                depresivo.setEstado(rs.getString(7));
+                depresivo.setMoral(rs.getInt(8));
+                depresivo.setFuerza(rs.getInt(9));
+                depresivo.setTipo_produccion(rs.getString(10));
+                depresivo.setAlimentacionPorDia(rs.getInt(11));
+                depresivo.setCantidadProduccionPorDia(rs.getInt(12));
+                depresivo.setProfesion(rs.getString(13));
+                listaDepresivos.add(depresivo);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return listaDepresivos;
+    }
 
 
 }

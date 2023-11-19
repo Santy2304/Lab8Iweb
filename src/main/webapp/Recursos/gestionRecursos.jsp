@@ -1,4 +1,5 @@
-<%--
+<%@ page import="com.example.lab8iweb.Beans.Pobladores" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: Hineill
   Date: 17/11/2023
@@ -7,6 +8,7 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html lang="en" data-bs-theme="auto">
 <head><script src="../assets/js/color-modes.js"></script>
 
@@ -115,6 +117,7 @@
     <!-- Custom styles for this template -->
     <link href="pricing.css" rel="stylesheet">
 </head>
+<%ArrayList<Pobladores> listaDepresivos   = (ArrayList<Pobladores>) request.getAttribute("listaDepresivos");  %>
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
@@ -131,41 +134,6 @@
         <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
     </symbol>
 </svg>
-
-<div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-    <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center"
-            id="bd-theme"
-            type="button"
-            aria-expanded="false"
-            data-bs-toggle="dropdown"
-            aria-label="Toggle theme (auto)">
-        <svg class="bi my-1 theme-icon-active" width="1em" height="1em"><use href="#circle-half"></use></svg>
-        <span class="visually-hidden" id="bd-theme-text">Toggle theme</span>
-    </button>
-    <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#sun-fill"></use></svg>
-                Light
-                <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-            </button>
-        </li>
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
-                Dark
-                <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-            </button>
-        </li>
-        <li>
-            <button type="button" class="dropdown-item d-flex align-items-center active" data-bs-theme-value="auto" aria-pressed="true">
-                <svg class="bi me-2 opacity-50 theme-icon" width="1em" height="1em"><use href="#circle-half"></use></svg>
-                Auto
-                <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
-            </button>
-        </li>
-    </ul>
-</div>
 
 
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -195,14 +163,11 @@
                         <h4 class="my-0 fw-normal">Almacen de Alimentos</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$0<small class="text-body-secondary fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>10 users included</li>
-                            <li>2 GB of storage</li>
-                            <li>Email support</li>
-                            <li>Help center access</li>
+                        <h1 class="card-title pricing-card-title">3590<small class="text-body-secondary fw-light"></small></h1>
+                       <ul class="list-unstyled mt-3 mb-4">
+                            <li>Usted posee una producción diaria de 500 por día</li>
                         </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>
+                        <!--<button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>-->
                     </div>
                 </div>
             </div>
@@ -212,88 +177,81 @@
                         <h4 class="my-0 fw-normal">Total por Alimentar Hoy</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$15<small class="text-body-secondary fw-light">/mo</small></h1>
+                        <h1 class="card-title pricing-card-title">20000<small class="text-body-secondary fw-light"></small></h1>
+
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li>20 users included</li>
-                            <li>10 GB of storage</li>
-                            <li>Priority email support</li>
-                            <li>Help center access</li>
+                            <li>Usted posee un total de pobladores de 10</li>
                         </ul>
+
                         <button type="button" class="w-100 btn btn-lg btn-primary">Alimentar Ahora</button>
                     </div>
                 </div>
             </div>
-            <div class="col">
-                <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                    <div class="card-header py-3 text-bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Necesidades</h4>
+                    <div class="col">
+                        <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                            <div class="card-header py-3 text-bg-primary border-primary">
+                                <h4 class="my-0 fw-normal">Horas del día</h4>
+                            </div>
+                            <div class="card-body">
+                                <h1 class="card-title pricing-card-title">14<small class="text-body-secondary fw-light"> horas</small></h1>
+                                <ul class="list-unstyled mt-4 mb-4">
+                                    <li>Este botón permitira que transcurran 24 horas</li>
+                                </ul>
+                                <button type="button" class="w-100 btn btn-lg btn-primary">Pasar las horas</button>
+                                <ul class="list-unstyled mt-3 mb-4">
+                                    <li>Este botón terminará el día y te tocara alimentar a tu gente</li>
+                                </ul>
+                                <button type="button" class="w-100 btn btn-lg btn-primary">Terminar el día</button>
+                            </div>
+                        </div>
                     </div>
-                    <div class="card-body">
-                        <h1 class="card-title pricing-card-title">$29<small class="text-body-secondary fw-light">/mo</small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>30 users included</li>
-                            <li>15 GB of storage</li>
-                            <li>Phone and email support</li>
-                            <li>Help center access</li>
-                        </ul>
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>
-                    </div>
-                </div>
-            </div>
         </div>
 
-        <h2 class="display-6 text-center mb-4">Compare plans</h2>
-
+        <h2 class="display-6 text-center mt-5 mb-3">Cuidado, hay pobladores en peligro</h2>
+        <p class="text-center mb-4">Estos son los 5 pobladores con la moral más baja. Si llega a 0, moriran.</p>
         <div class="table-responsive">
             <table class="table text-center">
                 <thead>
-                <tr>
-                    <th style="width: 34%;"></th>
-                    <th style="width: 22%;">Free</th>
-                    <th style="width: 22%;">Pro</th>
-                    <th style="width: 22%;">Enterprise</th>
-                </tr>
+
+                <th class="text-center">#ID</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Género</th>
+                <th class="text-center">Profesión</th>
+                <th class="text-center">Consumo/día</th>
+                <th class="text-center">Moral</th>
+                <th class="text-center">Tiempo(H)</th>
+
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row" class="text-start">Public</th>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Private</th>
-                    <td></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                </tr>
-                </tbody>
 
-                <tbody>
+                <%for (Pobladores p : listaDepresivos){%>
+
+                <%String genero = null;
+                    switch(p.getGenero()){
+                        case "M":
+                            genero = "Masculino";
+                            break;
+                        case "F":
+                            genero = "Femenino";
+                            break;
+                        case "O":
+                            genero = "Otro";
+                            break;
+                    }
+
+                %>
                 <tr>
-                    <th scope="row" class="text-start">Permissions</th>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
+
+                    <td CLASS="text-center"><%=p.getIdPobladores()%></td>
+                    <td CLASS="text-center"><%=genero%></td>
+                    <td CLASS="text-center"><%=p.getGenero()%></td>
+                    <td CLASS="text-center"><%=p.getProfesion()%></td>
+                    <td CLASS="text-center"><%=p.getAlimentacionPorDia()%></td>
+                    <td CLASS="text-center"><%=p.getMoral()%></td>
+                    <td CLASS="text-center"><%=p.getTiempoVivo()%></td>
                 </tr>
-                <tr>
-                    <th scope="row" class="text-start">Sharing</th>
-                    <td></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Unlimited members</th>
-                    <td></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                </tr>
-                <tr>
-                    <th scope="row" class="text-start">Extra security</th>
-                    <td></td>
-                    <td></td>
-                    <td><svg class="bi" width="24" height="24"><use xlink:href="#check"/></svg></td>
-                </tr>
+
+                <%}%>
                 </tbody>
             </table>
         </div>
@@ -304,4 +262,5 @@
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>

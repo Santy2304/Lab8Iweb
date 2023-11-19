@@ -133,33 +133,33 @@
 
         </div>
 
-        <h2 class="mb-3">Granjeros</h2>
+        <h2 class="mb-3">Este es el top 10 del mundo</h2>
         <div class="tabla mb-5">
             <table class="table table-dark table-transparent table-hover">
                 <thead>
-                <th align="center">#ID</th>
-                <th align="center">Usuario</th>
-                <th align="center">Días Jugados</th>
-                <th align="center">Población</th>
-                <th align="center">Moral</th>
-                <th align="center">Triunfos</th>
-                <th align="center">% de Victorias</th>
-                <th align="center">Fuerza</th>
-                <th align="center">Máx. número de días de un ciudadano</th>
-                <th align="center">Producción de alimeno</th>
+                <th class="text-center">#ID</th>
+                <th class="text-center">Usuario</th>
+                <th class="text-center">Días Jugados</th>
+                <th class="text-center">Población</th>
+                <th class="text-center">Moral</th>
+                <th class="text-center">Triunfos</th>
+                <th class="text-center">% de Victorias</th>
+                <th class="text-center">Fuerza</th>
+                <th class="text-center">Máx. número de días de un ciudadano</th>
+                <th class="text-center">Producción de alimeno</th>
                 </thead>
                 <tbody class="table">
                 <tr>
-                    <td align="center">1</td>
-                    <td align="center">Josh</td>
-                    <td align="center">M</td>
-                    <td align="center">30</td>
-                    <td align="center">20</td>
-                    <td align="center">10</td>
-                    <td align="center">100</td>
-                    <td align="center">78</td>
-                    <td align="center">56</td>
-                    <td align="center">56</td>
+                    <td class="text-center">1</td>
+                    <td class="text-center">Josh</td>
+                    <td class="text-center">M</td>
+                    <td class="text-center">30</td>
+                    <td class="text-center">20</td>
+                    <td class="text-center">10</td>
+                    <td class="text-center">100</td>
+                    <td class="text-center" >78</td>
+                    <td class="text-center">56</td>
+                    <td class="text-center">56</td>
                 </tr>
 
                 </tbody>
