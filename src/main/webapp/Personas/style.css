@@ -8,7 +8,7 @@
 
 body {
     min-height: 100vh;
-    background: url(images/civilizacion.jpg) center / cover;
+    background: url(images/nuevo2.jpg) center;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,8 +62,8 @@ main.table {
 }
 
 .table__header .input-group img {
-    width: 1.2rem;
-    height: 1.2rem;
+    width: 1.0rem;
+    height: 1.0rem;
 }
 
 .table__header .input-group input {

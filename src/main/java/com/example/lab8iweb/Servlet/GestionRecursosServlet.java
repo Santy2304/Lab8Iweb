@@ -29,9 +29,9 @@ public class GestionRecursosServlet extends HttpServlet {
                     int totalPobladores = new DaoPobladores().calcularTotalPobladoresDeUnaCivilizacion(user.getIdUsuario());
 
                     int produccionxDia = new DaoPobladores().calcularProduccionDiaria(user.getIdUsuario());
-                    boolean yaAlimento =  new DaoUsuario().alimentoALaPoblacion(user.getIdUsuario());
+                    //boolean yaAlimento =  new DaoUsuario().alimentoALaPoblacion(user.getIdUsuario());
                     int tiempoJugado = new DaoUsuario().obtenerHorasDeJuegoPorIdUsuario(user.getIdUsuario());
-                    request.setAttribute("validacion", yaAlimento);
+                    //request.setAttribute("validacion", yaAlimento);
                     request.setAttribute("tiempoJugado", tiempoJugado);
                     request.setAttribute("totalPobladores", totalPobladores);
                     request.setAttribute("totalAlimentos",totalAlimentos);

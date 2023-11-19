@@ -142,7 +142,7 @@
 
         <div class="pb-5 pt-4 px-3 titlecolor">
             <div style=" color: black;  display: inline-block;">
-                <h1 style="transform: skew(-10deg); font-weight: bold;">Tus Pobladores</h1>
+                <h1 style="transform: skew(-10deg); font-weight: bold; color: darkblue; background-color: lightgray; padding: 10px;">Tus Pobladores</h1>
             </div>
             <div class="mt-4">
                 <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: rgba(26,21,21,0.85); color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/GestionPersonasServlet?action=crearJugador&idUsuario=<%=((Usuario) session.getAttribute("usuario")).getIdUsuario()%>">Crear a un Poblador</a>

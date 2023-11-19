@@ -63,7 +63,7 @@ public class GestionPersonasServlet extends HttpServlet {
 
         DaoPobladores daoPobladores = new DaoPobladores();
 
-        if((Usuario) request.getSession().getAttribute("usuario") != null) {
+        /*if((Usuario) request.getSession().getAttribute("usuario") != null) {
             int idUsuario = ((Usuario) request.getSession().getAttribute("usuario")).getIdUsuario();
             switch (action) {
                 case "guardarPoblador":
@@ -135,7 +135,7 @@ public class GestionPersonasServlet extends HttpServlet {
         }else{
             RequestDispatcher view = request.getRequestDispatcher("Loging/Loging.jsp");
             view.forward(request, response);
-        }
+        }*/
 
     }
 }
