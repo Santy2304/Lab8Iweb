@@ -11,7 +11,7 @@
 
 <footer style="font-size: 80%;">
     <!-- Primera fila -->
-    <div class="fila" style="margin: 0 auto; text-align: center; max-width: 800px;">
+    <div class="fila" style="margin: 0 auto; max-width: 800px;">
         <span class="titulo">Contactos:</span>
         <br>alvaro.burga@pucp.edu.pe
         <br>
