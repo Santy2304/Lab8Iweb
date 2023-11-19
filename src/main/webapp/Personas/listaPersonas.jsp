@@ -186,7 +186,7 @@
                     <td class="text-center"><%=  genero %></td>
                     <td class="text-center"><%= c.getAlimentacionPorDia()%></td>
                     <td class="text-center"><%= c.getMoral()%></td>
-                    <td class="text-center"><%= c.getFuerza()%></td>
+                    <td class="text-center">----</td>
                     <td class="text-center"><%= c.getTiempoVivo()%></td> <!-- Agregado el cierre de la celda -->
                     <td class="text-center">Alimento</td>
                     <td class="text-center"><%=c.getCantidadProduccionPorDia()%></td>
@@ -384,7 +384,7 @@
 
             <%
                 for (Pobladores c : listaPobladores) {
-                    if(!(c instanceof Constructore ) && !(c instanceof Granjero )  &&!(c instanceof Soldado ) && c.getEstado().equals("Vivo")){
+                    if(c.getProfesion().equals("Ninguno") && c.getEstado().equals("Vivo")){
             %>
 
 

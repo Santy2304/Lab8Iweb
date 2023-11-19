@@ -147,13 +147,15 @@
 
 
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-            <!--<h1 class="display-4 fw-normal text-body-emphasis mt-5">Guerra</h1>-->
-            <!--<p class="fs-5 text-body-secondary">Aquí podrás declarar la guerra a otro jugador</p>-->
+            <h1 class="display-4 fw-normal text-body-emphasis mt-5">Guerra</h1>
+            <p class="fs-5 text-body-secondary">Aquí podrás declarar la guerra a otro jugador, además de ver tu historial</p>
         </div>
     </header>
 
     <main>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-5">
+        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-3">
+
+
 
             <div class="col mx-auto">
                 <div class="card mb-4 rounded-3 shadow-sm border-primary">
