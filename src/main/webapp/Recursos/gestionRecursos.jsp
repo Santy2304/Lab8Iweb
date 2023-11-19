@@ -166,7 +166,7 @@
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title"><%= (int) request.getAttribute("totalAlimentos")%><small class="text-body-secondary fw-light"></small></h1>
                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>Usted posee una producción diaria de 500 por día</li>
+                            <li>Usted posee una producción diaria de 500 ---  por día</li>
                         </ul>
                         <!--<button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>-->
                     </div>
@@ -196,11 +196,12 @@
                                 <h4 class="my-0 fw-normal">Horas del día</h4>
                             </div>
                             <div class="card-body">
-                                <h1 class="card-title pricing-card-title">14<small class="text-body-secondary fw-light"> horas</small></h1>
+                                <h1 class="card-title pricing-card-title"><%= ((int) request.getAttribute("tiempoJugado")) / 24 %><small class="text-body-secondary fw-light"> días </small></h1>
+                                <h1 class="card-title pricing-card-title"><%= ((int) request.getAttribute("tiempoJugado")) % 24 %><small class="text-body-secondary fw-light"> horas</small></h1>
                                 <ul class="list-unstyled mt-4 mb-4">
                                     <li>Este botón permitira que transcurran 24 horas</li>
                                 </ul>
-                                <button type="button" class="w-100 btn btn-lg btn-primary">Pasar las horas</button>
+                                <button type="button" class="w-100 btn btn-lg btn-primary" onclick="redirigirAServlet()" >Pasar las horas</button>
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <li>Este botón terminará el día y te tocara alimentar a tu gente</li>
                                 </ul>
@@ -265,5 +266,10 @@
 <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+<script>
+    function redirigirAServlet() {
 
+        window.location.href = "<%= request.getContextPath()%>/GestionRecursosServlet?action=pasar24";
+    }
+</script>
 </html>

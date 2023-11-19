@@ -30,6 +30,8 @@ public class GestionRecursosServlet extends HttpServlet {
 
                     int produccionxDia = new DaoPobladores().calcularProduccionDiaria(user.getIdUsuario());
 
+                    int tiempoJugado = new DaoUsuario().obtenerHorasDeJuegoPorIdUsuario(user.getIdUsuario());
+                    request.setAttribute("tiempoJugado", tiempoJugado);
                     request.setAttribute("totalPobladores", totalPobladores);
                     request.setAttribute("totalAlimentos",totalAlimentos);
                     request.setAttribute("totalPorAlimentar",totalPorAlimentar);
@@ -38,7 +40,8 @@ public class GestionRecursosServlet extends HttpServlet {
                     request.getRequestDispatcher("Recursos/gestionRecursos.jsp").forward(request, response);
                     break;
                 case "pasar24":
-
+                    new DaoUsuario().pasarHorasHastaAcabarEldia(user.getIdUsuario());
+                    response.sendRedirect(request.getContextPath() + "/GestionRecursosServlet");
                     break;
                 case "terminarDia":
 

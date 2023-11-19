@@ -142,6 +142,56 @@ public class DaoUsuario extends DaoBase{
         return totalAlimentos;
     }
 
+    public int obtenerHorasDeJuegoPorIdUsuario(int idUsuario){
+        int tiempoJugado = 0;
+
+        String sql = "SELECT tiempoJugado FROM Usuario WHERE idUsuarios=?";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,idUsuario);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
+
+                    tiempoJugado = rs.getInt(1);
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return tiempoJugado;
+    }
+
+    public void pasarHorasHastaAcabarEldia (int idUsuario){
+        int tiempoJugado=  new DaoUsuario().obtenerHorasDeJuegoPorIdUsuario(idUsuario);
+        int tiempoFaltante = 24 - (tiempoJugado % 24);
+
+        String sql = "UPDATE pobladores SET tiempoVivo = tiempoVivo + ? WHERE idUsuarios = ? and estado = 'Vivo' ";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1, tiempoFaltante);
+            pstmt.setInt(2, idUsuario);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        sql = "UPDATE usuario SET tiempoJugado = tiempoJugado + ? WHERE idUsuarios = ? ";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1, tiempoFaltante);
+            pstmt.setInt(2, idUsuario);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
 
 }
