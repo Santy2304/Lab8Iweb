@@ -12,8 +12,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" data-bs-theme="auto">
 <head><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive HTML Table With Pure CSS - Web Design/UI Design</title>
+    <link rel="stylesheet" href="Personas/style.css">
+
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
@@ -24,8 +28,8 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -114,13 +118,15 @@
             justify-content: space-between;
             text-align: center; /* Centrar el contenido horizontalmente */
         }
-
+        .text-outline {
+            color: #fff; /* Color del texto */
+            -webkit-text-stroke: 2px rgba(0, 0, 0, 0.8);
+            text-stroke: 2px rgba(0, 0, 0, 0.8);
+            /* Ajusta los valores según sea necesario */
+        }
 
     </style>
 
-
-    <!-- Custom styles for this template -->
-    <link href="carousel.css" rel="stylesheet">
 </head>
 <body>
 <header data-bs-theme="dark">
@@ -130,41 +136,47 @@
 
 </header>
 <%ArrayList<Pobladores> listaPobladores   = (ArrayList<Pobladores>) request.getAttribute("listaPobladores");  %>
-<main>
-    <div class='container mt-5'>
+
+<div class='container mt-5'>
 
         <div class="pb-5 pt-4 px-3 titlecolor">
-            <div class="col-lg-6">
-                <h1 >Tus Pobladores</h1>
+            <div style="background-color: rgba(1,4,105,0.71); color: red; text-shadow: 2px 2px 4px white; display: inline-block;">
+                <h1 style="transform: skew(-10deg); font-weight: bold;">Tus Pobladores</h1>
             </div>
             <div class="mt-4">
-                <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: #007bff; color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/GestionPersonasServlet?action=crearJugador&idUsuario=<%=((Usuario) session.getAttribute("usuario")).getIdUsuario()%>">Crear a un Poblador</a>
+                <a style="display: block; width: 200px; margin: 0 auto; text-align: center; background-color: rgba(26,21,21,0.85); color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px;" href="<%=request.getContextPath()%>/GestionPersonasServlet?action=crearJugador&idUsuario=<%=((Usuario) session.getAttribute("usuario")).getIdUsuario()%>">Crear a un Poblador</a>
             </div>
         </div>
-
+</div>
+<main class="table">
         <!--Aquí empieza el listado de los personajes-->
-        <h2 class="mb-3">Granjeros</h2>
-        <div class="tabla mb-5">
-            <table class="table table-dark table-transparent table-hover">
-                <thead>
-                <tr>
-                    <th class="text-center">#ID</th>
-                    <th class="text-center">Nombre</th>
-                    <th class="text-center">Género</th>
-                    <th class="text-center">Consumo/día</th>
-                    <th class="text-center">Moral</th>
-                    <th class="text-center">Fuerza</th>
-                    <th class="text-center">Tiempo(H)</th>
-                    <th class="text-center">Tipo de Producción</th>
-                    <th class="text-center">Cantidad de Producción</th>
-                    <th class="text-center">Editar</th>
-                    <th class="text-center">Exiliar</th>
-                </tr>
-                </thead>
-                <tbody class="table">
+        <section class="table">
+            <section class="table__header">
+                <h1>Granjeros</h1>
+            </section>
+
+            <section class="table__body">
+                <table>
+                    <thead>
+                    <tr>
+                        <th class="text-center"> ID </th>
+                        <th class="text-center"> Nombre </th>
+                        <th class="text-center"> Género </th>
+                        <th class="text-center"> Consumo/día </th>
+                        <th class="text-center"> Moral </th>
+                        <th class="text-center"> Fuerza </th>
+                        <th class="text-center"> Tiempo(H) </th>
+                        <th class="text-center"> Tipo de Producción </th>
+                        <th class="text-center"> Cantidad de Producción </th>
+                        <th class="text-center"> Editar </th>
+                        <th class="text-center"> Exiliar </th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
                     <%
                         for (Pobladores c : listaPobladores) {
-                           if(c instanceof Granjero && c.getEstado().equals("Vivo")) {
+                            if(c instanceof Granjero && c.getEstado().equals("Vivo")) {
                     %>
                     <%
                         switch(c.getGenero()){
@@ -177,62 +189,68 @@
                             case "O":
                                 genero = "Otro";
                                 break;
-                    }
+                        }
 
                     %>
-                <tr>
-                    <td class="text-center"><%= c.getIdPobladores()%></td>
-                    <td class="text-center"><%= c.getNombre()%></td>
-                    <td class="text-center"><%=  genero %></td>
-                    <td class="text-center"><%= c.getAlimentacionPorDia()%></td>
-                    <td class="text-center"><%= c.getMoral()%></td>
-                    <td class="text-center">----</td>
-                    <td class="text-center"><%= c.getTiempoVivo()%></td> <!-- Agregado el cierre de la celda -->
-                    <td class="text-center">Alimento</td>
-                    <td class="text-center"><%=c.getCantidadProduccionPorDia()%></td>
-                    <td class="text-center">
-                        <a href="<%=request.getContextPath()%>/GestionPersonasServlet?action=editar&id=<%=c.getIdPobladores()%>"
-                           type="button" class="btn btn-primary">
-                            <i class="bi bi-pencil-square"></i>
-                        </a>
-                    </td>
-                    <td class="text-center">
-                        <a onclick="return confirm('¿Estas seguro de borrar?');"
-                           href="<%=request.getContextPath()%>/GestionPersonasServlet?action=exiliar&id=<%=c.getIdPobladores()%>"
-                           type="button" class="btn btn-danger">
-                            <i class="bi bi-trash"></i>
-                        </a>
-                    </td>
-                </tr>
-                <%
-                    }
-                    } // Cierre del ciclo for
-                %>
+                    <tr>
+                        <td class="text-center"><%= c.getIdPobladores()%></td>
+                        <td class="text-center"><%= c.getNombre()%></td>
+                        <td class="text-center"><%=  genero %></td>
+                        <td class="text-center"><%= c.getAlimentacionPorDia()%></td>
+                        <td class="text-center"><%= c.getMoral()%></td>
+                        <td class="text-center">----</td>
+                        <td class="text-center"><%= c.getTiempoVivo()%></td> <!-- Agregado el cierre de la celda -->
+                        <td class="text-center">Alimento</td>
+                        <td class="text-center"><%=c.getCantidadProduccionPorDia()%></td>
+                        <td class="text-center">
+                            <a href="<%=request.getContextPath()%>/GestionPersonasServlet?action=editar&id=<%=c.getIdPobladores()%>"
+                               type="button" class="btn btn-primary">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            <a onclick="return confirm('¿Estas seguro de borrar?');"
+                               href="<%=request.getContextPath()%>/GestionPersonasServlet?action=exiliar&id=<%=c.getIdPobladores()%>"
+                               type="button" class="btn btn-danger">
+                                <i class="bi bi-trash"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    <%
+                            }
+                        } // Cierre del ciclo for
+                    %>
 
-                </tbody>
+                    </tbody>
 
-            </table>
-        </div>
+                </table>
+            </section>
+        </main>
 
-
+    <main class="table">
+        <section class="table__header">
         <h2>Constructores</h2>
-        <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
+        </section>
+        <section class="table__body">
+        <table>
+
             <thead>
+            <tr>
+                <th class="text-center"> ID </th>
+                <th class="text-center"> Nombre </th>
+                <th class="text-center"> Género </th>
+                <th class="text-center"> Consumo/día </th>
+                <th class="text-center"> Moral </th>
+                <th class="text-center"> Fuerza </th>
+                <th class="text-center"> Tiempo(H) </th>
+                <th class="text-center"> Tipo de Producción </th>
+                <th class="text-center"> Cantidad de Producción </th>
+                <th class="text-center"> Editar </th>
+                <th class="text-center"> Exiliar </th>
 
-            <th class="text-center">#ID</th>
-            <th class="text-center">Nombre</th>
-            <th class="text-center">Género</th>
-            <th class="text-center">Consumo/día</th>
-            <th class="text-center">Moral</th>
-            <th class="text-center">Fuerza</th>
-            <th class="text-center">Tiempo(H)</th>
-            <th class="text-center">Tipo de Producción</th>
-            <th class="text-center">Cantidad de Producción</th>
-            <th class="text-center">Editar</th>
-            <th class="text-center">Exiliar</th>
-
+            </tr>
             </thead>
-            <tbody class="table">
+            <tbody>
             <%
                 for (Pobladores c : listaPobladores) {
                     if(c instanceof Constructore && c.getEstado().equals("Vivo")){
@@ -284,11 +302,17 @@
             %>
             </tbody>
         </table>
+        </section>
+    </main>
 
+    <main class="table">
+        <section class="table__header">
         <h2>Soldados</h2>
-        <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
+        </section>
+        <section class="table__body">
+        <table>
             <thead>
-
+                <tr>
             <th class="text-center">#ID</th>
             <th class="text-center">Nombre</th>
             <th class="text-center">Género</th>
@@ -300,10 +324,9 @@
             <th class="text-center">Cantidad de Producción</th>
             <th class="text-center">Editar</th>
             <th class="text-center">Exiliar</th>
-
-
+                </tr>
             </thead>
-            <tbody class="table">
+            <tbody>
 
 
             <%
@@ -359,13 +382,19 @@
 
             </tbody>
         </table>
+        </section>
+    </main>
 
 
 
+<main class="table">
+    <section class="table__header">
         <h2>Ciudadanos Comúnes</h2>
-        <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
+    </section>
+    <section class="table__body">
+        <table>
             <thead>
-
+            <tr>
             <th class="text-center">#ID</th>
             <th class="text-center">Nombre</th>
             <th class="text-center">Género</th>
@@ -378,8 +407,9 @@
             <th class="text-center">Editar</th>
             <th class="text-center">Exiliar</th>
 
+            </tr>
             </thead>
-            <tbody class="table">
+            <tbody>
 
 
             <%
@@ -435,24 +465,29 @@
 
             </tbody>
         </table>
+    </section>
+</main>
 
-
+<main class="table">
+    <section class="table__header">
         <h2>Muertos</h2>
-        <table  class="table table-dark table-transparent table-hover mt-3 mb-5">
+    </section>
+    <section class="table__body">
+        <table>
             <thead>
-
+            <tr>
             <th class="text-center">#ID</th>
             <th class="text-center">Nombre</th>
             <th class="text-center">Género</th>
             <th class="text-center">Profesión</th>
-
+            </tr>
             </thead>
             <tbody class="table">
 
 
             <%
                 for (Pobladores c : listaPobladores) {
-                if ( c.getEstado().equals("Muerto")){
+                    if ( c.getEstado().equals("Muerto")){
             %>
 
 
@@ -483,14 +518,11 @@
 
             </tbody>
         </table>
-
-    </div>
-
+    </section>
 </main>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
-<jsp:include page="/Includes/footer.jsp"/>
 
 <script>
     function cerrarSesion() {
@@ -498,4 +530,7 @@
         window.location.href = "<%=request.getContextPath()%>/LoggingServlet?action=logout";
     }
 </script>
+
+<jsp:include page="/Includes/footer.jsp"/>
+
 </html>

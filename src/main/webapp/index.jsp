@@ -31,12 +31,12 @@
         button {
             padding: 20px 40px;
             font-size: 28px;
-            background-color: rgba(44, 62, 80, 0.2); /* Color oscuro */
-            color: #ecf0f1; /* Color claro */
+            background-color: rgba(37, 119, 201, 0.3); /* Color oscuro */
+            color: rgb(255, 255, 255); /* Color claro */
             border: none; /* Borde principal */
             cursor: pointer;
-            box-shadow: 0 0 0 2px #1957ad, 0 0 10px 4px #1c539f;
-            border-radius: 8px;
+            box-shadow: 0 0 2px 4px rgba(25, 87, 173, 0.1), 0 4px 10px 4px rgba(28, 83, 159, 0.2);
+            border-radius: 15px;
             transition: background-color 0.3s ease;
             font-family: 'Anton', sans-serif;
             font-weight: bold; /* Negrita */

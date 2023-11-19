@@ -274,7 +274,7 @@ public class DaoPobladores extends DaoBase {
     }
     
     public int obtenerMoralPorId(int idPoblador){
-       int moral = 0;
+        int moral = 0;
         String  sql = "SELECT moral from pobladores where  idPobladores = ? ";
         try(Connection conn=this.getConnection(); PreparedStatement pstmt= conn.prepareStatement(sql)){
             pstmt.setInt(1,idPoblador);
@@ -455,11 +455,6 @@ public class DaoPobladores extends DaoBase {
 
         return listaDepresivos;
     }
-
-
-
-
-
 
 
 }
