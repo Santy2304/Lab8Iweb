@@ -118,4 +118,30 @@ public class DaoUsuario extends DaoBase{
 
 
 
+    public int obtenerTotalAlimentos(int idUser){
+        int totalAlimentos = 0;
+
+        String sql = "SELECT alimentoTotal FROM Usuario WHERE idUsuarios=?";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,idUser);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
+
+                    totalAlimentos = rs.getInt(1);
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return totalAlimentos;
+    }
+
+
+
 }

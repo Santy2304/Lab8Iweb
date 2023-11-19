@@ -99,15 +99,47 @@ public class DaoPobladores extends DaoBase {
             throw new RuntimeException(e);
         }
 
+        if( ! tipoPoblador.equals("Ninguno")) {
+            sql = "UPDATE pobladores SET tiempoVivo = tiempoVivo +8 WHERE idUsuarios = ? and estado = 'Vivo' ";
+            try (Connection conn = this.getConnection();
+                 PreparedStatement pstmt = conn.prepareStatement(sql);) {
 
-        sql = "UPDATE pobladores SET tiempoVivo = tiempoVivo +8 WHERE idUsuarios = ? and estado = 'Vivo' ";
-        try (Connection conn = this.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+                pstmt.setInt(1, idUsuario);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
 
-            pstmt.setInt(1, idUsuario);
-            pstmt.executeUpdate();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
+            sql = "UPDATE usuario SET tiempoJugado = tiempoJugado + 8 WHERE idUsuarios = ? ";
+            try (Connection conn = this.getConnection();
+                 PreparedStatement pstmt = conn.prepareStatement(sql);) {
+
+                pstmt.setInt(1, idUsuario);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        }else if (tipoPoblador.equals("Ninguno")) {
+            sql = "UPDATE pobladores SET tiempoVivo = tiempoVivo +2 WHERE idUsuarios = ? and estado = 'Vivo' ";
+            try (Connection conn = this.getConnection();
+                 PreparedStatement pstmt = conn.prepareStatement(sql);) {
+
+                pstmt.setInt(1, idUsuario);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+            sql = "UPDATE usuario SET tiempoJugado = tiempoJugado +2 WHERE idUsuarios = ? ";
+            try (Connection conn = this.getConnection();
+                 PreparedStatement pstmt = conn.prepareStatement(sql);) {
+
+                pstmt.setInt(1, idUsuario);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
         }
 
 
@@ -186,7 +218,7 @@ public class DaoPobladores extends DaoBase {
                         listarPobladores.add(soldado);
                     }
 
-                    if(nombreProfesion.equals("Ciudadano")){
+                    if(nombreProfesion.equals("Ninguno")){
                         Pobladores pobladores = new Pobladores();
                         pobladores.setIdPobladores(rs.getInt(1));
                         Usuario user = new Usuario();
@@ -416,8 +448,6 @@ public class DaoPobladores extends DaoBase {
         }
 
         return AlimentarTotal;
-
-
     }
 
 
@@ -454,6 +484,34 @@ public class DaoPobladores extends DaoBase {
         }
 
         return listaDepresivos;
+    }
+
+
+
+    public int calcularTotalPobladoresDeUnaCivilizacion(int idUser){
+
+        int totalPobladores = 0;
+
+        String sql = "SELECT count(*)  FROM pobladores where estado = 'Vivo' group by idUsuarios having idUsuarios = ? ;";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,idUser);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
+
+                    totalPobladores = rs.getInt(1);
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return totalPobladores;
+
     }
 
 

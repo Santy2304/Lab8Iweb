@@ -3,6 +3,7 @@ package com.example.lab8iweb.Servlet;
 import com.example.lab8iweb.Beans.Pobladores;
 import com.example.lab8iweb.Beans.Usuario;
 import com.example.lab8iweb.Daos.DaoPobladores;
+import com.example.lab8iweb.Daos.DaoUsuario;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -16,15 +17,20 @@ public class GestionRecursosServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if((Usuario) request.getSession().getAttribute("usuario") != null) { //Si se inicia session
-
+            Usuario user = (Usuario) request.getSession().getAttribute("usuario");
             DaoPobladores daoPobladores = new DaoPobladores();
             String action = request.getParameter("action") == null ? "lista" : request.getParameter("action");
             switch (action){
                 case "lista":
                     //saca del modelo
                     ArrayList<Pobladores> listaDepresivos = daoPobladores.listarMoralesBajas();
+                    int totalAlimentos =  new DaoUsuario().obtenerTotalAlimentos(user.getIdUsuario());
+                    int totalPorAlimentar = new DaoPobladores().calcularCuantoAlimentar(user.getIdUsuario());
+                    int totalPobladores = new DaoPobladores().calcularTotalPobladoresDeUnaCivilizacion(user.getIdUsuario());
+                    request.setAttribute("totalPobladores", totalPobladores);
+                    request.setAttribute("totalAlimentos",totalAlimentos);
+                    request.setAttribute("totalPorAlimentar",totalPorAlimentar);
                     request.setAttribute("listaDepresivos",listaDepresivos);
-
                     request.getRequestDispatcher("Recursos/gestionRecursos.jsp").forward(request, response);
                     break;
                 case "pasar24":

@@ -147,6 +147,7 @@
     <header>
 
         <jsp:include page="../Includes/navbar.jsp"></jsp:include>
+        <% ArrayList<Pobladores> listaPobladores; %>
 
 
         <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
@@ -163,7 +164,7 @@
                         <h4 class="my-0 fw-normal">Almacen de Alimentos</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">3590<small class="text-body-secondary fw-light"></small></h1>
+                        <h1 class="card-title pricing-card-title"><%= (int) request.getAttribute("totalAlimentos")%><small class="text-body-secondary fw-light"></small></h1>
                        <ul class="list-unstyled mt-3 mb-4">
                             <li>Usted posee una producción diaria de 500 por día</li>
                         </ul>
@@ -177,10 +178,12 @@
                         <h4 class="my-0 fw-normal">Total por Alimentar Hoy</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">20000<small class="text-body-secondary fw-light"></small></h1>
+
+                        <h1 class="card-title pricing-card-title"> <%= (int) request.getAttribute("totalPorAlimentar") %><small class="text-body-secondary fw-light"></small></h1>
 
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li>Usted posee un total de pobladores de 10</li>
+
+                            <li>Usted posee un total de pobladores de <%= (int) request.getAttribute("totalPobladores") %> </li>
                         </ul>
 
                         <button type="button" class="w-100 btn btn-lg btn-primary">Alimentar Ahora</button>

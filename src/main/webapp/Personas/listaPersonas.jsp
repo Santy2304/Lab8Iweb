@@ -414,7 +414,7 @@
 
             <%
                 for (Pobladores c : listaPobladores) {
-                    if(c.getProfesion().equals("Ninguno") && c.getEstado().equals("Vivo")){
+                    if(!(c instanceof Soldado) && !(c instanceof Granjero) && !(c instanceof Constructore)){
             %>
 
 
