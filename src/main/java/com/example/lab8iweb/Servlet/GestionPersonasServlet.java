@@ -81,8 +81,12 @@ public class GestionPersonasServlet extends HttpServlet {
                                 pobladorD.crearPoblador(p, idUsuario);
                                 response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
                             }else{
+
+                                request.setAttribute("error2","No puedes crear otro personaje");
+                                request.getRequestDispatcher("Personas/crearPersonas.jsp").forward(request, response);
                                 //No se debe crear el usuario porque sino nos sobrepasamos de la cantidad de hora para el día
-                                response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+                                //response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+
                             }
 
                         }else{
@@ -91,8 +95,10 @@ public class GestionPersonasServlet extends HttpServlet {
                                 pobladorD.crearPoblador(p, idUsuario);
                                 response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
                             }else{
+                                request.setAttribute("error2","No puedes crear otro personaje");
+                                request.getRequestDispatcher("Personas/crearPersonas.jsp").forward(request, response);
                                 //No se debe crear el usuario porque sino nos sobrepasamos de la cantidad de horas para el día
-                                response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+                                //response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
                             }
 
                         }
