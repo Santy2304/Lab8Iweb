@@ -101,7 +101,7 @@ public class DaoUsuario extends DaoBase{
     }
 
     public void registrarNuevoUsuario(Usuario usuario){
-        String sql = "INSERT INTO usuario ( nombre, edad, correo, contrasena_hash, nombreUsuario, estado, `listaNegra`, alimentoTotal, tiempoJugado) VALUES ( ?, ? , ? ,sha2(?,256), ?, 'Paz', false , 0, 0)";
+        String sql = "INSERT INTO usuario ( nombre, edad, correo, contrasena_hash, nombreUsuario, estado, `listaNegra`, alimentoTotal, tiempoJugado, yaAlimento ) VALUES ( ?, ? , ? ,sha2(?,256), ?, 'Paz', false , 0, 0 , true )";
 
         try (Connection conn = super.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
@@ -180,7 +180,7 @@ public class DaoUsuario extends DaoBase{
             throw new RuntimeException(e);
         }
 
-        sql = "UPDATE usuario SET tiempoJugado = tiempoJugado + ? WHERE idUsuarios = ? ";
+        sql = "UPDATE usuario SET tiempoJugado = tiempoJugado + ?  , yaAlimento = false  WHERE idUsuarios = ? ";
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
             pstmt.setInt(1, tiempoFaltante);
@@ -190,10 +190,40 @@ public class DaoUsuario extends DaoBase{
             throw new RuntimeException(e);
         }
 
+
     }
 
 
     public void terminarDia(int idUser){
+        //Falta distribucion de alimentos ;
+
+
+
+
+        ///
+        String sql2 = "UPDATE usuario SET yaAlimento = true WHERE idUsuarios = ? ";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql2);) {
+            pstmt.setInt(1, idUser);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public boolean alimentoALaPoblacion(int idUser){
+        boolean validacion = false;
+
+        String sql = "SELECT yaAlimento FROM Usuario WHERE idUsuarios=?";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,idUser);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
 
     }
 
@@ -218,6 +248,15 @@ public class DaoUsuario extends DaoBase{
             ex.printStackTrace();
         }
 
+                    validacion = rs.getBoolean(1);
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return validacion;
     }
 
 

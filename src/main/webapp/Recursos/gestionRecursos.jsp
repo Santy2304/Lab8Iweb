@@ -119,6 +119,8 @@
     <link href="pricing.css" rel="stylesheet">
 </head>
 <%ArrayList<Pobladores> listaDepresivos   = (ArrayList<Pobladores>) request.getAttribute("listaDepresivos");  %>
+<%boolean validacion = (boolean) request.getAttribute("validacion"); %>
+
 <body>
 <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
     <symbol id="check2" viewBox="0 0 16 16">
@@ -268,8 +270,8 @@
 
 </body>
 <script>
-    seTerminoDia
-    <%if(tiempoJugado % 24 !=0  ){%>
+
+    <%if( validacion){%>
     function redirigirAServletPasarHoras() {
 
         window.location.href = "<%= request.getContextPath()%>/GestionRecursosServlet?action=pasar24";

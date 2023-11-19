@@ -4,6 +4,7 @@ import com.example.lab8iweb.Beans.Constructore;
 import com.example.lab8iweb.Beans.Pobladores;
 import com.example.lab8iweb.Beans.Usuario;
 import com.example.lab8iweb.Daos.DaoPobladores;
+import com.example.lab8iweb.Daos.DaoUsuario;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -73,11 +74,31 @@ public class GestionPersonasServlet extends HttpServlet {
 
 
                     if ((p.getNombre()).length()<10){
-                        DaoPobladores pobladorD = new DaoPobladores();
-                        pobladorD.crearPoblador(p, idUsuario);
 
-                        response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
-                    }else{
+                        if(p.getProfesion().equals("Ninguno")){
+                            if(new DaoUsuario().alimentoALaPoblacion(idUsuario) && (((new DaoUsuario().obtenerHorasDeJuegoPorIdUsuario(idUsuario))%24)+2)<24) {
+                                DaoPobladores pobladorD = new DaoPobladores();
+                                pobladorD.crearPoblador(p, idUsuario);
+                                response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+                            }else{
+                                //No se debe crear el usuario porque sino nos sobrepasamos de la cantidad de hora para el día
+                                response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+                            }
+
+                        }else{
+                            if(new DaoUsuario().alimentoALaPoblacion(idUsuario) && (((new DaoUsuario().obtenerHorasDeJuegoPorIdUsuario(idUsuario))%24)+8)<24) {
+                                DaoPobladores pobladorD = new DaoPobladores();
+                                pobladorD.crearPoblador(p, idUsuario);
+                                response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+                            }else{
+                                //No se debe crear el usuario porque sino nos sobrepasamos de la cantidad de horas para el día
+                                response.sendRedirect(request.getContextPath() + "/GestionPersonasServlet?action=lista");
+                            }
+
+                        }
+
+
+                        }else{
 
                         request.setAttribute("error","El nombre debe ser menor a 10 caractéres");
                         request.getRequestDispatcher("Personas/crearPersonas.jsp").forward(request,response);

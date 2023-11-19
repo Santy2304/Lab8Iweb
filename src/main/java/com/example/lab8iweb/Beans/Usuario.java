@@ -15,6 +15,7 @@ public class Usuario {
     private Boolean listaNegra ;
     private int alimentoTotal;
     private int tiempoJugado;
+    private Boolean yaAlimento;
 
     //GETTERS AND SETTERS
     public int getIdUsuario() {
@@ -95,6 +96,14 @@ public class Usuario {
 
     public void setTiempoJugado(int tiempoJugado) {
         this.tiempoJugado = tiempoJugado;
+    }
+
+    public Boolean getYaAlimento() {
+        return yaAlimento;
+    }
+
+    public void setYaAlimento(Boolean yaAlimento) {
+        this.yaAlimento = yaAlimento;
     }
 
     public boolean validatePassword(String password) {
