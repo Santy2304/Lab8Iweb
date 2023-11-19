@@ -224,12 +224,20 @@ public class DaoUsuario extends DaoBase{
 
             try(ResultSet rs = pstmt.executeQuery()){
                 while (rs.next()) {
+                    validacion = rs.getBoolean(1);
 
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return validacion;
     }
 
     //metodos para el liderboard
 
-    public void diasJugadosTotal(int idUser){
+    public void diasJugadosTotal(int idUser) {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
 
         String sql = "SELECT ROUND(tiempoJugado/24) AS DiasJugados, idUsuarios\n" +
@@ -247,20 +255,7 @@ public class DaoUsuario extends DaoBase{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
-                    validacion = rs.getBoolean(1);
-
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return validacion;
     }
-
-
-
 
 
 
