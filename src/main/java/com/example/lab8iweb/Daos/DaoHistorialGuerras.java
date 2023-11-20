@@ -35,16 +35,10 @@ public class DaoHistorialGuerras extends DaoBase {
 
                     guerras.setIdGanador(rs.getInt(6));
 
-                    String resultado = null;
-                    if (guerras.getIdGanador() == id) {
-                        resultado = "Triunfo";
-
-                    } else {
-                        resultado = "Derrota";
-                    }
-                    guerras.setResultado(resultado);
 
                     guerras.setIdPerdedor(rs.getInt(7));
+
+                    guerras.setResultado(rs.getString(8));
 
                     listaHistorial.add(guerras);
                 }
