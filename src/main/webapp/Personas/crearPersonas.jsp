@@ -319,7 +319,7 @@
                             <input type="text" class="form-control form-control-sm" name="nombre" id="nombre">
 
                             <%if (error!=null){%>
-                            <label style="color: red;">El nombre debe ser menor a 10 caractéres</label>
+                            <label style="color: red;">El nombre debe ser menor a 10 caractéres y no debe ser nulo</label>
                             <%}%>
                         </div>
                         <div class="mb-3">

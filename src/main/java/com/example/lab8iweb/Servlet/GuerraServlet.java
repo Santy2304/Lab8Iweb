@@ -29,7 +29,9 @@ public class GuerraServlet extends HttpServlet {
             request.setAttribute("historial", historial);
             request.setAttribute("fuerzaAtaqueTotal" , new DaoHistorialGuerras().calcularFuerzaAtaqueTotal(idUser));
             request.setAttribute("fuerzaDefensaTotal" , new DaoHistorialGuerras().calcularFuerzaDefensaTotal(idUser)  );
-
+            request.setAttribute("tiempoJugado", new DaoUsuario().obtenerHorasDeJuegoPorIdUsuario(idUser));
+            request.setAttribute("estado" , (new DaoUsuario().obtenerUsuarioxId(idUser)).getEstado());
+            request.setAttribute("listaContrincantes", new DaoUsuario().obtenerListaUsuarios());
             request.getRequestDispatcher("Guerra/gestionGuerra.jsp").forward(request, response);
 
         }else{

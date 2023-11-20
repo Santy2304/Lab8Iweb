@@ -73,7 +73,7 @@ public class GestionPersonasServlet extends HttpServlet {
                     p.setProfesion(request.getParameter("profesion"));
 
 
-                    if ((p.getNombre()).length()<10){
+                    if ((p.getNombre()).length()<10 && (p.getNombre()).length()>0){
 
                         if(p.getProfesion().equals("Ninguno")){
                             if(new DaoUsuario().alimentoALaPoblacion(idUsuario) && (((new DaoUsuario().obtenerHorasDeJuegoPorIdUsuario(idUsuario))%24)+2)<24) {
@@ -106,7 +106,7 @@ public class GestionPersonasServlet extends HttpServlet {
 
                         }else{
 
-                        request.setAttribute("error","El nombre debe ser menor a 10 caractéres");
+                        request.setAttribute("error","El nombre debe ser menor a 10 caractéres y no debe estar vacío");
                         request.getRequestDispatcher("Personas/crearPersonas.jsp").forward(request,response);
                     }
 

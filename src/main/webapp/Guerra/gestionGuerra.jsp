@@ -1,6 +1,7 @@
 <%@ page import="com.example.lab8iweb.Beans.HistorialGuerras" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="com.example.lab8iweb.Daos.DaoUsuario" %><%--
+<%@ page import="com.example.lab8iweb.Daos.DaoUsuario" %>
+<%@ page import="com.example.lab8iweb.Beans.Usuario" %><%--
   Created by IntelliJ IDEA.
   User: Hineill
   Date: 17/11/2023
@@ -171,11 +172,12 @@
                     </div>
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title"><%= fuerzaAtaqueTotal %><small class="text-body-secondary fw-light"></small></h1>
-                        <ul class="list-unstyled mt-3 mb-4">
+                        <!-- <ul class="list-unstyled mt-3 mb-4">
                             <li>Total de Alimento: </li>
                             <li>Total de Moral: </li>
                             <li>Total de Soldados: </li>
                         </ul>
+                        -->
                        <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>-->
                     </div>
                 </div>
@@ -188,9 +190,9 @@
                         <h4 class="my-0 fw-normal">Estado de tu civilización</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">Paz<small class="text-body-secondary fw-light"></small></h1>
+                        <h1 class="card-title pricing-card-title"><%= ((String) request.getAttribute("estado")) %><small class="text-body-secondary fw-light"></small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
-                            <li>Han pasado : 15 días</li>
+                            <li>Han pasado : <%= ( (int)request.getAttribute("tiempoJugado") )/24 %> días</li>
                         </ul>
                         <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>-->
                     </div>
@@ -214,14 +216,18 @@
                 <th class="text-center"></th>
                 </thead>
                 <tbody class="table">
+                <%int counter= 1;%>
+                <%ArrayList<Usuario> listaUsuario = (ArrayList<Usuario>) request.getAttribute("listaContrincantes"); %>
+                <%for(Usuario u: listaUsuario){%>
+
                 <tr>
-                    <td class="text-center">1</td>
-                    <td class="text-center">Alex</td>
+                    <td class="text-center"><%= counter%></td>
+                    <td class="text-center"><%= u.getNombreUsuario()%></td>
                     <td class="text-center">200</td>
                     <td class="text-center"><button type="button" class="btn btn-danger btn-sm" style="font-size: 12px; padding: 4px 8px;background-color: red; color: white;">Atacar</button></td>
-
-
                 </tr>
+                <%counter= counter+1;%>
+                <%}%>
                 </tbody>
             </table>
         </div>

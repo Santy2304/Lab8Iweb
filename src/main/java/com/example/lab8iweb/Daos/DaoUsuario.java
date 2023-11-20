@@ -11,6 +11,52 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class DaoUsuario extends DaoBase{
+
+    public ArrayList<Usuario> obtenerListaUsuarios(){
+        ArrayList<Usuario> listaUsuario = new ArrayList<Usuario>();
+
+        String sql = "SELECT idUsuarios from Usuario";
+        try (Connection conn = super.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            try (ResultSet rs = pstmt.executeQuery();) {
+                //Guardamos todos sus datos para poder iniciar la sesion , esto ocurre cuando se loguea correctamente
+                while (rs.next()) {
+                    listaUsuario.add(new DaoUsuario().obtenerUsuarioxId(rs.getInt(1)));
+                }
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return listaUsuario;
+    }
+
+    public Usuario  obtenerUsuarioxId(int idUser){
+        Usuario user = new Usuario ();
+        String sql = "SELECT * from Usuario where idUsuarios = ?";
+        try (Connection conn = super.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
+            pstmt.setInt(1, idUser);
+            try (ResultSet rs = pstmt.executeQuery();) {
+                //Guardamos todos sus datos para poder iniciar la sesion , esto ocurre cuando se loguea correctamente
+                if (rs.next()) {
+                    user.setIdUsuario(rs.getInt(1));
+                    user.setNombre(rs.getString(2));
+                    user.setEdad(rs.getInt(3));
+                    user.setCorreo(rs.getString(4));
+                    user.setNombreUsuario(rs.getString(6));
+                    user.setEstado(rs.getString(7));
+                    user.setAlimentoTotal(rs.getInt(9));
+                    user.setTiempoJugado(rs.getInt(10));
+                    user.setYaAlimento(rs.getBoolean(11));
+                    return user;
+                }
+            }
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return user;
+    }
     public Usuario validarUsuarioPasswordHashed(String usuario, String contrasena){
         Usuario user = new Usuario();
         //Como el nombre de Usuario es unico en la base de datos no ocurriran conflictos o solo se obtendra una fila
