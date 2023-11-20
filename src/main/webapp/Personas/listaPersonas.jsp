@@ -414,7 +414,7 @@
 
             <%
                 for (Pobladores c : listaPobladores) {
-                    if(!(c instanceof Soldado) && !(c instanceof Granjero) && !(c instanceof Constructore)){
+                    if(!(c instanceof Soldado) && !(c instanceof Granjero) && !(c instanceof Constructore) && c.getEstado().equals("Vivo")){
             %>
 
 

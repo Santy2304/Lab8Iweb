@@ -1,10 +1,12 @@
 package com.example.lab8iweb.Daos;
 
+import com.example.lab8iweb.Beans.Pobladores;
 import com.example.lab8iweb.Beans.Usuario;
 import com.example.lab8iweb.DTOs.EstadisticasLeaderSheep;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -102,7 +104,7 @@ public class DaoUsuario extends DaoBase{
     }
 
     public void registrarNuevoUsuario(Usuario usuario){
-        String sql = "INSERT INTO usuario ( nombre, edad, correo, contrasena_hash, nombreUsuario, estado, `listaNegra`, alimentoTotal, tiempoJugado) VALUES ( ?, ? , ? ,sha2(?,256), ?, 'Paz', false , 0, 0)";
+        String sql = "INSERT INTO usuario ( nombre, edad, correo, contrasena_hash, nombreUsuario, estado, `listaNegra`, alimentoTotal, tiempoJugado, yaAlimento ) VALUES ( ?, ? , ? ,sha2(?,256), ?, 'Paz', false , 0, 0 , true )";
 
         try (Connection conn = super.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
@@ -181,7 +183,7 @@ public class DaoUsuario extends DaoBase{
             throw new RuntimeException(e);
         }
 
-        sql = "UPDATE usuario SET tiempoJugado = tiempoJugado + ? WHERE idUsuarios = ? ";
+        sql = "UPDATE usuario SET tiempoJugado = tiempoJugado + ?  , yaAlimento = false  WHERE idUsuarios = ? ";
         try (Connection conn = this.getConnection();
              PreparedStatement pstmt = conn.prepareStatement(sql);) {
             pstmt.setInt(1, tiempoFaltante);
@@ -191,16 +193,154 @@ public class DaoUsuario extends DaoBase{
             throw new RuntimeException(e);
         }
 
+
     }
 
 
     public void terminarDia(int idUser){
+        //Falta distribucion de alimentos ;
+        ArrayList<Pobladores> listaPobladoresTotal = new DaoPobladores().listarPobladoresPorUsuario(idUser);
+        ArrayList<Pobladores> listaPobladores = new ArrayList<Pobladores>();
+        //Seleccionamos solo a los pobladores que esten vivos
+        for(Pobladores po : listaPobladoresTotal){
+            if(po.getEstado().equals("Vivo")){
+                listaPobladores.add(po);
+            }
+        }
 
+        int idx = 0;
+        int cantidadComidaTotal = new DaoUsuario().obtenerTotalAlimentos(idUser);
+        int cantidadNecesariaDeAlimentacion = 0 ;
+        bucleSupreme:
+        while(true){
+            //Elegimos aleatoriamente a que poblador vamos a alimentar
+            if(listaPobladores.size()!=0){
+            idx = new Random().nextInt(listaPobladores.size());
+            cantidadNecesariaDeAlimentacion = listaPobladores.get(idx).getAlimentacionPorDia();
+            if(((cantidadComidaTotal - cantidadNecesariaDeAlimentacion) > 0) ){
+                //Se le alimenta a ese poblador restando esa cantidad del monto total que tenía el usuario
+                cantidadComidaTotal = cantidadComidaTotal-cantidadNecesariaDeAlimentacion;
+                //Se quita la poblador de la lista de alimentos
+                listaPobladores.remove(idx);
+            }else{
+                //Ya no se alimenta a más pobladores
+                break bucleSupreme;
+            }
+            }else{
+                break bucleSupreme;
+            }
+
+        }
+        //Debemos setear el valor de la comida ahora  :
+        String query =  "UPDATE USUARIO SET ALIMENTOTOTAL = ? WHERE IDUSUARIOS= ? ";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(query);) {
+            pstmt.setInt(1, cantidadComidaTotal );
+            pstmt.setInt(2, idUser);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+
+        //Ahora que ya se repartio toda la comida pueden suceder dos cosas o se alimento a todos o faltan algunas personas
+        //Eso lo podemos saber apartir del tamaño de la lista
+        //Si alimento a todos no pasa nada con las morales del resto
+        if(listaPobladores.size() !=0  ){
+            //Con esto le bajamos la moral a todos los pobladores vivos que no hayan comido
+            for(Pobladores pobla : listaPobladores){
+
+                String sql3 = "UPDATE Pobladores SET moral = moral- AlimentacionXDia WHERE idPobladores = ? and estado = 'Vivo' ";
+                try (Connection conn = this.getConnection();
+                     PreparedStatement pstmt = conn.prepareStatement(sql3);) {
+                    pstmt.setInt(1, pobla.getIdPobladores());
+                    pstmt.executeUpdate();
+                } catch (SQLException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+            //Puede darse el caso de  que hayamos matado a alguien al bajarle tanto la moral q se volvio negativo o lo hicimos lleagr a cero
+            String sql7 = "UPDATE pobladores SET moral = 0 , estado= 'Muerto' , motivoMuerte = 'Murio por HAMBREEE' WHERE moral <=0 and estado = 'Vivo' and idUsuarios = ? ";
+            try (Connection conn = this.getConnection();
+                 PreparedStatement pstmt = conn.prepareStatement(sql7);) {
+                pstmt.setInt(1,idUser);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+        //Evaluamos crecimiento de la población :
+        ArrayList<Pobladores> listaPobladoresVivos = new ArrayList<Pobladores>(); //Pobladores vivos después de haber alimentado
+        for(Pobladores po : listaPobladoresTotal){
+            if(!po.getEstado().equals("Vivo")){
+                listaPobladoresVivos.add(po);
+            }
+        }
+        //Se debe tener en cuenta que la población debe ser mayor a cuatro veces la cantidad de los días pasados,
+        //de no ser así las personas entran en un estado de desesperación por la falta de gente,
+        // perdiendo en el proceso el 50% de la moral redondeando p(ara arriba
+        if(  ! ( listaPobladoresVivos.size() > 4*((new DaoUsuario().obtenerHorasDeJuegoPorIdUsuario(idUser))/24))){
+            String sql10 = "UPDATE Pobladores SET moral = moral - CEIL( moral/2) WHERE idPobladores = ? and estado= 'Vivo'";
+            try (Connection conn = this.getConnection();
+                 PreparedStatement pstmt = conn.prepareStatement(sql10);) {
+                pstmt.setInt(1, idUser);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            //Verificamos muertos
+            String sql7 = "UPDATE pobladores SET moral = 0 , estado= 'Muerto' , motivoMuerte = 'Murio por HAMBREEE' WHERE moral <=0 and estado = 'Vivo' and idUsuarios = ?  ";
+            try (Connection conn = this.getConnection();
+                 PreparedStatement pstmt = conn.prepareStatement(sql7);) {
+                pstmt.setInt(1,idUser);
+                pstmt.executeUpdate();
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+
+        }
+
+
+        ///
+        String sql2 = "UPDATE usuario SET yaAlimento = true WHERE idUsuarios = ? ";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql2);) {
+            pstmt.setInt(1, idUser);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public boolean alimentoALaPoblacion(int idUser){
+        boolean validacion = false;
+
+        String sql = "SELECT yaAlimento FROM Usuario WHERE idUsuarios=?";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,idUser);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
+                    validacion = rs.getBoolean(1);
+
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return validacion;
     }
 
     //metodos para el liderboard
 
-    public void diasJugadosTotal(int idUser){
+    public void diasJugadosTotal(int idUser) {
         ArrayList<Usuario> listaUsuarios = new ArrayList<>();
         int totalPobladores = 0;
         String sql = "SELECT ROUND(tiempoJugado/24) AS DiasJugados, idUsuarios\n" +
@@ -218,7 +358,6 @@ public class DaoUsuario extends DaoBase{
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-
     }
 
     public ArrayList<EstadisticasLeaderSheep> estadisticas(){
