@@ -8,7 +8,7 @@
 <%@page import="java.util.ArrayList" %>
 <%@ page import="com.example.lab8iweb.Beans.*" %>
 <%@ page import="com.example.lab8iweb.DTOs.EstadisticasLeaderSheep" %>
-<jsp:useBean id="listaCantidadPobladoresPorUsuario" type="ArrayList<com.example.lab8iweb.DTOs.EstadisticasLeaderSheep>" scope="request"/>
+<jsp:useBean id="estadisticas" type="ArrayList<com.example.lab8iweb.DTOs.EstadisticasLeaderSheep>" scope="request"/>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" data-bs-theme="auto">
@@ -144,18 +144,35 @@
                 <th class="text-center">#ID</th>
                 <th class="text-center">Usuario</th>
                 <th class="text-center">Días Jugados</th>
-
+                <th class="text-center">Población</th>
+                <th class="text-center">Moral</th>
+                <th class="text-center">Fuerza</th>
+                <th class="text-center">Guerras Ganadas</th>
+                <th class="text-center">% Victorias</th>
+                <th class="text-center">Máximo número de días de un ciudadano</th>
+                <th class="text-center">Producción de alimento</th>
                 </thead>
                 <tbody class="table">
                 <%
-                    if (listaCantidadPobladoresPorUsuario != null && !listaCantidadPobladoresPorUsuario.isEmpty()) {
+                    if (estadisticas != null && !estadisticas.isEmpty()) {
 
-                        for (EstadisticasLeaderSheep u : listaCantidadPobladoresPorUsuario) {
+                        for (EstadisticasLeaderSheep u : estadisticas) {
                 %>
                 <tr>
                     <td class="text-center"><%= u.getIdUsuario()%></td>
                     <td class="text-center"><%= u.getNameUsuario()%></td>
+                    <td class="text-center"><%= u.getDiasJugados()%></td>
+
                     <td class="text-center"><%= u.getCantidadTotalPobladores()%></td>
+                    <td class="text-center"><%= u.getCantidadTotalMoral()%></td>
+                    <td class="text-center"><%= u.getCantidadTotalFuerza()%></td>
+
+                    <td class="text-center">10</td>
+                    <td class="text-center">11</td>
+
+                    <td class="text-center"><%= u.getMaxDiasPoblador()%></td>
+                    <td class="text-center"><%= u.getCantidadTotalProduccionAlimento()%></td>
+
 
                 </tr>
 

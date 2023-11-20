@@ -21,10 +21,10 @@ public class LeaderboardServlet extends HttpServlet {
             DaoUsuario usuarioDao = new DaoUsuario();
 
             // Obtén la lista de usuarios con la cantidad total de pobladores
-            ArrayList<EstadisticasLeaderSheep> listaUsuarios = usuarioDao.pobladoresTotalPorUsuario();
+            ArrayList<EstadisticasLeaderSheep> listaUsuarios = usuarioDao.estadisticas();
 
             // Establece la lista de usuarios como un atributo de solicitud
-            request.setAttribute("listaCantidadPobladoresPorUsuario", listaUsuarios);
+            request.setAttribute("estadisticas", listaUsuarios);
 
             // Envía la solicitud al JSP
             request.getRequestDispatcher("Leaderboard/leaderBoard.jsp").forward(request, response);
