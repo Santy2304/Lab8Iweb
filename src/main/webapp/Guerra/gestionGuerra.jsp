@@ -155,7 +155,10 @@
             <p class="fs-5 text-body-secondary">Aquí podrás declarar la guerra a otro jugador, además de ver tu historial</p>
         </div>
     </header>
-
+<%
+    int fuerzaAtaqueTotal = (int ) request.getAttribute("fuerzaAtaqueTotal");
+    int fuerzaDefensaTotal = (int ) request.getAttribute("fuerzaDefensaTotal");
+%>
     <main>
         <div class="row row-cols-1 row-cols-md-3 mb-3 text-center mt-2">
 
@@ -167,7 +170,7 @@
                         <h4 class="my-0 fw-normal">Tus Fuerzas de ataque es</h4>
                     </div>
                     <div class="card-body">
-                        <h1 class="card-title pricing-card-title">500<small class="text-body-secondary fw-light"></small></h1>
+                        <h1 class="card-title pricing-card-title"><%= fuerzaAtaqueTotal %><small class="text-body-secondary fw-light"></small></h1>
                         <ul class="list-unstyled mt-3 mb-4">
                             <li>Total de Alimento: </li>
                             <li>Total de Moral: </li>

@@ -26,6 +26,8 @@ public class GuerraServlet extends HttpServlet {
             int idUser = ((Usuario) request.getSession().getAttribute("usuario")).getIdUsuario();
             ArrayList<HistorialGuerras> historial = new DaoHistorialGuerras().listarHistorialGuerras(idUser);
             request.setAttribute("historial", historial);
+            request.setAttribute("fuerzaAtaqueTotal" , new DaoHistorialGuerras().calcularFuerzaAtaqueTotal(idUser));
+            request.setAttribute("fuerzaDefensaTotal" , new DaoHistorialGuerras().calcularFuerzaDefensaTotal(idUser)  );
             request.getRequestDispatcher("Guerra/gestionGuerra.jsp").forward(request, response);
 
         }else{
