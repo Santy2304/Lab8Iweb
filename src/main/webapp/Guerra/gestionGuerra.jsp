@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.example.lab8iweb.Beans.HistorialGuerras" %>
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="com.example.lab8iweb.Daos.DaoUsuario" %><%--
   Created by IntelliJ IDEA.
   User: Hineill
   Date: 17/11/2023
@@ -7,6 +9,8 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%ArrayList<HistorialGuerras> historial = (ArrayList<HistorialGuerras>) request.getAttribute("historial");%>
+
 <html lang="en" data-bs-theme="auto">
 <head><script src="../assets/js/color-modes.js"></script>
 
@@ -222,7 +226,6 @@
 
 
 
-
         <h2 class="display-6 text-center mb-4 mt-4">Historial de Guerras</h2>
 
         <div class="table-responsive mt-4">
@@ -234,13 +237,8 @@
                 <th class="text-center">Fecha</th>
                 </thead>
                 <tbody class="table">
-                <tr>
-                    <td class="text-center">1</td>
-                    <td class="text-center">Alex</td>
-                    <td class="text-center">Derrota</td>
-                    <td class="text-center">23-04-2004</td>
 
-                </tr>
+
                 </tbody>
             </table>
         </div>

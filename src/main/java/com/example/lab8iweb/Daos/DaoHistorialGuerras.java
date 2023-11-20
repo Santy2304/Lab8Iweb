@@ -15,35 +15,39 @@ public class DaoHistorialGuerras extends DaoBase {
 
         ArrayList<HistorialGuerras> listaHistorial = new ArrayList<>();
 
-        String sql = "Select * from historialguerras where idUsuarios=?";
+        String sql = "Select * from historialguerras where idUsuario=?";
 
         try (Connection conn = this.getConnection();
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(sql)) {
+             PreparedStatement pstmt = conn.prepareStatement(sql);) {
 
-            while (rs.next() ) {
-                HistorialGuerras guerras = new HistorialGuerras();
-                guerras.setIdHistorialGuerras(rs.getInt(1));
-                guerras.setPosicion(rs.getString(2));
-                Usuario user = new Usuario();
-                user.setIdUsuario(rs.getInt(3));
-                guerras.setIdEnemigo(rs.getInt(4));
-                guerras.setHoraInicio(rs.getInt(5));
+            pstmt.setInt(1,id);
 
-                guerras.setIdGanador(rs.getInt(6));
 
-                String resultado = null;
-                if (guerras.getIdGanador() == id){
-                    resultado = "Triunfo";
+            try(ResultSet rs = pstmt.executeQuery()) {
+                while (rs.next()) {
+                    HistorialGuerras guerras = new HistorialGuerras();
+                    guerras.setIdHistorialGuerras(rs.getInt(1));
+                    guerras.setPosicion(rs.getString(2));
+                    Usuario user = new Usuario();
+                    user.setIdUsuario(rs.getInt(3));
+                    guerras.setIdEnemigo(rs.getInt(4));
+                    guerras.setHoraInicio(rs.getInt(5));
 
-                }else{
-                    resultado = "Derrota";
+                    guerras.setIdGanador(rs.getInt(6));
+
+                    String resultado = null;
+                    if (guerras.getIdGanador() == id) {
+                        resultado = "Triunfo";
+
+                    } else {
+                        resultado = "Derrota";
+                    }
+                    guerras.setResultado(resultado);
+
+                    guerras.setIdPerdedor(rs.getInt(7));
+
+                    listaHistorial.add(guerras);
                 }
-                guerras.setResultado(resultado);
-
-                guerras.setIdPerdedor(rs.getInt(7));
-
-
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

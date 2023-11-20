@@ -1,7 +1,9 @@
 package com.example.lab8iweb.Servlet;
 
+import com.example.lab8iweb.Beans.HistorialGuerras;
 import com.example.lab8iweb.Beans.Pobladores;
 import com.example.lab8iweb.Beans.Usuario;
+import com.example.lab8iweb.Daos.DaoHistorialGuerras;
 import com.example.lab8iweb.Daos.DaoPobladores;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
@@ -20,12 +22,11 @@ public class GuerraServlet extends HttpServlet {
 
 
         if((Usuario) request.getSession().getAttribute("usuario") != null) { //Si se inicia session
-            request.getRequestDispatcher("Guerra/gestionGuerra.jsp").forward(request, response);
             //AQUI VA TODA LA LOGICA DEL SERVLET;
-
-            DaoPobladores daoPobladores = new DaoPobladores();
-
-
+            int idUser = ((Usuario) request.getSession().getAttribute("usuario")).getIdUsuario();
+            ArrayList<HistorialGuerras> historial = new DaoHistorialGuerras().listarHistorialGuerras(idUser);
+            request.setAttribute("historial", historial);
+            request.getRequestDispatcher("Guerra/gestionGuerra.jsp").forward(request, response);
 
         }else{
             RequestDispatcher view = request.getRequestDispatcher("Loging/Loging.jsp");

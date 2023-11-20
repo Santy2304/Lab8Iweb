@@ -169,7 +169,7 @@
                     <div class="card-body">
                         <h1 class="card-title pricing-card-title"><%= (int) request.getAttribute("totalAlimentos")%><small class="text-body-secondary fw-light"></small></h1>
                        <ul class="list-unstyled mt-3 mb-4">
-                            <li>Usted posee una producción diaria de 500 ---  por día</li>
+                            <li>Usted posee una producción diaria de <%= request.getAttribute("produccionxDia")%> por día</li>
                         </ul>
                         <!--<button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>-->
                     </div>
@@ -189,7 +189,6 @@
                             <li>Usted posee un total de pobladores de <%= (int) request.getAttribute("totalPobladores") %> </li>
                         </ul>
 
-                        <button type="button" class="w-100 btn btn-lg btn-primary">Alimentar Ahora</button>
                     </div>
                 </div>
             </div>

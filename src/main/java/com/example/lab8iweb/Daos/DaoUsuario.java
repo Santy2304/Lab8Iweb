@@ -400,4 +400,27 @@ public class DaoUsuario extends DaoBase{
 
         return listaUsuarios;
     }
+
+
+
+
+    public int obtenerNombrexId(int id){
+        int idUser= 0 ;
+        String sql = "SELECT nombreUsuario FROM Usuario WHERE idUsuarios=?";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+
+            pstmt.setInt(1,id);
+
+            try(ResultSet rs = pstmt.executeQuery()){
+                while (rs.next()) {
+                    idUser = rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return idUser;
+    }
 }
