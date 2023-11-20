@@ -40,6 +40,11 @@ public class DaoHistorialGuerras extends DaoBase {
 
                     guerras.setResultado(rs.getString(8));
 
+                    DaoUsuario daoUsuario = new DaoUsuario();
+
+
+                    guerras.setContrincante(daoUsuario.obtenerNombrexId(rs.getInt(4)));
+
                     listaHistorial.add(guerras);
                 }
             }

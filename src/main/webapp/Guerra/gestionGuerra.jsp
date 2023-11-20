@@ -241,12 +241,13 @@
                 </thead>
                 <tbody class="table">
 
-                <%for (HistorialGuerras g : historial ){ %>
+                <%
+                    for (HistorialGuerras g : historial ){ %>
 
                 <tr>
                     <td class="text-center"><%=g.getIdHistorialGuerras()%></td>
-                    <td class="text-center"><%=g.getIdEnemigo()%></td>
-                    <td class="text-center"><%=g.getResultado()%>></td>
+                    <td class="text-center"><%= g.getContrincante()%></td>
+                    <td class="text-center"><%=g.getResultado()%></td>
                     <td class="text-center"><%=g.getHoraInicio()%></td>
 
                 </tr>

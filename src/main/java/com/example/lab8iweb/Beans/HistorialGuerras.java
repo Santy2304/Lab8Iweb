@@ -12,10 +12,21 @@ public class HistorialGuerras {
     private int idGanador;
     private int idPerdedor;
 
+    private String contrincante;
+
+
     private String resultado;
 
     //GETTERS AND SETTERS
 
+
+    public String getContrincante() {
+        return contrincante;
+    }
+
+    public void setContrincante(String contrincante) {
+        this.contrincante = contrincante;
+    }
 
     public String getResultado() {
         return resultado;

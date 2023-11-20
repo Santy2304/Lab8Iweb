@@ -404,8 +404,8 @@ public class DaoUsuario extends DaoBase{
 
 
 
-    public int obtenerNombrexId(int id){
-        int idUser= 0 ;
+    public String obtenerNombrexId(int id){
+        String nombre= null;
         String sql = "SELECT nombreUsuario FROM Usuario WHERE idUsuarios=?";
 
         try (Connection conn = this.getConnection();
@@ -415,12 +415,12 @@ public class DaoUsuario extends DaoBase{
 
             try(ResultSet rs = pstmt.executeQuery()){
                 while (rs.next()) {
-                    idUser = rs.getInt(1);
+                    nombre = rs.getString(1);
                 }
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
-        return idUser;
+        return nombre;
     }
 }

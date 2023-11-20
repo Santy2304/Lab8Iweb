@@ -5,6 +5,7 @@ import com.example.lab8iweb.Beans.Pobladores;
 import com.example.lab8iweb.Beans.Usuario;
 import com.example.lab8iweb.Daos.DaoHistorialGuerras;
 import com.example.lab8iweb.Daos.DaoPobladores;
+import com.example.lab8iweb.Daos.DaoUsuario;
 import jakarta.servlet.*;
 import jakarta.servlet.http.*;
 import jakarta.servlet.annotation.*;
@@ -28,6 +29,7 @@ public class GuerraServlet extends HttpServlet {
             request.setAttribute("historial", historial);
             request.setAttribute("fuerzaAtaqueTotal" , new DaoHistorialGuerras().calcularFuerzaAtaqueTotal(idUser));
             request.setAttribute("fuerzaDefensaTotal" , new DaoHistorialGuerras().calcularFuerzaDefensaTotal(idUser)  );
+
             request.getRequestDispatcher("Guerra/gestionGuerra.jsp").forward(request, response);
 
         }else{
