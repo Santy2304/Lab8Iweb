@@ -117,6 +117,9 @@
 
     <!-- Custom styles for this template -->
     <link href="pricing.css" rel="stylesheet">
+
+    <link href="style.css" rel="stylesheet">
+
 </head>
 <%ArrayList<Pobladores> listaDepresivos   = (ArrayList<Pobladores>) request.getAttribute("listaDepresivos");  %>
 <%boolean validacion = (boolean) request.getAttribute("validacion"); %>
