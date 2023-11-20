@@ -173,6 +173,25 @@
                     </div>
                 </div>
             </div>
+
+
+            <div class="col mx-auto">
+                <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                    <div class="card-header py-3 text-bg-primary border-primary">
+                        <h4 class="my-0 fw-normal">Estado de tu civilización</h4>
+                    </div>
+                    <div class="card-body">
+                        <h1 class="card-title pricing-card-title">Paz<small class="text-body-secondary fw-light"></small></h1>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Han pasado : 15 días</li>
+                        </ul>
+                        <!-- <button type="button" class="w-100 btn btn-lg btn-primary">Contact us</button>-->
+                    </div>
+                </div>
+            </div>
+
+
+
         </div>
 
 
@@ -209,17 +228,17 @@
         <div class="table-responsive mt-4">
             <table class="table table-dark table-transparent table-hover">
                 <thead>
-                <th align="center">#</th>
-                <th align="center">Oponente</th>
-                <th align="center">Resultado</th>
-                <th align="center">Fecha</th>
+                <th class="text-center">#</th>
+                <th class="text-center">Oponente</th>
+                <th class="text-center">Resultado</th>
+                <th class="text-center">Fecha</th>
                 </thead>
                 <tbody class="table">
                 <tr>
-                    <td align="center">1</td>
-                    <td align="center">Alex</td>
-                    <td align="center">Derrota</td>
-                    <td align="center">23-04-2004</td>
+                    <td class="text-center">1</td>
+                    <td class="text-center">Alex</td>
+                    <td class="text-center">Derrota</td>
+                    <td class="text-center">23-04-2004</td>
 
                 </tr>
                 </tbody>

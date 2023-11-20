@@ -12,8 +12,18 @@ public class HistorialGuerras {
     private int idGanador;
     private int idPerdedor;
 
+    private String resultado;
+
     //GETTERS AND SETTERS
 
+
+    public String getResultado() {
+        return resultado;
+    }
+
+    public void setResultado(String resultado) {
+        this.resultado = resultado;
+    }
 
     public int getIdHistorialGuerras() {
         return idHistorialGuerras;

@@ -370,58 +370,7 @@ public class DaoPobladores extends DaoBase {
     }
 
 
-    public int calcularFuerzaDefensaTotal(int id){
 
-        int fuerzaTotal = 0;
-
-        String sql = "SELECT SUM(fuerza) AS fuerza_total FROM pobladores WHERE (profesion = 'Soldado' or 'Constructor') and idUsuarios=? and estado='Vivo'";
-
-        try (Connection conn = this.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setInt(1,id);
-
-            try(ResultSet rs = pstmt.executeQuery()){
-                while (rs.next()) {
-
-                    fuerzaTotal = rs.getInt(1);
-
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return fuerzaTotal;
-
-    }
-
-
-    public int calcularFuerzaAtaqueTotal(int id){
-
-        int fuerzaTotal = 0;
-
-        String sql = "SELECT SUM(fuerza) AS fuerza_total FROM pobladores WHERE (profesion = 'Soldado') and idUsuarios=? and estado='Vivo'";
-
-        try (Connection conn = this.getConnection();
-             PreparedStatement pstmt = conn.prepareStatement(sql)) {
-
-            pstmt.setInt(1,id);
-
-            try(ResultSet rs = pstmt.executeQuery()){
-                while (rs.next()) {
-
-                    fuerzaTotal = rs.getInt(1);
-
-                }
-            }
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
-
-        return fuerzaTotal;
-
-    }
 
 
 
