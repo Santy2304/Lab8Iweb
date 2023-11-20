@@ -11,29 +11,26 @@
 <%int tiempoJugado = ((int) request.getAttribute("tiempoJugado"));%>
 
 <html lang="en" data-bs-theme="auto">
-<head><script src="../assets/js/color-modes.js"></script>
+<head><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Responsive HTML Table With Pure CSS - Web Design/UI Design</title>
+    <link rel="stylesheet" href="Personas/style.css">
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.118.2">
-    <title>Pricing example · Bootstrap v5.3</title>
+    <title>Carousel Template · Bootstrap v5.3</title>
 
-    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/pricing/">
-
-
+    <link rel="canonical" href="https://getbootstrap.com/docs/5.3/examples/carousel/">
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@docsearch/css@3">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
-    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
 
     <style>
         .bd-placeholder-img {
@@ -112,116 +109,124 @@
         .bd-mode-toggle .dropdown-menu .active .bi {
             display: block !important;
         }
+        footer {
+            background-color: #322D31;
+            color: white;
+            font-family: 'Titillium Web', sans-serif;
+            padding: 20px 0;
+            text-align: center;
+            width: 100%;
+        }
+        .text-outline {
+            color: #fff; /* Color del texto */
+            -webkit-text-stroke: 2px rgba(0, 0, 0, 0.8);
+            text-stroke: 2px rgba(0, 0, 0, 0.8);
+            /* Ajusta los valores según sea necesario */
+        }
+
     </style>
 
-
-    <!-- Custom styles for this template -->
-    <link href="pricing.css" rel="stylesheet">
-
-    <link href="style.css" rel="stylesheet">
 
 </head>
 <%ArrayList<Pobladores> listaDepresivos   = (ArrayList<Pobladores>) request.getAttribute("listaDepresivos");  %>
 <%boolean validacion = (boolean) request.getAttribute("validacion"); %>
 
 <body>
-<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-    <symbol id="check2" viewBox="0 0 16 16">
-        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-    </symbol>
-    <symbol id="circle-half" viewBox="0 0 16 16">
-        <path d="M8 15A7 7 0 1 0 8 1v14zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16z"/>
-    </symbol>
-    <symbol id="moon-stars-fill" viewBox="0 0 16 16">
-        <path d="M6 .278a.768.768 0 0 1 .08.858 7.208 7.208 0 0 0-.878 3.46c0 4.021 3.278 7.277 7.318 7.277.527 0 1.04-.055 1.533-.16a.787.787 0 0 1 .81.316.733.733 0 0 1-.031.893A8.349 8.349 0 0 1 8.344 16C3.734 16 0 12.286 0 7.71 0 4.266 2.114 1.312 5.124.06A.752.752 0 0 1 6 .278z"/>
-        <path d="M10.794 3.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387a1.734 1.734 0 0 0-1.097 1.097l-.387 1.162a.217.217 0 0 1-.412 0l-.387-1.162A1.734 1.734 0 0 0 9.31 6.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387a1.734 1.734 0 0 0 1.097-1.097l.387-1.162zM13.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732l-.774-.258a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L13.863.1z"/>
-    </symbol>
-    <symbol id="sun-fill" viewBox="0 0 16 16">
-        <path d="M8 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
-    </symbol>
-</svg>
 
-
-<svg xmlns="http://www.w3.org/2000/svg" class="d-none">
-    <symbol id="check" viewBox="0 0 16 16">
-        <title>Check</title>
-        <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
-    </symbol>
-</svg>
-
-<div class="container py-3">
-    <header>
+    <header data-bs-theme="dark">
 
         <jsp:include page="../Includes/navbar.jsp"></jsp:include>
         <% ArrayList<Pobladores> listaPobladores; %>
 
-
-        <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
-            <h1 class="display-4 fw-normal text-body-emphasis mt-5">Recursos</h1>
-            <p class="fs-5 text-body-secondary mt-3">Aquí podras ver tanto los alimentos como la moral de tu civilización</p>
-        </div>
     </header>
 
-    <main>
-        <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
-            <div class="col">
+    <div class='container mt-5'>
+
+        <div class="pb-5 pt-4 px-3 titlecolor" style="text-align: center;">
+            <div style="color: black; display: inline-block;">
+                <h1 style="transform: skew(-10deg); font-weight: bold; color: #2c3e50; background-color: #ecf0f1; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">Recursos</h1>
+            </div>
+            <div class="mt-4">
+                <p style="display: inline-block; max-width: 200px; text-align: center; background-color: rgba(26,21,21,0.85); color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px; vertical-align: middle;">Aquí podrás ver tanto los alimentos como la moral de tu civilización</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 mx-auto">
                 <div class="card mb-4 rounded-3 shadow-sm border-primary">
                     <div class="card-header py-3 text-bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Almacen de Alimentos</h4>
+                        <h4 class="my-0 fw-normal text-center">Almacen de Alimentos</h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <h1 class="card-title pricing-card-title"><%= (int) request.getAttribute("totalAlimentos")%><small class="text-body-secondary fw-light"></small></h1>
-                       <ul class="list-unstyled mt-3 mb-4">
+                        <ul class="list-unstyled mt-3 mb-4">
                             <li>Usted posee una producción diaria de <%= request.getAttribute("produccionxDia")%> por día</li>
                         </ul>
                         <!--<button type="button" class="w-100 btn btn-lg btn-outline-primary">Sign up for free</button>-->
                     </div>
                 </div>
             </div>
-            <div class="col">
+
+            <div class="col-md-6 mx-auto">
                 <div class="card mb-4 rounded-3 shadow-sm border-primary">
                     <div class="card-header py-3 text-bg-primary border-primary">
-                        <h4 class="my-0 fw-normal">Total por Alimentar Hoy</h4>
+                        <h4 class="my-0 fw-normal text-center">Total por Alimentar Hoy</h4>
                     </div>
-                    <div class="card-body">
-
+                    <div class="card-body text-center">
                         <h1 class="card-title pricing-card-title"> <%= (int) request.getAttribute("totalPorAlimentar") %><small class="text-body-secondary fw-light"></small></h1>
-
                         <ul class="list-unstyled mt-3 mb-4">
-
                             <li>Usted posee un total de pobladores de <%= (int) request.getAttribute("totalPobladores") %> </li>
                         </ul>
-
                     </div>
                 </div>
             </div>
-                    <div class="col">
-                        <div class="card mb-4 rounded-3 shadow-sm border-primary">
-                            <div class="card-header py-3 text-bg-primary border-primary">
-                                <h4 class="my-0 fw-normal">Horas del día</h4>
-                            </div>
-                            <div class="card-body">
-                                <h1 class="card-title pricing-card-title"><%= tiempoJugado / 24 %><small class="text-body-secondary fw-light"> días </small></h1>
-                                <h1 class="card-title pricing-card-title"><%= tiempoJugado % 24 %><small class="text-body-secondary fw-light"> horas</small></h1>
-                                <ul class="list-unstyled mt-4 mb-4">
-                                    <li>Este botón permitira que transcurran 24 horas</li>
-                                </ul>
-                                <button type="button" class="w-100 btn btn-lg btn-primary" onclick="redirigirAServletPasarHoras()" >Pasar las horas</button>
-                                <ul class="list-unstyled mt-3 mb-4">
-                                    <li>Este botón terminará el día y te tocara alimentar a tu gente</li>
-                                </ul>
-                                <button type="button" class="w-100 btn btn-lg btn-primary" onclick="redirigirAServletTerminarDia()" >Terminar el día</button>
-                            </div>
-                        </div>
-                    </div>
         </div>
 
-        <h2 class="display-6 text-center mt-5 mb-3">Cuidado, hay pobladores en peligro</h2>
-        <p class="text-center mb-4">Estos son los 5 pobladores con la moral más baja. Si llega a 0, moriran.</p>
-        <div class="table-responsive">
-            <table class="table table-dark table-transparent table-hover">
-                <thead>
+        <div class="row">
+            <div class="col-md-6 mx-auto">
+                <div class="card mb-4 rounded-3 shadow-sm border-primary">
+                    <div class="card-header py-3 text-bg-primary border-primary">
+                        <h4 class="my-0 fw-normal text-center">Horas del día</h4>
+                    </div>
+                    <div class="card-body text-center">
+                        <h1 class="card-title pricing-card-title"><%= tiempoJugado / 24 %><small class="text-body-secondary fw-light"> días </small></h1>
+                        <h1 class="card-title pricing-card-title"><%= tiempoJugado % 24 %><small class="text-body-secondary fw-light"> horas</small></h1>
+                        <ul class="list-unstyled mt-4 mb-4">
+                            <li>Este botón permitirá que transcurran 24 horas</li>
+                        </ul>
+                        <button type="button" class="btn btn-lg btn-primary" onclick="redirigirAServletPasarHoras()">Pasar las horas</button>
+                        <ul class="list-unstyled mt-3 mb-4">
+                            <li>Este botón terminará el día y te tocará alimentar a tu gente</li>
+                        </ul>
+                        <button type="button" class="btn btn-lg btn-primary" onclick="redirigirAServletTerminarDia()">Terminar el día</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
 
+    <div class='container mt-5'>
+
+        <div class="pb-5 pt-4 px-3 titlecolor" style="text-align: center;">
+            <div style="color: black; display: inline-block;">
+                <h1 style="transform: skew(-10deg); font-weight: bold; color: #e50a1b; background-color: #ecf0f1; padding: 15px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">Cuidado! Hay pobladores en peligro</h1>
+            </div>
+            <div class="mt-4">
+                <p style="display: inline-block; width: 200px; text-align: center; background-color: rgba(238,22,22,0.7); color: #ffffff; padding: 10px; text-decoration: none; border-radius: 5px; vertical-align: middle;">Estos son los 5 pobladores con la moral más baja. Si llega a 0, moriran.</p>
+            </div>
+        </div>
+    </div>
+
+    <main class="table">
+        <section class="table__header">
+            <h2 style="margin-top: 20px; margin-bottom:20px"> </h2>
+        </section>
+        <section class="table__body">
+            <table>
+                <thead>
+                <tr>
                 <th class="text-center">#ID</th>
                 <th class="text-center">Nombre</th>
                 <th class="text-center">Género</th>
@@ -230,8 +235,9 @@
                 <th class="text-center">Moral</th>
                 <th class="text-center">Tiempo(H)</th>
 
+                </tr>
                 </thead>
-                <tbody class="table">
+                <tbody>
 
                 <%for (Pobladores p : listaDepresivos){%>
 
@@ -263,14 +269,14 @@
                 <%}%>
                 </tbody>
             </table>
-        </div>
+        </section>
     </main>
+        <br>
+        <br>
+            <br>
+<jsp:include page="/Includes/footer.jsp"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
-
-</div>
-<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
-
-</body>
 <script>
 
     <%if( validacion){%>
@@ -284,4 +290,5 @@
     }
     <%}%>
 </script>
+</body>
 </html>

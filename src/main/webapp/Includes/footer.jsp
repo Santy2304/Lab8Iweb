@@ -14,6 +14,7 @@
     <div class="fila" style="margin: 0 auto; max-width: 800px;">
         <span class="titulo">Contactos:</span>
         <br>alvaro.burga@pucp.edu.pe
+        <br>a20150632@pucp.edu.pe
         <br>
         <br>
         <span class="titulo">Síguenos en:</span>
