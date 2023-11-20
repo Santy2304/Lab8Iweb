@@ -15,19 +15,74 @@ import java.util.ArrayList;
 public class LeaderboardServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String action = request.getParameter("action") == null ? "lista" : request.getParameter("action");
+        String orden = request.getParameter("orden") == null ? "lista" : request.getParameter("orden");
         if((Usuario) request.getSession().getAttribute("usuario") != null) { //Si se inicia sesión
 
             DaoUsuario usuarioDao = new DaoUsuario();
 
-            // Obtén la lista de usuarios con la cantidad total de pobladores
-            ArrayList<EstadisticasLeaderSheep> listaUsuarios = usuarioDao.estadisticas();
+            switch (orden){
+                case "lista":
+                    ArrayList<EstadisticasLeaderSheep> listaUsuarios = usuarioDao.estadisticas();
+                    request.setAttribute("estadisticas", listaUsuarios);
+                    request.getRequestDispatcher("Leaderboard/leaderBoard.jsp").forward(request, response);
 
-            // Establece la lista de usuarios como un atributo de solicitud
-            request.setAttribute("estadisticas", listaUsuarios);
+                    break;
+                case "id":
+                    ArrayList<EstadisticasLeaderSheep> ordenadoporId = usuarioDao.ordenarStrings("idUsuarios");
+                    request.setAttribute("idOrden", ordenadoporId);
+                    request.getRequestDispatcher("Leaderboard/xId.jsp").forward(request, response);
+                    break;
+                 case "name":
+                    ArrayList<EstadisticasLeaderSheep> nameOrden = usuarioDao.ordenarStrings("nombreUsuario");
+                    request.setAttribute("nameOrden", nameOrden);
+                    request.getRequestDispatcher("Leaderboard/xNombre.jsp").forward(request, response);
+                    break;
 
-            // Envía la solicitud al JSP
-            request.getRequestDispatcher("Leaderboard/leaderBoard.jsp").forward(request, response);
+                case "diasJugador":
+                    ArrayList<EstadisticasLeaderSheep> DiasJugadorOrden = usuarioDao.ordenarInts("DiasJugados");
+                    request.setAttribute("diasJugadorOrden", DiasJugadorOrden);
+                    request.getRequestDispatcher("Leaderboard/xDiasJugador.jsp").forward(request, response);
+                    break;
+
+                case "poblacion":
+                    ArrayList<EstadisticasLeaderSheep> pobla = usuarioDao.estadisticas();
+                    request.setAttribute("estadisticas", pobla);
+                    request.getRequestDispatcher("Leaderboard/leaderBoard.jsp").forward(request, response);
+
+                    break;
+                case "moral":
+                    ArrayList<EstadisticasLeaderSheep> moralOrden = usuarioDao.ordenarInts("suma_morales");
+                    request.setAttribute("moralOrden", moralOrden);
+                    request.getRequestDispatcher("Leaderboard/xMoral.jsp").forward(request, response);
+                    break;
+
+                case "fuerza":
+                    ArrayList<EstadisticasLeaderSheep> fuerzaOrden = usuarioDao.ordenarInts("suma_fuerzas");
+                    request.setAttribute("FuerzaOrden", fuerzaOrden);
+                    request.getRequestDispatcher("Leaderboard/xFuerza.jsp").forward(request, response);
+                    break;
+                /*case "wars":
+                    ArrayList<EstadisticasLeaderSheep> fuerzaOrden = usuarioDao.ordenarInts("suma_fuerzas");
+                    request.setAttribute("FuerzaOrden", fuerzaOrden);
+                    request.getRequestDispatcher("Leaderboard/xFuerza.jsp").forward(request, response);
+                    break;
+                case "victorias":
+                    ArrayList<EstadisticasLeaderSheep> fuerzaOrden = usuarioDao.ordenarInts("suma_fuerzas");
+                    request.setAttribute("FuerzaOrden", fuerzaOrden);
+                    request.getRequestDispatcher("Leaderboard/xFuerza.jsp").forward(request, response);
+                    break;*/
+                case "maxDias":
+                    ArrayList<EstadisticasLeaderSheep> maxDiasOrden = usuarioDao.ordenarInts("max_tiempoVivo");
+                    request.setAttribute("maxDiasOrden", maxDiasOrden);
+                    request.getRequestDispatcher("Leaderboard/xMaxDiasCiudadanos.jsp").forward(request, response);
+                    break;
+                case "cantAlimento":
+                    ArrayList<EstadisticasLeaderSheep> alimentoOrden = usuarioDao.ordenarInts("suma_alimento");
+                    request.setAttribute("cantalimentoOrden", alimentoOrden);
+                    request.getRequestDispatcher("Leaderboard/xProduccionAlimento.jsp").forward(request, response);
+                    break;
+            }
+
         } else {
             RequestDispatcher view = request.getRequestDispatcher("Loging/Loging.jsp");
             view.forward(request, response);

@@ -33,7 +33,7 @@
                 </li>
                 <li class="nav-item mx-2">
                     <!--<a class="nav-link disabled" aria-disabled="true">Disabled</a>-->
-                    <a class="nav-link active" href="<%=request.getContextPath()%>/LeaderboardServlet">Leaderboard</a>
+                    <a class="nav-link active" href="<%= request.getContextPath()%>/LeaderboardServlet?orden=lista">Leaderboard</a>
                 </li>
             </ul>
 

@@ -1,8 +1,15 @@
-
+<%--
+  Created by IntelliJ IDEA.
+  User: HP
+  Date: 19/11/2023
+  Time: 21:01
+  To change this template use File | Settings | File Templates.
+--%>
 <%@page import="java.util.ArrayList" %>
 <%@ page import="com.example.lab8iweb.Beans.*" %>
 <%@ page import="com.example.lab8iweb.DTOs.EstadisticasLeaderSheep" %>
-<jsp:useBean id="estadisticas" type="ArrayList<com.example.lab8iweb.DTOs.EstadisticasLeaderSheep>" scope="request"/>
+<jsp:useBean id="cantalimentoOrden" type="ArrayList<com.example.lab8iweb.DTOs.EstadisticasLeaderSheep>" scope="request"/>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html lang="en" data-bs-theme="auto">
 <head><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
@@ -161,31 +168,31 @@
             </tr>
             </thead>
             <tbody>
-                <%
-                    if (estadisticas != null && !estadisticas.isEmpty()) {
+            <%
+                if (cantalimentoOrden != null && !cantalimentoOrden.isEmpty()) {
 
-                        for (EstadisticasLeaderSheep u : estadisticas) {
-                %>
-                <tr>
-                    <td class="text-center"><%= u.getIdUsuario()%></td>
-                    <td class="text-center"><%= u.getNameUsuario()%></td>
-                    <td class="text-center"><%= u.getDiasJugados()%></td>
+                    for (EstadisticasLeaderSheep u : cantalimentoOrden) {
+            %>
+            <tr>
+                <td class="text-center"><%= u.getIdUsuario()%></td>
+                <td class="text-center"><%= u.getNameUsuario()%></td>
+                <td class="text-center"><%= u.getDiasJugados()%></td>
 
-                    <td class="text-center"><%= u.getCantidadTotalPobladores()%></td>
-                    <td class="text-center"><%= u.getCantidadTotalMoral()%></td>
-                    <td class="text-center"><%= u.getCantidadTotalFuerza()%></td>
+                <td class="text-center"><%= u.getCantidadTotalPobladores()%></td>
+                <td class="text-center"><%= u.getCantidadTotalMoral()%></td>
+                <td class="text-center"><%= u.getCantidadTotalFuerza()%></td>
 
-                    <td class="text-center">10</td>
-                    <td class="text-center">11</td>
+                <td class="text-center">10</td>
+                <td class="text-center">11</td>
 
-                    <td class="text-center"><%= u.getMaxDiasPoblador()%></td>
-                    <td class="text-center"><%= u.getCantidadTotalProduccionAlimento()%></td>
-                </tr>
-                <%
+                <td class="text-center"><%= u.getMaxDiasPoblador()%></td>
+                <td class="text-center"><%= u.getCantidadTotalProduccionAlimento()%></td>
+            </tr>
+            <%
                     }
                 }
-                %>
-                </tbody>
+            %>
+            </tbody>
         </table>
     </section>
 </main>
@@ -202,3 +209,5 @@
 </script>
 </body>
 </html>
+
+

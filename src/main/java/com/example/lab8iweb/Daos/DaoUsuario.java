@@ -423,4 +423,88 @@ public class DaoUsuario extends DaoBase{
         }
         return nombre;
     }
+
+    public ArrayList<EstadisticasLeaderSheep> ordenarInts(String orden) {
+        ArrayList<EstadisticasLeaderSheep> listaUsuarios = new ArrayList<>();
+        String sql = "SELECT\n" +
+                "\tu.idUsuarios,\n" +
+                "    u.nombreUsuario,\n" +
+                "    ROUND(u.tiempoJugado / 24) AS DiasJugados,\n" +
+                "    COALESCE(COUNT(p.idPobladores), 0) AS cantidad_pobladores,\n" +
+                "    COALESCE(SUM(p.moral), 0) AS suma_morales,\n" +
+                "    COALESCE(SUM(p.fuerza), 0) AS suma_fuerzas,\n" +
+                "    COALESCE(MAX(p.tiempoVivo), 0) AS max_tiempoVivo,\n" +
+                "    COALESCE(SUM(CASE WHEN p.tipoDeProduccion = 'Alimento' THEN p.cantidadDeProduccionXDia ELSE 0 END), 0) AS suma_alimento\n" +
+                "FROM usuario u\n" +
+                "LEFT JOIN pobladores p ON u.idUsuarios = p.idUsuarios AND p.estado = 'Vivo'\n" +
+                "GROUP BY u.idUsuarios, u.nombreUsuario\n" +
+                "ORDER BY "+ orden +" DESC\n" +
+                "LIMIT 10";
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+            while (rs.next()) {
+                EstadisticasLeaderSheep estadisticas = new EstadisticasLeaderSheep();
+                estadisticas.setIdUsuario(rs.getInt(1));
+                estadisticas.setNameUsuario(rs.getString(2));
+                estadisticas.setDiasJugados(rs.getInt(3));
+                estadisticas.setCantidadTotalPobladores(rs.getInt(4));
+                estadisticas.setCantidadTotalMoral(rs.getInt(5));
+                estadisticas.setCantidadTotalFuerza(rs.getInt(6));
+                estadisticas.setMaxDiasPoblador(rs.getInt(7));
+                estadisticas.setCantidadTotalProduccionAlimento(rs.getInt(8));
+                listaUsuarios.add(estadisticas);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return listaUsuarios;
+
+    }
+    public ArrayList<EstadisticasLeaderSheep> ordenarStrings(String orden){
+        ArrayList<EstadisticasLeaderSheep> listaUsuarios = new ArrayList<>();
+        String sql = "FROM (\n" +
+                "    SELECT\n" +
+                "\tu.idUsuarios,\n" +
+                "    u.nombreUsuario,\n" +
+                "    ROUND(u.tiempoJugado / 24) AS DiasJugados,\n" +
+                "    COALESCE(COUNT(p.idPobladores), 0) AS cantidad_pobladores,\n" +
+                "    COALESCE(SUM(p.moral), 0) AS suma_morales,\n" +
+                "    COALESCE(SUM(p.fuerza), 0) AS suma_fuerzas,\n" +
+                "    COALESCE(MAX(p.tiempoVivo), 0) AS max_tiempoVivo,\n" +
+                "    COALESCE(SUM(CASE WHEN p.tipoDeProduccion = 'Alimento' THEN p.cantidadDeProduccionXDia ELSE 0 END), 0) AS suma_alimento\n" +
+                "FROM usuario u\n" +
+                "LEFT JOIN pobladores p ON u.idUsuarios = p.idUsuarios AND p.estado = 'Vivo'\n" +
+                "GROUP BY u.idUsuarios, u.nombreUsuario\n" +
+                "ORDER BY cantidad_pobladores DESC\n" +
+                "LIMIT 10\n" +
+                ") AS subconsulta\n" +
+                "\n" +
+                "ORDER BY "+orden+" ASC";
+
+        try (Connection conn = this.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                EstadisticasLeaderSheep estadisticas = new EstadisticasLeaderSheep();
+                estadisticas.setIdUsuario(rs.getInt(1));
+                estadisticas.setNameUsuario(rs.getString(2));
+                estadisticas.setDiasJugados(rs.getInt(3));
+                estadisticas.setCantidadTotalPobladores(rs.getInt(4));
+                estadisticas.setCantidadTotalMoral(rs.getInt(5));
+                estadisticas.setCantidadTotalFuerza(rs.getInt(6));
+                //estadisticas.setCantidadGuerrasGanadas(rs.getInt(6));
+                estadisticas.setMaxDiasPoblador(rs.getInt(7));
+                estadisticas.setCantidadTotalProduccionAlimento(rs.getInt(8));
+                listaUsuarios.add(estadisticas);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+
+        return listaUsuarios;
+    }
+
 }
