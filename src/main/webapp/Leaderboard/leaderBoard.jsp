@@ -142,7 +142,7 @@
 </div>
 <main class="table">
     <section class="table__header">
-        <h2 style="margin-top: 20px; margin-bottom:20px"><a href="<%= request.getContextPath() %>/LeaderboardServlet?orden=lista">Este es el top 10 del mundo</a></h2>
+        <h2 style="margin-top: 20px; margin-bottom:20px">Este es el top 10 del mundo</h2>
     </section>
     <section class="table__body">
         <table>
